@@ -1,5 +1,3 @@
-please follow the pr template below! :)
-
 <!--- Provide a general summary of your changes in the Title above -->
 
 ## Description
