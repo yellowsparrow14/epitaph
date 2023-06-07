@@ -24,4 +24,6 @@ public class PlayerController : Controller
     public void OnMove(InputAction.CallbackContext ctx) {
         rb.velocity = ctx.ReadValue<Vector2>() * moveSpeed;
     }
+
+
 }
