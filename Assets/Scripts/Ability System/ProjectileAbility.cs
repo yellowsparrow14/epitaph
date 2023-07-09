@@ -1,27 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 [CreateAssetMenu]
-public class DashAbility : Ability
+public class ProjectileAbility : Ability
 {
-    public float dashVelocity;
-
+    
     public override void Activate(GameObject parent)
     {
-        //Debug.Log("dash");
-        parent.GetComponent<Rigidbody2D>().velocity = parent.GetComponent<Rigidbody2D>().velocity * dashVelocity;
+        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<ProjectileTrigger>().Fire();
     }
 
-    public override void Deactivate(GameObject parent)
+    public override void Deactivate(GameObject parent) 
     {
-        //Debug.Log("dash");
-        parent.GetComponent<Rigidbody2D>().velocity = parent.GetComponent<Rigidbody2D>().velocity / dashVelocity;
+        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<ProjectileTrigger>().Stop();
     }
 
     public override void AbilityHandler(GameObject parent) {
-        Debug.Log(abilityPressed);
         switch (state) 
         {
             case AbilityState.ready:
@@ -49,5 +44,4 @@ public class DashAbility : Ability
             break;
         }
     }
-
 }

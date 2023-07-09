@@ -9,12 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7cd8b7e2c828e24388778810cddf411, type: 3}
-  m_Name: New Dash Ability
+  m_Script: {fileID: 11500000, guid: 9ce0740dcdb778c47ac294dd0c1688b1, type: 3}
+  m_Name: Dash
   m_EditorClassIdentifier: 
   aName: Dash
   aSprite: {fileID: 0}
   aSound: {fileID: 0}
-  cooldownTime: 5
-  activeTime: 3
-  dashVelocity: 3
+  cooldownTime: 4
+  activeTime: 1
+  state: 0
+  abilityPressed: 0
+  currentActiveTime: -43.249428
+  currentCooldownTime: 0
+  dashVelocity: 10
