@@ -17,7 +17,6 @@ public class TerrainSpawn : MonoBehaviour
     {
         this.transform.position = player.transform.position;
         bounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
 
     // Update is called once per frame
