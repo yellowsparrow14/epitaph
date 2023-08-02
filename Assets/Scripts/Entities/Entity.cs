@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour
+public class Entity : MonoBehaviour, IEffectable
 {
     [SerializeField] private float maxHealth;
     private float currentHealth;
     private float movementSpeed;
     private float attack;
     private Controller ctrl;
+    private StatusEffect _data;
 
     //getters
     public float CurrentHealth {
@@ -26,6 +27,9 @@ public class Entity : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (_data != null) {
+            _data.HandleEffect(this);
+        }
         //override in child classes
     }
 
@@ -34,7 +38,7 @@ public class Entity : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-    protected virtual void TakeDamage(float dmgAmt) {
+    public virtual void TakeDamage(float dmgAmt) {
         //override in child classes
         if (currentHealth - dmgAmt <= 0) {
             this.Die();
@@ -43,4 +47,20 @@ public class Entity : MonoBehaviour
         }
     }
 
+    // move this stuff also to status effect
+
+    public void ApplyEffect(StatusEffect _data)
+    {
+        this._data = _data;
+        //Debug.Log(_data.name);
+        _data.currentEffectTime = 0f;
+        _data.lastTickTime = 0f;
+    }
+
+    public void RemoveEffect()
+    {
+        _data = null;
+    }
+
+    // move to status effect
 }

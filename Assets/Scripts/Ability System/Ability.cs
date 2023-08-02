@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Ability : ScriptableObject
 {
-
-
     public string aName = "New Ability";
     public Sprite aSprite;
     public AudioClip aSound;
