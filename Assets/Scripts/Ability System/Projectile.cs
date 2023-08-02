@@ -8,7 +8,8 @@ public class Projectile : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb;
     public float force;
-
+    [SerializeField] StatusEffect _data;
+    // increase sprite size
     // Start is called before the first frame update
     void Start()
     {
@@ -26,5 +27,18 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        var effectable = other.GetComponent<IEffectable>();
+
+        if (effectable != null) {
+            effectable.ApplyEffect(_data);
+            //effectable.GetComponent<Enemy>().
+        }
+
+        //Debug.Log($"Hit {other.gameObject.name}");
+
+        Destroy(this.gameObject);
     }
 }
