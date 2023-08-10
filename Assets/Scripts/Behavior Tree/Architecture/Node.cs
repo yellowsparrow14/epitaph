@@ -4,7 +4,7 @@ using UnityEngine;
 
 // generic node class for behavior tree AI behavior
 
-namespace BehaviorTree {
+namespace BTArchitecture {
 
     public enum NodeState {
         RUNNING,

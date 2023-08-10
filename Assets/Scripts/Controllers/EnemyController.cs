@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : Controller
 {
-    private GameObject target;
-    private NavMeshAgent agent;
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindWithTag("Player");
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(target.transform.position);
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Player") {
+            other.gameObject.GetComponent<Entity>().TakeDamage(10.0f);
+        }
     }
 }
