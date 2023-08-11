@@ -21,7 +21,6 @@ public class DashAbility : Ability
     }
 
     public override void AbilityHandler(GameObject parent) {
-        Debug.Log(abilityPressed);
         switch (state) 
         {
             case AbilityState.ready:
@@ -29,6 +28,7 @@ public class DashAbility : Ability
                     Activate(parent);
                     state = AbilityState.active;
                     currentActiveTime = activeTime;
+                    fillAmount = 1;
                 }
             break;
             case AbilityState.active:
@@ -43,6 +43,7 @@ public class DashAbility : Ability
             case AbilityState.cooldown:
                 if (currentCooldownTime > 0) {
                     currentCooldownTime -= Time.deltaTime;
+                    fillAmount -= 1/cooldownTime * Time.deltaTime;
                 } else {
                     state = AbilityState.ready;
                 }

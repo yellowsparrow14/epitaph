@@ -24,6 +24,7 @@ public class ProjectileAbility : Ability
                     Activate(parent);
                     state = AbilityState.active;
                     currentActiveTime = activeTime;
+                    fillAmount = 1;
                 }
             break;
             case AbilityState.active:
@@ -38,6 +39,7 @@ public class ProjectileAbility : Ability
             case AbilityState.cooldown:
                 if (currentCooldownTime > 0) {
                     currentCooldownTime -= Time.deltaTime;
+                    fillAmount -= 1/cooldownTime * Time.deltaTime;
                 } else {
                     state = AbilityState.ready;
                 }
