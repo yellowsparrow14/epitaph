@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace BehaviorTree {
+namespace BTArchitecture {
     public abstract class BehaviorTree : MonoBehaviour
     {
         private Node root = null;

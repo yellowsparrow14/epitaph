@@ -7,6 +7,8 @@ public class Entity : MonoBehaviour, IEffectable
     [SerializeField] private float maxHealth;
     private float currentHealth;
     private float movementSpeed;
+    private Rigidbody2D body;
+
     private float attack;
     private Controller ctrl;
     private StatusEffect _data;
@@ -20,6 +22,7 @@ public class Entity : MonoBehaviour, IEffectable
     protected virtual void Start()
     {
         //override in child classes
+        body = this.gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         ctrl = this.gameObject.GetComponent<Controller>();
     }
@@ -35,7 +38,7 @@ public class Entity : MonoBehaviour, IEffectable
 
     protected virtual void Die() {
         //override in child classes
-        Destroy(this.gameObject);
+        Debug.Log("dead");
     }
 
     public virtual void TakeDamage(float dmgAmt) {

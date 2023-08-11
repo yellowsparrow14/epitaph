@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Controller
 {
-    private float moveSpeed =  5f;
+    [SerializeField] private float moveSpeed =  5f;
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     // Start is called before the first frame update
