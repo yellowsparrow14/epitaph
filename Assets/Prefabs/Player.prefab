@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b9470150fe2b9499a0569741455513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!114 &6421672317329216225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +405,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ability1: {fileID: 11400000, guid: 35d014d610ade4f4a91d66c2b61b2abc, type: 2}
+  ability1Img: {fileID: 0}
   ability2: {fileID: 11400000, guid: 8608b9fd89d27124b925db2bc02fb71e, type: 2}
+  ability2Img: {fileID: 0}
 --- !u!61 &7908743012802361448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -516,7 +519,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -528,7 +531,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.30059522
         inSlope: 0
         outSlope: 0
         tangentMode: 0

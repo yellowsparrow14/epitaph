@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class MoveSpeedStatusEffect : StatusEffect
 {
-    public void HandleEffect(Entity entity)
+    public new void HandleEffect(Entity entity)
     {
         currentEffectTime += Time.deltaTime;
         if (currentEffectTime >= lifeTime) {

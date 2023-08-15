@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Physics2D;
 
 public class RayCastTrigger : MonoBehaviour
 {
@@ -10,6 +11,15 @@ public class RayCastTrigger : MonoBehaviour
     private Vector3 mousePos;
     private WaitForSeconds shotDuration = new WaitForSeconds(3f);
     private bool firing;
+
+    private float rayWidth;
+    private float range;
+    private float damage;
+    private float tickRate;
+
+    private bool canTick;
+    private float timer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +27,7 @@ public class RayCastTrigger : MonoBehaviour
         lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        canTick = true;
     }
 
     // Update is called once per frame
@@ -27,6 +38,27 @@ public class RayCastTrigger : MonoBehaviour
             lineRenderer.SetPosition(0, transform.position);
             lineRenderer.SetPosition(1, mousePos + new Vector3(0,0,10));
             lineRenderer.enabled = true;
+
+            LayerMask mask = LayerMask.GetMask("Enemy");
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, rayWidth/2, mousePos - transform.position, range, mask, -5, 5);
+
+            foreach (RaycastHit2D hit in hits) {
+                if (!canTick) {
+                    timer += Time.deltaTime;
+                    if (timer > tickRate) {
+                        canTick = true;
+                        timer = 0;
+                    }
+                }
+
+                if (canTick) {
+                    hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                    Debug.Log(hit);
+                    canTick = false;
+                }
+
+            }
+
         } else {
             lineRenderer.enabled = false;
         }
@@ -45,7 +77,7 @@ public class RayCastTrigger : MonoBehaviour
 
     }
 
-    public void Fire()
+    public void Fire(float rayWidth, float range, float damage, float tickRate)
     {
         // StartCoroutine(RayEffect());
         // Debug.Log("FIRE");
@@ -54,6 +86,10 @@ public class RayCastTrigger : MonoBehaviour
         // lineRenderer.SetPosition(0, transform.position);
         // lineRenderer.SetPosition(1, mousePos + new Vector3(0,0,10));
         firing = true;
+        this.rayWidth = rayWidth;
+        this.range = range;
+        this.damage = damage;
+        this.tickRate = tickRate;
     }
 
     public void Stop()

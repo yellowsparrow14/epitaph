@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class StatusEffect : ScriptableObject
 {
-    public string name;
+    public string effectName;
     public float tickSpeed;
     public float lifeTime;
     public float effectAmount;
@@ -20,7 +20,7 @@ public class StatusEffect : ScriptableObject
             entity.RemoveEffect();
             return;
         }
-
+  
         if (DOTAmount != 0 && currentEffectTime > lastTickTime + tickSpeed) {
             lastTickTime = currentEffectTime; 
             entity.TakeDamage(DOTAmount);

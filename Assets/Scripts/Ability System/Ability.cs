@@ -13,6 +13,7 @@ public class Ability : ScriptableObject
     public bool abilityPressed;
     public float currentActiveTime;
     public float currentCooldownTime;
+    public float fillAmount;
 
     public virtual void Activate(GameObject parent) {}
     public virtual void Deactivate(GameObject parent) {}
