@@ -5,10 +5,13 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RayCastAbility : Ability
 {
-
+    public float rayWidth;
+    public float range;
+    public float damage;
+    public float tickRate;
     public override void Activate(GameObject parent)
     {
-        parent.GetComponent<RayCastTrigger>().Fire();
+        parent.GetComponent<RayCastTrigger>().Fire(rayWidth, range, damage, tickRate);
     }
 
     public override void Deactivate(GameObject parent) 
