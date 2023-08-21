@@ -15,6 +15,10 @@ public class AbilityHolder : MonoBehaviour
     public Ability ability2;
     public Image ability2Img;
 
+    [Header("Ability 3")]
+    public Ability ability3;
+    public Image ability3Img;
+
     GameObject parent;
 
     // Start is called before the first frame update
@@ -22,8 +26,10 @@ public class AbilityHolder : MonoBehaviour
     {
         ability1Img.fillAmount = 0;
         ability2Img.fillAmount = 0;
+        ability3Img.fillAmount = 0;
         ability1.SetState(AbilityState.ready);
         ability2.SetState(AbilityState.ready);
+        ability3.SetState(AbilityState.ready);
         parent = this.gameObject;
     }
 
@@ -32,8 +38,11 @@ public class AbilityHolder : MonoBehaviour
     {  
         ability1.AbilityHandler(parent);
         ability2.AbilityHandler(parent);
+        ability3.AbilityHandler(parent);
+
         ability1Img.fillAmount = ability1.fillAmount;
         ability2Img.fillAmount = ability2.fillAmount;
+        ability3Img.fillAmount = ability3.fillAmount;
 
     }
 
@@ -42,19 +51,10 @@ public class AbilityHolder : MonoBehaviour
         if (context.started)
         {   
             ability1.SetAbilityPressed(true);
-            Debug.Log("hi");
         }
         else if (context.canceled)
         {
             ability1.SetAbilityPressed(false);
-        }
-    }
-
-    public void Ability1UI() 
-    {
-        if (ability1.state == AbilityState.ready) 
-        {
-            
         }
     }
 
@@ -71,5 +71,19 @@ public class AbilityHolder : MonoBehaviour
         }
     }
 
+    public void OnAbility3(InputAction.CallbackContext context) 
+    {
+        Debug.Log("ability3?");
+        if (context.started)
+        {
+            ability3.SetAbilityPressed(true);
+            Debug.Log("hi");
 
-}
+        }
+        else if (context.canceled)
+        {
+            ability3.SetAbilityPressed(false);
+        }
+    }
+
+}   
