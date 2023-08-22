@@ -9,7 +9,6 @@ public class AbilityHolder : MonoBehaviour
     [Header("Ability 1")]
     public Ability ability1;
     public Image ability1Img;
-
     
     [Header("Ability 2")]
     public Ability ability2;
@@ -24,6 +23,11 @@ public class AbilityHolder : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ability1Img.sprite = ability1.aSprite;
+        ability2Img.sprite = ability2.aSprite;
+        ability3Img.sprite = ability3.aSprite;
+
+
         ability1Img.fillAmount = 0;
         ability2Img.fillAmount = 0;
         ability3Img.fillAmount = 0;

@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: Shoot
   m_EditorClassIdentifier: 
   aName: Shoot
-  aSprite: {fileID: 0}
+  aSprite: {fileID: 21300000, guid: e2c10a05e8e10cb428d1476b5957c731, type: 3}
   aSound: {fileID: 0}
   cooldownTime: 2
   activeTime: 0.5
   state: 0
   abilityPressed: 0
-  currentActiveTime: 0
-  currentCooldownTime: 0
+  currentActiveTime: -0.0011526833
+  currentCooldownTime: -0.002158701
+  fillAmount: 1
