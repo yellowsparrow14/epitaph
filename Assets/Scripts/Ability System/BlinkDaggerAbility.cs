@@ -3,37 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ProjectileAbility : Ability
+public class BlinkDaggerAbility : Ability
 {
-    
     public override void Activate(GameObject parent)
     {
-        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<ProjectileTrigger>().Fire();
+        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<BlinkDaggerTrigger>().Fire(parent);
     }
 
     public override void Deactivate(GameObject parent) 
     {
-        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<ProjectileTrigger>().Stop();
+        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<BlinkDaggerTrigger>().Stop();
     }
 
     public override void AbilityHandler(GameObject parent) {
+        Debug.Log("abilityhandler");
         switch (state) 
         {
             case AbilityState.ready:
                 if (abilityPressed) {
                     Activate(parent);
-                    state = AbilityState.active;
-                    currentActiveTime = activeTime;
+
+                    state = AbilityState.reactive;
                     fillAmount = 1;
+                    abilityPressed = false;
+                }
+            break;
+            case AbilityState.reactive:
+                if (abilityPressed) {
+                    Activate(parent);
+                    state = AbilityState.active;
                 }
             break;
             case AbilityState.active:
-                if (currentActiveTime > 0) {
-                    currentActiveTime -= Time.deltaTime;
-                } else {
-                    state = AbilityState.cooldown;
+                if (GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<BlinkDaggerTrigger>().teleported == true) {
                     currentCooldownTime = cooldownTime;
-                    Deactivate(parent);
+                    state = AbilityState.cooldown;
                 }
             break;
             case AbilityState.cooldown:
@@ -43,7 +47,6 @@ public class ProjectileAbility : Ability
                 } else {
                     state = AbilityState.ready;
                     fillAmount = 1;
-
                 }
             break;
         }

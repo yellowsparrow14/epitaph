@@ -2,21 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileTrigger : MonoBehaviour
+public class BlinkDaggerTrigger : MonoBehaviour
 {
     private Camera mainCam;
     private Vector3 mousePos;
     private bool firing;
-    public GameObject bullet;
-    public Transform bulletTransform;
+    public GameObject dagger;
+    public Transform daggerTransform;
     private bool canFire;
     private float timer;
-    public float fireRate;
-    
+    public float delay;
 
+    private GameObject player;
+    private bool daggerThrown;
+    private GameObject thrownDagger;
+    
+    public bool teleported;
+    
     // Start is called before the first frame update
     void Start()
     {
+        firing = false;
+        teleported = false;
+        daggerThrown = false;
         canFire = true;
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
@@ -31,19 +39,30 @@ public class ProjectileTrigger : MonoBehaviour
          
         if (!canFire) {
             timer += Time.deltaTime;
-            if (timer > fireRate) {
+            if (timer > delay) {
                 canFire = true;
                 timer = 0;
             }
         }
 
-        if (firing && canFire) {
+        if (firing && !daggerThrown && canFire) {
+            daggerThrown = true;
             canFire = false;
-            Instantiate(bullet, bulletTransform.position, Quaternion.identity);
+            teleported = false;
+            thrownDagger = Instantiate(dagger, daggerTransform.position, Quaternion.identity);
+            Stop();
+        } else if (firing && daggerThrown && canFire) {
+            daggerThrown = false;
+            canFire = false;
+            teleported = true;
+            player.transform.position = thrownDagger.transform.position;
+            Destroy(thrownDagger);
+            Stop();
         }
     }
 
-    public void Fire() {
+    public void Fire(GameObject player) {
+        this.player = player;
         firing = true;
     }
 

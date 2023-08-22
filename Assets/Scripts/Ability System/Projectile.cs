@@ -6,7 +6,8 @@ public class Projectile : MonoBehaviour
 {
     private Vector3 mousePos;
     private Camera mainCam;
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
+    protected Vector3 direction;
     public float force;
     [SerializeField] StatusEffect _data;
     // increase sprite size
@@ -16,7 +17,7 @@ public class Projectile : MonoBehaviour
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 direction = mousePos - transform.position;
+        direction = mousePos - transform.position;
         Vector3 rotation = transform.position - mousePos;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
