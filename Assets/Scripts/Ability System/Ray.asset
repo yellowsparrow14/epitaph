@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Ray
   m_EditorClassIdentifier: 
   aName: Ray
-  aSprite: {fileID: 0}
+  aSprite: {fileID: 21300000, guid: 064e49902f24df44a80f34136291d48f, type: 3}
   aSound: {fileID: 0}
   cooldownTime: 4
   activeTime: 1
-  state: 2
+  state: 0
   abilityPressed: 0
-  currentActiveTime: -0.0024017293
-  currentCooldownTime: 2.918617
-  fillAmount: 0.72965425
+  currentActiveTime: -0.0001280948
+  currentCooldownTime: -0.0021162909
+  fillAmount: 1
   rayWidth: 0.25
   range: 100
   damage: 1
