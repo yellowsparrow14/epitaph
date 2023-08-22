@@ -42,6 +42,8 @@ public class ProjectileAbility : Ability
                     fillAmount -= 1/cooldownTime * Time.deltaTime;
                 } else {
                     state = AbilityState.ready;
+                    fillAmount = 1;
+
                 }
             break;
         }

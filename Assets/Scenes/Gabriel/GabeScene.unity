@@ -227,6 +227,34 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[15].m_ActionName
       value: Player/Ability3[/Mouse/rightButton]
       objectReference: {fileID: 0}
+    - target: {fileID: 6421672317329216225, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421672317329216225, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421672317329216225, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1879165118}
+    - target: {fileID: 6421672317329216225, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421672317329216225, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnAbility3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421672317329216225, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AbilityHolder, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6421672317329216225, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6714395095393952764, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
       propertyPath: walkable
       value: 
@@ -1102,7 +1130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dagger: {fileID: 3681736836022034573, guid: 14310050085eb0249af316c86879d9aa, type: 3}
   daggerTransform: {fileID: 1247852304}
-  delay: 0.3
+  delay: 0.5
   teleported: 0
 --- !u!1 &1012630279
 GameObject:
@@ -2084,6 +2112,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1879165118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 573003372959300552, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+  m_PrefabInstance: {fileID: 115705337}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34526342824b52f4eb2b8d8600c67cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

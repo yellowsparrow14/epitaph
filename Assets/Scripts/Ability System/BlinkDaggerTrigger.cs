@@ -22,6 +22,7 @@ public class BlinkDaggerTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        firing = false;
         teleported = false;
         daggerThrown = false;
         canFire = true;
@@ -44,36 +45,20 @@ public class BlinkDaggerTrigger : MonoBehaviour
             }
         }
 
-        if (firing && canFire) {
+        if (firing && !daggerThrown && canFire) {
+            daggerThrown = true;
             canFire = false;
-            Instantiate(dagger, daggerTransform.position, Quaternion.identity);
+            teleported = false;
+            thrownDagger = Instantiate(dagger, daggerTransform.position, Quaternion.identity);
+            Stop();
+        } else if (firing && daggerThrown && canFire) {
+            daggerThrown = false;
+            canFire = false;
+            teleported = true;
+            player.transform.position = thrownDagger.transform.position;
+            Destroy(thrownDagger);
+            Stop();
         }
-        // mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        // Vector3 rotation = mousePos - transform.position;
-        // float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        // transform.rotation = Quaternion.Euler(0, 0, rotZ);
-         
-        // if (!canFire) {
-        //     timer += Time.deltaTime;
-        //     if (timer > delay) {
-        //         canFire = true;
-        //         timer = 0;
-        //     }
-        // }
-
-        // if (firing && !daggerThrown && canFire) {
-        //     Debug.Log("daggerthrow");
-        //     daggerThrown = true;
-        //     canFire = false;
-        //     teleported = false;
-        //     thrownDagger = Instantiate(dagger, daggerTransform.position, Quaternion.identity);
-        // } else if (firing && daggerThrown && canFire) {
-        //     daggerThrown = false;
-        //     canFire = false;
-        //     teleported = true;
-        //     player.transform.position = thrownDagger.transform.position;
-        //     Destroy(thrownDagger);
-        // }
     }
 
     public void Fire(GameObject player) {

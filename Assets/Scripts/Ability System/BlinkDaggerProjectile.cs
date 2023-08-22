@@ -9,7 +9,9 @@ public class BlinkDaggerProjectile : Projectile
     // Update is called once per frame
     void Update()
     {
-        force += acceleration;
+        if (force > 0) {
+            force += acceleration;
+        }
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
     }
 }
