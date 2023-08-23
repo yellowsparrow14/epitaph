@@ -11,7 +11,21 @@ public class GoonBT : BehaviorTree
     protected override Node SetupTree() {
         GameObject target = GameObject.FindWithTag("Player");
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        Node root = new FollowPlayer(target, agent, speed);
+
+        agent.updateRotation = false;
+        agent.speed = speed;
+        agent.updateUpAxis = false;
+
+        Node root = new SelectorNode(new List<Node>{
+            new SequenceNode(new List<Node>{
+                new DetectPlayerNode(this.gameObject),
+                new StopAgentNode(this.gameObject.transform, agent),
+            }),
+            new FollowPlayerNode(target, agent, speed),
+        });
+        
+        //Node root = new FollowPlayerNode(target, agent, speed);
+        
         return root;
     }
 }
