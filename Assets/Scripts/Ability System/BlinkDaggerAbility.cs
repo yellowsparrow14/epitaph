@@ -16,7 +16,6 @@ public class BlinkDaggerAbility : Ability
     }
 
     public override void AbilityHandler(GameObject parent) {
-        Debug.Log("abilityhandler");
         switch (state) 
         {
             case AbilityState.ready:
