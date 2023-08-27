@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8524467232304606900}
   - component: {fileID: 8249048936637619132}
+  - component: {fileID: 8441508752876777895}
   m_Layer: 6
   m_Name: RotatePoint
   m_TagString: RotatePoint
@@ -132,6 +133,22 @@ MonoBehaviour:
   bullet: {fileID: 3681736836022034573, guid: 6cbe0861144cecc4d858d630512c1e93, type: 3}
   bulletTransform: {fileID: 4168015646845092797}
   fireRate: 0.3
+--- !u!114 &8441508752876777895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3429983160329012365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a125f3bf6acf04387296dd2e170d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dagger: {fileID: 3681736836022034573, guid: 14310050085eb0249af316c86879d9aa, type: 3}
+  daggerTransform: {fileID: 4168015646845092797}
+  delay: 0.5
+  teleported: 0
 --- !u!1 &8263862798321204670
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +377,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 1627f2b6-4f62-4398-9070-bcc8e63f97ab
     m_ActionName: Player/Ability2[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ee942920-e2f4-47ae-b789-f6d6144e5d0a
+    m_ActionName: Player/Ability3[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -408,6 +429,8 @@ MonoBehaviour:
   ability1Img: {fileID: 0}
   ability2: {fileID: 11400000, guid: 8608b9fd89d27124b925db2bc02fb71e, type: 2}
   ability2Img: {fileID: 0}
+  ability3: {fileID: 0}
+  ability3Img: {fileID: 0}
 --- !u!61 &7908743012802361448
 BoxCollider2D:
   m_ObjectHideFlags: 0

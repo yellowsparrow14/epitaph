@@ -27,6 +27,10 @@ public class Ability : ScriptableObject
     public void SetState(AbilityState state) {
         this.state = state;
     }
+
+    public Ability GetAbility() {
+        return this;
+    }
 }
 
 public enum AbilityState {
