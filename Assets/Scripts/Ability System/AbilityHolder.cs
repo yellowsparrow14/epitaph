@@ -77,12 +77,9 @@ public class AbilityHolder : MonoBehaviour
 
     public void OnAbility3(InputAction.CallbackContext context) 
     {
-        Debug.Log("ability3?");
         if (context.started)
         {
             ability3.SetAbilityPressed(true);
-            Debug.Log("hi");
-
         }
         else if (context.canceled)
         {
