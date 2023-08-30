@@ -52,5 +52,4 @@ public class AbilityManager : MonoBehaviour
         RefreshUI();
     }
 
-
 }

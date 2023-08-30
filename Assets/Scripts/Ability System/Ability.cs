@@ -9,16 +9,18 @@ public class Ability : ScriptableObject
     public AudioClip aSound;
     public float cooldownTime = 1f;
     public float activeTime = 1f;
-    public AbilityState state;
-    public bool abilityPressed;
-    public float currentActiveTime;
-    public float currentCooldownTime;
+    protected AbilityState state;
+    protected bool abilityPressed;
+    protected float currentActiveTime;
+    protected float currentCooldownTime;
     public float fillAmount;
 
     public virtual void Activate(GameObject parent) {}
     public virtual void Deactivate(GameObject parent) {}
     public virtual void BeginCooldown(GameObject parent) {}
     public virtual void AbilityHandler(GameObject parent) {}
+    public virtual void Init() {}
+    public virtual void AbilityBehavior(GameObject parent) {}
 
     public void SetAbilityPressed(bool pressed) {
         abilityPressed = pressed;
@@ -31,6 +33,8 @@ public class Ability : ScriptableObject
     public Ability GetAbility() {
         return this;
     }
+
+
 }
 
 public enum AbilityState {

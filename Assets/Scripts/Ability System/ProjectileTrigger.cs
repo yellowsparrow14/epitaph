@@ -12,7 +12,7 @@ public class ProjectileTrigger : MonoBehaviour
     private bool canFire;
     private float timer;
     public float fireRate;
-    
+
 
     // Start is called before the first frame update
     void Start()

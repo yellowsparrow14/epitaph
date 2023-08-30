@@ -5,15 +5,53 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ProjectileAbility : Ability
 {
+    private Camera mainCam;
+    private Vector3 mousePos;
+    private bool firing;
+    public GameObject bullet;
+
+    //public GameObject bulletSpawner;
+    //public Transform bulletTransform;
     
+    private bool canFire;
+    private float timer;
+    public float fireRate;
+
     public override void Activate(GameObject parent)
     {
-        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<ProjectileTrigger>().Fire();
+        firing = true;
     }
 
     public override void Deactivate(GameObject parent) 
     {
-        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<ProjectileTrigger>().Stop();
+        firing = false;
+    }
+
+    public override void Init() {
+        //bulletTransform = bulletSpawner.transform;
+        canFire = true;
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
+    public override void AbilityBehavior(GameObject parent) {
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+
+        Vector3 rotation = mousePos - parent.transform.GetChild(0).transform.position;
+        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        parent.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, rotZ);
+         
+        if (!canFire) {
+            timer += Time.deltaTime;
+            if (timer > fireRate) {
+                canFire = true;
+                timer = 0;
+            }
+        }
+
+        if (firing && canFire) {
+            canFire = false;
+            Instantiate(bullet, parent.transform.GetChild(0).GetChild(0).transform.position, Quaternion.identity);
+        }
     }
 
     public override void AbilityHandler(GameObject parent) {
@@ -48,4 +86,7 @@ public class ProjectileAbility : Ability
             break;
         }
     }
+
+
+
 }
