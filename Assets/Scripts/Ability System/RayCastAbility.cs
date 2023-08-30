@@ -5,18 +5,68 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RayCastAbility : Ability
 {
-    public float rayWidth;
-    public float range;
-    public float damage;
-    public float tickRate;
+    private LineRenderer lineRenderer;
+    private Camera mainCamera;
+    private Vector3 mousePos;
+    private bool firing;
+
+    private float rayWidth;
+    private float range;
+    private float damage;
+    private float tickRate;
+
+    private bool canTick;
+    private float timer;
+
     public override void Activate(GameObject parent)
     {
-        parent.GetComponent<RayCastTrigger>().Fire(rayWidth, range, damage, tickRate);
+        firing = true;
     }
 
     public override void Deactivate(GameObject parent) 
     {
-        parent.GetComponent<RayCastTrigger>().Stop();
+        firing = false;
+    }
+
+    public override void Init()
+    {
+        lineRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<LineRenderer>();
+        lineRenderer.enabled = false;
+        lineRenderer.useWorldSpace = true;
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        canTick = true;   
+    } 
+
+    public override void AbilityBehavior(GameObject parent) {
+        if (firing) {
+            mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+            lineRenderer.SetPosition(0, parent.transform.GetChild(0).transform.position);
+            lineRenderer.SetPosition(1, mousePos + new Vector3(0,0,10));
+            lineRenderer.enabled = true;
+
+            LayerMask mask = LayerMask.GetMask("Enemy");
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(parent.transform.GetChild(0).transform.position, rayWidth/2, mousePos - parent.transform.GetChild(0).transform.position, range, mask, -5, 5);
+
+            foreach (RaycastHit2D hit in hits) {
+                if (!canTick) {
+                    timer += Time.deltaTime;
+                    if (timer > tickRate) {
+                        canTick = true;
+                        timer = 0;
+                    }
+                }
+
+                if (canTick) {
+                    hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+                    Debug.Log(hit);
+                    canTick = false;
+                }
+
+            }
+
+        } else {
+            lineRenderer.enabled = false;
+        }
     }
 
     public override void AbilityHandler(GameObject parent) {

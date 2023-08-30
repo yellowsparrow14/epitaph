@@ -279,13 +279,15 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8441508752876777895, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8441508752876777895, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3429983160329012365, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 886293739}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
 --- !u!114 &115705338 stripped
 MonoBehaviour:
@@ -1650,27 +1652,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &886293736 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3429983160329012365, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
-  m_PrefabInstance: {fileID: 115705337}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &886293739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886293736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9a125f3bf6acf04387296dd2e170d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dagger: {fileID: 3681736836022034573, guid: 14310050085eb0249af316c86879d9aa, type: 3}
-  daggerTransform: {fileID: 1247852304}
-  delay: 0.5
-  teleported: 0
 --- !u!1 &1012630279
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,11 +1964,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1247852304 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4168015646845092797, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
-  m_PrefabInstance: {fileID: 115705337}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1278436534 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4690245547441917342, guid: 82bab8fcb47398f4facfc209f5f770c5, type: 3}

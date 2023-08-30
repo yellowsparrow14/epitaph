@@ -31,6 +31,7 @@ public class AbilityHolder : MonoBehaviour
         ability1Img.fillAmount = 0;
         ability2Img.fillAmount = 0;
         ability3Img.fillAmount = 0;
+        
         ability1.SetState(AbilityState.ready);
         ability2.SetState(AbilityState.ready);
         ability3.SetState(AbilityState.ready);
