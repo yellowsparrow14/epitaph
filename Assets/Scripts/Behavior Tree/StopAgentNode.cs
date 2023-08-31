@@ -17,7 +17,8 @@ public class StopAgentNode : Node
     }
 
     public override NodeState Evaluate() {
-        _agent.SetDestination(_self.position);
+        _self.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        _agent.isStopped = true;
         return NodeState.SUCCESS;
     }
 }

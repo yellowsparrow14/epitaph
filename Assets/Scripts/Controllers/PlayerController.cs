@@ -9,8 +9,15 @@ public class PlayerController : Controller
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     // Start is called before the first frame update
+
+    private bool canMove;
+    public bool CanMove {
+        get { return canMove; }
+        set { canMove = value; }
+    }
     void Start()
     {
+        canMove = true;
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -22,8 +29,13 @@ public class PlayerController : Controller
     }
 
     public void OnMove(InputAction.CallbackContext ctx) {
-        rb.velocity = ctx.ReadValue<Vector2>() * moveSpeed;
+        if (canMove == true) {
+            rb.velocity = ctx.ReadValue<Vector2>() * moveSpeed;
+        }
     }
 
+    public void OnMelee(InputAction.CallbackContext ctx) {
+
+    }
 
 }
