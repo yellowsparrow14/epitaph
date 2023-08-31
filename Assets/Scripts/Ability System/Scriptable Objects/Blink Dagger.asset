@@ -17,8 +17,7 @@ MonoBehaviour:
   aSound: {fileID: 0}
   cooldownTime: 5
   activeTime: 5
-  state: 3
-  abilityPressed: 0
-  currentActiveTime: 0
-  currentCooldownTime: 3.0627496
-  fillAmount: 0.61254895
+  fillAmount: 1
+  dagger: {fileID: 3681736836022034573, guid: 14310050085eb0249af316c86879d9aa, type: 3}
+  delay: 0.3
+  teleported: 0

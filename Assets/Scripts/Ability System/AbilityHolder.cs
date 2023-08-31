@@ -31,10 +31,17 @@ public class AbilityHolder : MonoBehaviour
         ability1Img.fillAmount = 0;
         ability2Img.fillAmount = 0;
         ability3Img.fillAmount = 0;
+        
         ability1.SetState(AbilityState.ready);
         ability2.SetState(AbilityState.ready);
         ability3.SetState(AbilityState.ready);
         parent = this.gameObject;
+
+        ability1.Init();
+        ability2.Init();
+        ability3.Init();
+
+
     }
 
     // Update is called once per frame
@@ -44,10 +51,13 @@ public class AbilityHolder : MonoBehaviour
         ability2.AbilityHandler(parent);
         ability3.AbilityHandler(parent);
 
+        ability1.AbilityBehavior(parent);
+        ability2.AbilityBehavior(parent);
+        ability3.AbilityBehavior(parent);
+
         ability1Img.fillAmount = ability1.fillAmount;
         ability2Img.fillAmount = ability2.fillAmount;
         ability3Img.fillAmount = ability3.fillAmount;
-
     }
 
     public void OnAbility1(InputAction.CallbackContext context) 
@@ -77,12 +87,9 @@ public class AbilityHolder : MonoBehaviour
 
     public void OnAbility3(InputAction.CallbackContext context) 
     {
-        Debug.Log("ability3?");
         if (context.started)
         {
             ability3.SetAbilityPressed(true);
-            Debug.Log("hi");
-
         }
         else if (context.canceled)
         {
