@@ -5,14 +5,64 @@ using UnityEngine;
 [CreateAssetMenu]
 public class BlinkDaggerAbility : Ability
 {
+    private Camera mainCam;
+    private Vector3 mousePos;
+    private bool firing;
+    public GameObject dagger;
+    private bool canFire;
+    private float timer;
+    public float delay;
+    private bool daggerThrown;
+    private GameObject thrownDagger;
+    
+    public bool teleported;
+
     public override void Activate(GameObject parent)
     {
-        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<BlinkDaggerTrigger>().Fire(parent);
+        firing = true;
     }
 
     public override void Deactivate(GameObject parent) 
     {
-        GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<BlinkDaggerTrigger>().Stop();
+        firing = false;
+    }
+
+    public override void Init() {
+        firing = false;
+        teleported = false;
+        daggerThrown = false;
+        canFire = true;
+        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+    }
+
+    public override void AbilityBehavior(GameObject parent) {
+        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 rotation = mousePos - parent.transform.GetChild(0).transform.position;
+        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        parent.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, rotZ);
+         
+        if (!canFire) {
+            timer += Time.deltaTime;
+            if (timer > delay) {
+                canFire = true;
+                timer = 0;
+            }
+        }
+
+        if (firing && !daggerThrown && canFire) {
+            daggerThrown = true;
+            canFire = false;
+            teleported = false;
+            thrownDagger = Instantiate(dagger, parent.transform.GetChild(0).GetChild(0).transform.position, Quaternion.identity);
+            firing = false;
+        } else if (firing && daggerThrown && canFire) {
+            daggerThrown = false;
+            canFire = false;
+            teleported = true;
+            parent.transform.position = thrownDagger.transform.position;
+            Destroy(thrownDagger);
+            firing = false;
+        }
     }
 
     public override void AbilityHandler(GameObject parent) {
@@ -21,7 +71,6 @@ public class BlinkDaggerAbility : Ability
             case AbilityState.ready:
                 if (abilityPressed) {
                     Activate(parent);
-
                     state = AbilityState.reactive;
                     fillAmount = 1;
                     abilityPressed = false;
@@ -34,7 +83,7 @@ public class BlinkDaggerAbility : Ability
                 }
             break;
             case AbilityState.active:
-                if (GameObject.FindGameObjectWithTag("RotatePoint").GetComponent<BlinkDaggerTrigger>().teleported == true) {
+                if (teleported == true) {
                     currentCooldownTime = cooldownTime;
                     state = AbilityState.cooldown;
                 }
