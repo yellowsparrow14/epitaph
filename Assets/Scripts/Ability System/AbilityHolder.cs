@@ -7,25 +7,40 @@ using UnityEngine.UI;
 public class AbilityHolder : MonoBehaviour
 {
     [Header("Ability 1")]
-    public Ability ability1;
-    public Image ability1Img;
+    private Ability ability1;
+    private Image ability1Img;
     
     [Header("Ability 2")]
-    public Ability ability2;
-    public Image ability2Img;
+    private Ability ability2;
+    private Image ability2Img;
 
     [Header("Ability 3")]
-    public Ability ability3;
-    public Image ability3Img;
+    private Ability ability3;
+    private Image ability3Img;
 
     GameObject parent;
+
+    [SerializeField] private GameObject abilitySelection;
+    [SerializeField] private AbilityManager abilityManager;
+    private bool abilityInventoryActive;
 
     // Start is called before the first frame update
     void Start()
     {
-        ability1Img.sprite = ability1.aSprite;
-        ability2Img.sprite = ability2.aSprite;
-        ability3Img.sprite = ability3.aSprite;
+        ability1 = abilityManager.GetHotbarAbilities()[0].GetAbility();
+        ability2 = abilityManager.GetHotbarAbilities()[1].GetAbility();
+        ability3 = abilityManager.GetHotbarAbilities()[2].GetAbility();
+
+        ability1Img = abilityManager.GetHotbarSlots()[0].GetComponent<Image>();
+        ability2Img = abilityManager.GetHotbarSlots()[1].GetComponent<Image>();
+        ability3Img = abilityManager.GetHotbarSlots()[2].GetComponent<Image>();
+
+
+        abilityInventoryActive = false;
+
+        // ability1Img.sprite = ability1.aSprite;
+        // ability2Img.sprite = ability2.aSprite;
+        // ability3Img.sprite = ability3.aSprite;
 
 
         ability1Img.fillAmount = 0;
@@ -41,7 +56,7 @@ public class AbilityHolder : MonoBehaviour
         ability2.Init();
         ability3.Init();
 
-
+        abilitySelection.SetActive(abilityInventoryActive);
     }
 
     // Update is called once per frame
@@ -95,6 +110,11 @@ public class AbilityHolder : MonoBehaviour
         {
             ability3.SetAbilityPressed(false);
         }
+    }
+
+    public void OnAbilityInventory(InputAction.CallbackContext context) {
+        abilityInventoryActive = !abilityInventoryActive;
+        abilitySelection.SetActive(abilityInventoryActive);
     }
 
 }   

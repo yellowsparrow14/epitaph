@@ -93,7 +93,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8524467232304606900}
-  - component: {fileID: 8441508752876777895}
   m_Layer: 6
   m_Name: RotatePoint
   m_TagString: RotatePoint
@@ -117,22 +116,6 @@ Transform:
   - {fileID: 4168015646845092797}
   m_Father: {fileID: 5731619865225059497}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8441508752876777895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3429983160329012365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9a125f3bf6acf04387296dd2e170d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dagger: {fileID: 3681736836022034573, guid: 14310050085eb0249af316c86879d9aa, type: 3}
-  daggerTransform: {fileID: 4168015646845092797}
-  delay: 0.5
-  teleported: 0
 --- !u!1 &8263862798321204670
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,9 +132,9 @@ GameObject:
   - component: {fileID: 573003372959300552}
   - component: {fileID: 7908743012802361448}
   - component: {fileID: 6714395095393952764}
-  - component: {fileID: 6615919859577196368}
   - component: {fileID: 3830640814083911512}
   - component: {fileID: 6086381338991058192}
+  - component: {fileID: 7513517971410403101}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -365,6 +348,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: ee942920-e2f4-47ae-b789-f6d6144e5d0a
     m_ActionName: Player/Ability3[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b4a7b282-58d8-4ad6-be3d-618ad73049d1
+    m_ActionName: Player/AbilityInventory[/Keyboard/i]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -413,8 +400,10 @@ MonoBehaviour:
   ability1Img: {fileID: 0}
   ability2: {fileID: 11400000, guid: 8608b9fd89d27124b925db2bc02fb71e, type: 2}
   ability2Img: {fileID: 0}
-  ability3: {fileID: 0}
+  ability3: {fileID: 11400000, guid: 1f9323a04fe5d6c4cae7914b97d5261c, type: 2}
   ability3Img: {fileID: 0}
+  abilitySelection: {fileID: 0}
+  hotBar: {fileID: 0}
 --- !u!61 &7908743012802361448
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -472,19 +461,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13979e284c229294b9771191cb7b5ce3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6615919859577196368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8263862798321204670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad9c95d141ba15f41b9741db2daf3c19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lineRenderer: {fileID: 3830640814083911512}
 --- !u!120 &3830640814083911512
 LineRenderer:
   serializedVersion: 2
@@ -602,3 +578,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+--- !u!114 &7513517971410403101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263862798321204670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963cd0b2b3f0d544486d40d0a6024457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityCursor: {fileID: 0}
+  slotHolder: {fileID: 0}
+  hotbarSlotHolder: {fileID: 0}
+  newAbility: {fileID: 0}
+  abilityToDiscard: {fileID: 0}
+  startingAbilities: []
