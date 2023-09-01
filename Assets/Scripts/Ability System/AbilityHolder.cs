@@ -7,94 +7,157 @@ using UnityEngine.UI;
 public class AbilityHolder : MonoBehaviour
 {
     [Header("Ability 1")]
-    public Ability ability1;
-    public Image ability1Img;
+    private Ability ability1;
+    private Image ability1Img;
     
     [Header("Ability 2")]
-    public Ability ability2;
-    public Image ability2Img;
+    private Ability ability2;
+    private Image ability2Img;
 
     [Header("Ability 3")]
-    public Ability ability3;
-    public Image ability3Img;
+    private Ability ability3;
+    private Image ability3Img;
 
     GameObject parent;
+
+    [SerializeField] private GameObject abilitySelection;
+    [SerializeField] private AbilityManager abilityManager;
+    private bool abilityInventoryActive;
 
     // Start is called before the first frame update
     void Start()
     {
-        ability1Img.sprite = ability1.aSprite;
-        ability2Img.sprite = ability2.aSprite;
-        ability3Img.sprite = ability3.aSprite;
+        // if (abilityManager.GetHotbarAbilities()[0].GetAbility() != null) {
+        //     ability1 = abilityManager.GetHotbarAbilities()[0].GetAbility();
+        //     ability1Img = abilityManager.GetHotbarSlots()[0].GetComponent<Image>();
+        // }
+
+        // if (abilityManager.GetHotbarAbilities()[1].GetAbility() != null) {
+        //     ability2 = abilityManager.GetHotbarAbilities()[1].GetAbility();
+        //     ability2Img = abilityManager.GetHotbarSlots()[1].GetComponent<Image>();
+        // }
+
+        // if (abilityManager.GetHotbarAbilities()[2].GetAbility() != null) {
+        //     ability3 = abilityManager.GetHotbarAbilities()[2].GetAbility();
+        //     ability3Img = abilityManager.GetHotbarSlots()[2].GetComponent<Image>();
+        // }
 
 
-        ability1Img.fillAmount = 0;
-        ability2Img.fillAmount = 0;
-        ability3Img.fillAmount = 0;
+
+        abilityInventoryActive = false;
+
+        // ability1Img.sprite = ability1.aSprite;
+        // ability2Img.sprite = ability2.aSprite;
+        // ability3Img.sprite = ability3.aSprite;
+
+
+        // ability1Img.fillAmount = 0;
+        // ability2Img.fillAmount = 0;
+        // ability3Img.fillAmount = 0;
         
-        ability1.SetState(AbilityState.ready);
-        ability2.SetState(AbilityState.ready);
-        ability3.SetState(AbilityState.ready);
+        // ability1.SetState(AbilityState.ready);
+        // ability2.SetState(AbilityState.ready);
+        // ability3.SetState(AbilityState.ready);
         parent = this.gameObject;
 
-        ability1.Init();
-        ability2.Init();
-        ability3.Init();
+//Gotta handle making sure this happens first time ability is assignec
+        // ability1.Init();
+        // ability2.Init();
+        // ability3.Init();
 
-
+        abilitySelection.SetActive(abilityInventoryActive);
     }
 
     // Update is called once per frame
     void Update()
     {  
-        ability1.AbilityHandler(parent);
-        ability2.AbilityHandler(parent);
-        ability3.AbilityHandler(parent);
+        if (abilityManager.GetHotbarAbilities()[0].GetAbility() != null) {
+            ability1 = abilityManager.GetHotbarAbilities()[0].GetAbility();
+            ability1Img = abilityManager.GetHotbarSlots()[0].GetComponent<Image>();
 
-        ability1.AbilityBehavior(parent);
-        ability2.AbilityBehavior(parent);
-        ability3.AbilityBehavior(parent);
+        }
 
-        ability1Img.fillAmount = ability1.fillAmount;
-        ability2Img.fillAmount = ability2.fillAmount;
-        ability3Img.fillAmount = ability3.fillAmount;
+        if (abilityManager.GetHotbarAbilities()[1].GetAbility() != null) {
+            ability2 = abilityManager.GetHotbarAbilities()[1].GetAbility();
+            ability2Img = abilityManager.GetHotbarSlots()[1].GetComponent<Image>();
+
+
+        }
+
+        if (abilityManager.GetHotbarAbilities()[2].GetAbility() != null) {
+            ability3 = abilityManager.GetHotbarAbilities()[2].GetAbility();
+            ability3Img = abilityManager.GetHotbarSlots()[2].GetComponent<Image>();
+
+
+        }
+
+        if (ability1 != null) {
+            ability1.AbilityHandler(parent);
+            ability1.AbilityBehavior(parent);
+            ability1Img.fillAmount = ability1.fillAmount;
+
+        }
+
+        if (ability2 != null) {
+            ability2.AbilityHandler(parent);
+            ability2.AbilityBehavior(parent);
+            ability2Img.fillAmount = ability2.fillAmount;
+        }
+
+        if (ability3 != null) {
+            ability3.AbilityHandler(parent);
+            ability3.AbilityBehavior(parent);
+            ability3Img.fillAmount = ability3.fillAmount;
+        }
     }
 
     public void OnAbility1(InputAction.CallbackContext context) 
     {
-        if (context.started)
-        {   
-            ability1.SetAbilityPressed(true);
-        }
-        else if (context.canceled)
-        {
-            ability1.SetAbilityPressed(false);
+        if (ability1 != null) {
+            if (context.started)
+            {   
+                ability1.SetAbilityPressed(true);
+            }
+            else if (context.canceled)
+            {
+                ability1.SetAbilityPressed(false);
+            }
         }
     }
 
     public void OnAbility2(InputAction.CallbackContext context) 
     {
-        if (context.started)
-        {
-            ability2.SetAbilityPressed(true);
+        if (ability2 != null) {
+            if (context.started)
+            {
+                ability2.SetAbilityPressed(true);
+            }
+            else if (context.canceled)
+            {
+                ability2.SetAbilityPressed(false);
+            }
+        }
 
-        }
-        else if (context.canceled)
-        {
-            ability2.SetAbilityPressed(false);
-        }
     }
 
     public void OnAbility3(InputAction.CallbackContext context) 
     {
-        if (context.started)
-        {
-            ability3.SetAbilityPressed(true);
+        if (ability3 != null) {
+            if (context.started)
+            {
+                ability3.SetAbilityPressed(true);
+            }
+            else if (context.canceled)
+            {
+                ability3.SetAbilityPressed(false);
+            }
         }
-        else if (context.canceled)
-        {
-            ability3.SetAbilityPressed(false);
-        }
+
+    }
+
+    public void OnAbilityInventory(InputAction.CallbackContext context) {
+        abilityInventoryActive = !abilityInventoryActive;
+        abilitySelection.SetActive(abilityInventoryActive);
     }
 
 }   

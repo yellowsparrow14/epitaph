@@ -33,8 +33,6 @@ public class Ability : ScriptableObject
     public Ability GetAbility() {
         return this;
     }
-
-
 }
 
 public enum AbilityState {

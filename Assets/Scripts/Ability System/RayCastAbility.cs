@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using Cinemachine;
 
 [CreateAssetMenu]
 public class RayCastAbility : Ability
@@ -46,7 +47,6 @@ public class RayCastAbility : Ability
 
             LayerMask mask = LayerMask.GetMask("Enemy");
             RaycastHit2D[] hits = Physics2D.CircleCastAll(parent.transform.GetChild(0).transform.position, rayWidth/2, mousePos - parent.transform.GetChild(0).transform.position, range, mask, -5, 5);
-
             foreach (RaycastHit2D hit in hits) {
                 if (!canTick) {
                     timer += Time.deltaTime;
