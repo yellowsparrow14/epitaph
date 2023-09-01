@@ -36,9 +36,9 @@ public class ProjectileAbility : Ability
     public override void AbilityBehavior(GameObject parent) {
         mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        Vector3 rotation = mousePos - parent.transform.GetChild(0).transform.position;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        parent.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, rotZ);
+        // Vector3 rotation = mousePos - parent.transform.GetChild(0).transform.position;
+        // float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        // parent.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, rotZ);
          
         if (!canFire) {
             timer += Time.deltaTime;
