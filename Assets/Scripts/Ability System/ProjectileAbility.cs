@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ProjectileAbility : Ability
 {
-    private Camera mainCam;
+    private Camera mainCamera;
     private Vector3 mousePos;
     private bool firing;
     public GameObject bullet;
@@ -30,11 +30,11 @@ public class ProjectileAbility : Ability
     public override void Init() {
         //bulletTransform = bulletSpawner.transform;
         canFire = true;
-        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     public override void AbilityBehavior(GameObject parent) {
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         Vector3 rotation = mousePos - parent.transform.GetChild(0).transform.position;
         float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;

@@ -156,6 +156,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2054194799}
     - target: {fileID: 573003372959300552, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: abilityManager
+      value: 
+      objectReference: {fileID: 2054194799}
+    - target: {fileID: 573003372959300552, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
       propertyPath: abilitySelection
       value: 
       objectReference: {fileID: 623867888}
@@ -825,7 +829,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &491997284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2113,6 +2117,14 @@ PrefabInstance:
     - target: {fileID: 4068386762232812670, guid: d69503851536e48feac967a8aaa6cd36, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5464019509064194258, guid: d69503851536e48feac967a8aaa6cd36, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7473720303203863187, guid: d69503851536e48feac967a8aaa6cd36, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15.4
       objectReference: {fileID: 0}
     - target: {fileID: 8772729188899198128, guid: d69503851536e48feac967a8aaa6cd36, type: 3}
       propertyPath: m_Name

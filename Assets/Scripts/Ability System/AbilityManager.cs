@@ -45,6 +45,10 @@ public class AbilityManager : MonoBehaviour
             abilities[i] = new SlotClass();
         }
 
+        for (int i = 0; i < hotbarAbilities.Length; i++) {
+            hotbarAbilities[i] = new SlotClass();
+        }
+
         for (int i = 0; i < startingAbilities.Length; i++) {
             abilities[i] = startingAbilities[i];
         }
@@ -101,6 +105,7 @@ public class AbilityManager : MonoBehaviour
                 //slots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[i].GetAbility().aSprite;
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[i + hotbarSlots.Length * 2].GetAbility().aSprite;
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
+                hotbarAbilities[i] = abilities[i + hotbarSlots.Length * 2];
             } catch {
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
