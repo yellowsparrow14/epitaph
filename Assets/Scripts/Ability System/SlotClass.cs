@@ -20,9 +20,6 @@ public class SlotClass
     }
 
     public Ability GetAbility() {
-        if (ability == null) {
-            return null;
-        }
         return ability;
     }
     

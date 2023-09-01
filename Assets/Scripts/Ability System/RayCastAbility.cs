@@ -47,8 +47,9 @@ public class RayCastAbility : Ability
 
             LayerMask mask = LayerMask.GetMask("Enemy");
             RaycastHit2D[] hits = Physics2D.CircleCastAll(parent.transform.GetChild(0).transform.position, rayWidth/2, mousePos - parent.transform.GetChild(0).transform.position, range, mask, -5, 5);
-
+            Debug.Log(hits);
             foreach (RaycastHit2D hit in hits) {
+                Debug.Log("h");
                 if (!canTick) {
                     timer += Time.deltaTime;
                     if (timer > tickRate) {

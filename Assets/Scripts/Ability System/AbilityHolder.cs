@@ -74,38 +74,21 @@ public class AbilityHolder : MonoBehaviour
         if (abilityManager.GetHotbarAbilities()[0].GetAbility() != null) {
             ability1 = abilityManager.GetHotbarAbilities()[0].GetAbility();
             ability1Img = abilityManager.GetHotbarSlots()[0].GetComponent<Image>();
-            Debug.Log(ability1.GetAbilityNotAssigned());
-            if (ability1.GetAbilityNotAssigned()) {
-                Debug.Log("Init");
-                ability1.Init();
-                ability1.SetAbilityNotAssigned(false);
-                ability1Img.fillAmount = 0;
-                ability1.SetState(AbilityState.ready);
-            }
+
         }
 
         if (abilityManager.GetHotbarAbilities()[1].GetAbility() != null) {
             ability2 = abilityManager.GetHotbarAbilities()[1].GetAbility();
             ability2Img = abilityManager.GetHotbarSlots()[1].GetComponent<Image>();
 
-            if (ability2.GetAbilityNotAssigned()) {
-                ability2.Init();
-                ability2.SetAbilityNotAssigned(true);
-                ability2Img.fillAmount = 0;
-                ability2.SetState(AbilityState.ready);
-            }
+
         }
 
         if (abilityManager.GetHotbarAbilities()[2].GetAbility() != null) {
             ability3 = abilityManager.GetHotbarAbilities()[2].GetAbility();
             ability3Img = abilityManager.GetHotbarSlots()[2].GetComponent<Image>();
 
-            if (ability3.GetAbilityNotAssigned()) {
-                ability3.Init();
-                ability3.SetAbilityNotAssigned(true);
-                ability3Img.fillAmount = 0;
-                ability3.SetState(AbilityState.ready);
-            }
+
         }
 
         if (ability1 != null) {
@@ -122,7 +105,6 @@ public class AbilityHolder : MonoBehaviour
         }
 
         if (ability3 != null) {
-            Debug.Log("ray");
             ability3.AbilityHandler(parent);
             ability3.AbilityBehavior(parent);
             ability3Img.fillAmount = ability3.fillAmount;
@@ -132,7 +114,6 @@ public class AbilityHolder : MonoBehaviour
     public void OnAbility1(InputAction.CallbackContext context) 
     {
         if (ability1 != null) {
-            Debug.Log("ability1");
             if (context.started)
             {   
                 ability1.SetAbilityPressed(true);

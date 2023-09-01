@@ -106,6 +106,13 @@ public class AbilityManager : MonoBehaviour
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[i + hotbarSlots.Length * 2].GetAbility().aSprite;
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
                 hotbarAbilities[i] = abilities[i + hotbarSlots.Length * 2];
+
+                if (hotbarAbilities[i].GetAbility() != null) {
+                    hotbarAbilities[i].GetAbility().Init();
+                    hotbarAbilities[i].GetAbility().SetState(AbilityState.ready);
+                    hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().fillAmount = 0;
+                }
+
             } catch {
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;

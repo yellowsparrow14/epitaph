@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Ability : ScriptableObject
 {
-    protected bool abilityNotAssigned = true;
     public string aName = "New Ability";
     public Sprite aSprite;
     public AudioClip aSound;
@@ -34,16 +33,6 @@ public class Ability : ScriptableObject
     public Ability GetAbility() {
         return this;
     }
-
-    public bool GetAbilityNotAssigned() {
-        return this.abilityNotAssigned;
-    }
-
-    public void SetAbilityNotAssigned(bool assigned) {
-        this.abilityNotAssigned = assigned;
-    }
-
-
 }
 
 public enum AbilityState {
