@@ -50,18 +50,10 @@ public class BlinkDaggerAbility : Ability
         }
 
         if (firing && !daggerThrown && canFire) {
-            daggerThrown = true;
-            canFire = false;
-            teleported = false;
-            thrownDagger = Instantiate(dagger, parent.transform.GetChild(0).GetChild(0).transform.position, Quaternion.identity);
-            firing = false;
+            Vector2 pos = parent.transform.GetChild(0).GetChild(0).transform.position;
+            ThrowDagger(pos);
         } else if (firing && daggerThrown && canFire) {
-            daggerThrown = false;
-            canFire = false;
-            teleported = true;
-            parent.transform.position = thrownDagger.transform.position;
-            Destroy(thrownDagger);
-            firing = false;
+            GoToDagger(parent);
         }
     }
 
@@ -99,4 +91,23 @@ public class BlinkDaggerAbility : Ability
             break;
         }
     }
+
+    #region DaggerMethods
+    private void ThrowDagger(Vector2 pos) {
+        daggerThrown = true;
+        canFire = false;
+        teleported = false;
+        thrownDagger = Instantiate(dagger, pos, Quaternion.identity);
+        firing = false;
+    }
+
+    private void GoToDagger(GameObject parent) {
+        daggerThrown = false;
+        canFire = false;
+        teleported = true;
+        parent.transform.position = thrownDagger.transform.position;
+        Destroy(thrownDagger);
+        firing = false;
+    }
+    #endregion
 }

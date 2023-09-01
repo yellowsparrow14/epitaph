@@ -15,5 +15,5 @@ public class BlinkDaggerProjectile : Projectile
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
     }
 
-    new private void OnTriggerEnter2D(Collider2D other) {}
+    private void OnTriggerEnter2D(Collider2D other) {}
 }

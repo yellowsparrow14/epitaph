@@ -5,6 +5,10 @@ using UnityEngine;
 public class Entity : MonoBehaviour, IEffectable
 {
     [SerializeField] private float maxHealth;
+    [SerializeField] private float knockbackDelay;
+    [SerializeField] private float knockbackForce;
+
+
     private float currentHealth;
     private float movementSpeed;
     private Rigidbody2D body;
@@ -63,6 +67,19 @@ public class Entity : MonoBehaviour, IEffectable
     public void RemoveEffect()
     {
         _data = null;
+    }
+
+    public void Knockback(GameObject applier) {
+        Debug.Log("KNOCK");
+        StopAllCoroutines();
+        Vector2 direction = (transform.position - applier.transform.position).normalized;
+        body.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        StartCoroutine(ResetKnockBack());
+    }
+
+    private IEnumerator ResetKnockBack() {
+        yield return new WaitForSeconds(knockbackDelay);
+        body.velocity = Vector3.zero;
     }
 
     // move to status effect
