@@ -17,4 +17,14 @@ public class Enemy : Entity
         //UPDATE LATER WITH UNIQUE BEHAVIOR, IF NEEDED
         base.Update();
     }
+
+    protected override void Die() {
+        Destroy(gameObject);
+    }
+
+    public override void TakeDamage(float dmgAmt) {
+        GameObject player = GameObject.FindWithTag("Player");
+        base.TakeDamage(dmgAmt);
+        //Knockback(player);
+    }
 }

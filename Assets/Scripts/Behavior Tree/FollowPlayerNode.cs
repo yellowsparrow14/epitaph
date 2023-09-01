@@ -18,7 +18,7 @@ public class FollowPlayerNode : Node
     }
 
     public override NodeState Evaluate() {
-
+        _agent.isStopped = false;
         _agent.SetDestination(_target.transform.position);
         return NodeState.SUCCESS;
     }

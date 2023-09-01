@@ -30,6 +30,8 @@ public class EnemyController : Controller
     }
 
     void OnCollisionExit2D(Collision2D other) {
-        isColliding = false;
+        if (other.gameObject.tag == "Player") {
+            isColliding = false;
+        }
     }
 }
