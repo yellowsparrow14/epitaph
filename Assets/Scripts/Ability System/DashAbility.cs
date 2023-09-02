@@ -20,7 +20,7 @@ public class DashAbility : Ability
         parent.GetComponent<Rigidbody2D>().velocity = parent.GetComponent<Rigidbody2D>().velocity / dashVelocity;
     }
 
-    public override void AbilityHandler(GameObject parent) {
+    public override void AbilityCooldownHandler(GameObject parent) {
         switch (state) 
         {
             case AbilityState.ready:

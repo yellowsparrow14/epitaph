@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AbilityManager : MonoBehaviour
+public class AbilityInventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject abilityCursor;
     [SerializeField] private GameObject slotHolder;

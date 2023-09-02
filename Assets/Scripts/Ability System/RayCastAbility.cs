@@ -69,7 +69,7 @@ public class RayCastAbility : Ability
         }
     }
 
-    public override void AbilityHandler(GameObject parent) {
+    public override void AbilityCooldownHandler(GameObject parent) {
         switch (state) 
         {
             case AbilityState.ready:

@@ -5,15 +5,15 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ProjectileAbility : Ability
 {
-    private Camera mainCamera;
-    private Vector3 mousePos;
-    private bool firing;
-    public GameObject bullet;
+    protected Camera mainCamera;
+    protected Vector3 mousePos;
+    protected bool firing;
+    public GameObject projectile;
 
     //public GameObject bulletSpawner;
     //public Transform bulletTransform;
     
-    private bool canFire;
+    protected bool canFire;
     private float timer;
     public float fireRate;
 
@@ -50,11 +50,11 @@ public class ProjectileAbility : Ability
 
         if (firing && canFire) {
             canFire = false;
-            Instantiate(bullet, parent.transform.GetChild(0).GetChild(0).transform.position, Quaternion.identity);
+            Instantiate(projectile, parent.transform.GetChild(0).GetChild(0).transform.position, Quaternion.identity);
         }
     }
 
-    public override void AbilityHandler(GameObject parent) {
+    public override void AbilityCooldownHandler(GameObject parent) {
         switch (state) 
         {
             case AbilityState.ready:
