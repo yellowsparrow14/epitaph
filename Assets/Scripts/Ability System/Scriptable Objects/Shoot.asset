@@ -18,6 +18,5 @@ MonoBehaviour:
   cooldownTime: 2
   activeTime: 0.5
   fillAmount: 1
-  bullet: {fileID: 3681736836022034573, guid: 6cbe0861144cecc4d858d630512c1e93, type: 3}
-  bulletSpawner: {fileID: 0}
+  projectile: {fileID: 3681736836022034573, guid: 6cbe0861144cecc4d858d630512c1e93, type: 3}
   fireRate: 0.2

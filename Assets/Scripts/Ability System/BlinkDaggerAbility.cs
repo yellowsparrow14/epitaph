@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class BlinkDaggerAbility : Ability
+public class BlinkDaggerAbility : ProjectileAbility
 {
-    private Camera mainCam;
-    private Vector3 mousePos;
-    private bool firing;
-    public GameObject dagger;
-    private bool canFire;
+    //private Camera mainCam;
+    //private Vector3 mousePos;
+    //private bool firing;
+    // public GameObject dagger;
+    //private bool canFire;
     private float timer;
     public float delay;
     private bool daggerThrown;
@@ -17,26 +17,26 @@ public class BlinkDaggerAbility : Ability
     
     public bool teleported;
 
-    public override void Activate(GameObject parent)
-    {
-        firing = true;
-    }
+    // public override void Activate(GameObject parent)
+    // {
+    //     firing = true;
+    // }
 
-    public override void Deactivate(GameObject parent) 
-    {
-        firing = false;
-    }
+    // public override void Deactivate(GameObject parent) 
+    // {
+    //     firing = false;
+    // }
 
     public override void Init() {
         firing = false;
         teleported = false;
         daggerThrown = false;
         canFire = true;
-        mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     public override void AbilityBehavior(GameObject parent) {
-        mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
         if (!canFire) {
             timer += Time.deltaTime;
@@ -54,7 +54,7 @@ public class BlinkDaggerAbility : Ability
         }
     }
 
-    public override void AbilityHandler(GameObject parent) {
+    public override void AbilityCooldownHandler(GameObject parent) {
         switch (state) 
         {
             case AbilityState.ready:
@@ -94,7 +94,7 @@ public class BlinkDaggerAbility : Ability
         daggerThrown = true;
         canFire = false;
         teleported = false;
-        thrownDagger = Instantiate(dagger, pos, Quaternion.identity);
+        thrownDagger = Instantiate(projectile, pos, Quaternion.identity);
         firing = false;
     }
 

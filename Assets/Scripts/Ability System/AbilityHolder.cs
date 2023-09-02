@@ -21,7 +21,7 @@ public class AbilityHolder : MonoBehaviour
     GameObject parent;
 
     [SerializeField] private GameObject abilitySelection;
-    [SerializeField] private AbilityManager abilityManager;
+    [SerializeField] private AbilityInventoryManager abilityManager;
     private bool abilityInventoryActive;
 
     // Start is called before the first frame update
@@ -92,20 +92,20 @@ public class AbilityHolder : MonoBehaviour
         }
 
         if (ability1 != null) {
-            ability1.AbilityHandler(parent);
+            ability1.AbilityCooldownHandler(parent);
             ability1.AbilityBehavior(parent);
             ability1Img.fillAmount = ability1.fillAmount;
 
         }
 
         if (ability2 != null) {
-            ability2.AbilityHandler(parent);
+            ability2.AbilityCooldownHandler(parent);
             ability2.AbilityBehavior(parent);
             ability2Img.fillAmount = ability2.fillAmount;
         }
 
         if (ability3 != null) {
-            ability3.AbilityHandler(parent);
+            ability3.AbilityCooldownHandler(parent);
             ability3.AbilityBehavior(parent);
             ability3Img.fillAmount = ability3.fillAmount;
         }

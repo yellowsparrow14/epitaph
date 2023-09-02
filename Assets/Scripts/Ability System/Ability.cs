@@ -17,9 +17,10 @@ public class Ability : ScriptableObject
 
     public virtual void Activate(GameObject parent) {}
     public virtual void Deactivate(GameObject parent) {}
-    public virtual void BeginCooldown(GameObject parent) {}
-    public virtual void AbilityHandler(GameObject parent) {}
+    // Handles ability cooldown system
+    public virtual void AbilityCooldownHandler(GameObject parent) {}
     public virtual void Init() {}
+    // Handles what an ability does
     public virtual void AbilityBehavior(GameObject parent) {}
 
     public void SetAbilityPressed(bool pressed) {
