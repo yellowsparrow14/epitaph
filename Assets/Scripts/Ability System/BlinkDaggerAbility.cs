@@ -48,7 +48,7 @@ public class BlinkDaggerAbility : ProjectileAbility
 
         if (firing && !daggerThrown && canFire) {
             Vector2 pos = parent.transform.GetChild(0).GetChild(0).transform.position;
-            ThrowDagger(pos);
+            ThrowDagger(pos, parent);
         } else if (firing && daggerThrown && canFire) {
             GoToDagger(parent);
         }
@@ -90,11 +90,12 @@ public class BlinkDaggerAbility : ProjectileAbility
     }
 
     #region DaggerMethods
-    private void ThrowDagger(Vector2 pos) {
+    private void ThrowDagger(Vector2 pos, GameObject parent) {
         daggerThrown = true;
         canFire = false;
         teleported = false;
         thrownDagger = Instantiate(projectile, pos, Quaternion.identity);
+        thrownDagger.SetParent(parent);
         firing = false;
     }
 
