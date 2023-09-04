@@ -11,8 +11,7 @@ public class Projectile : MonoBehaviour
     public float force;
     [SerializeField] StatusEffect _data;
     [SerializeField] private float projectileTimer;
-    private GameObject parent;
-    public void SetParent(GameObject parent) {  this.parent = parent; }
+    public GameObject parent;
 
     // increase sprite size
     // Start is called before the first frame update

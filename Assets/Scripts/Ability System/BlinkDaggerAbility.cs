@@ -93,7 +93,7 @@ public class BlinkDaggerAbility : ProjectileAbility
         canFire = false;
         teleported = false;
         thrownDagger = Instantiate(projectile, pos, Quaternion.identity);
-        thrownDagger.SetParent(parent);
+        thrownDagger.parent = parent;
         firing = false;
     }
 
@@ -102,7 +102,7 @@ public class BlinkDaggerAbility : ProjectileAbility
         canFire = false;
         teleported = true;
         parent.transform.position = thrownDagger.transform.position;
-        Destroy(thrownDagger);
+        Destroy(thrownDagger.gameObject);
         firing = false;
     }
     #endregion
