@@ -8,7 +8,7 @@ public class ProjectileAbility : Ability
     protected Camera mainCamera;
     protected Vector3 mousePos;
     protected bool firing;
-    public GameObject projectile;
+    public Projectile projectile;
 
     //public GameObject bulletSpawner;
     //public Transform bulletTransform;
@@ -50,7 +50,8 @@ public class ProjectileAbility : Ability
 
         if (firing && canFire) {
             canFire = false;
-            Instantiate(projectile, parent.transform.GetChild(0).GetChild(0).transform.position, Quaternion.identity);
+            Projectile projectileCopy = Instantiate(projectile, parent.transform.GetChild(0).GetChild(0).transform.position, Quaternion.identity);
+            projectileCopy.parent = parent;
         }
     }
 

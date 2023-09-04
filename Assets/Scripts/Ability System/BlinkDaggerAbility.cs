@@ -13,7 +13,7 @@ public class BlinkDaggerAbility : ProjectileAbility
     private float timer;
     public float delay;
     private bool daggerThrown;
-    private GameObject thrownDagger;
+    private Projectile thrownDagger;
     
     public bool teleported;
 
