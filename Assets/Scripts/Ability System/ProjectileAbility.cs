@@ -14,7 +14,7 @@ public class ProjectileAbility : Ability
     //public Transform bulletTransform;
     
     protected bool canFire;
-    private float timer;
+    protected float timer;
     public float fireRate;
 
     public override void Activate(GameObject parent)

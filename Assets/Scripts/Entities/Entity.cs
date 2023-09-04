@@ -8,18 +8,21 @@ public class Entity : MonoBehaviour, IEffectable
     [SerializeField] private float knockbackDelay;
     [SerializeField] private float knockbackForce;
 
-
     private float currentHealth;
     private float movementSpeed;
     private Rigidbody2D body;
 
-    private float attack;
-    private Controller ctrl;
+    [SerializeField] private float attack;
     private StatusEffect _data;
 
     //getters
     public float CurrentHealth {
         get {return currentHealth;}
+    }
+
+    public float Attack {
+        get { return attack; }
+        set { attack = value; }
     }
 
     // Start is called before the first frame update
@@ -28,7 +31,6 @@ public class Entity : MonoBehaviour, IEffectable
         //override in child classes
         body = this.gameObject.GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
-        ctrl = this.gameObject.GetComponent<Controller>();
     }
 
     // Update is called once per frame
@@ -53,8 +55,10 @@ public class Entity : MonoBehaviour, IEffectable
             currentHealth -= dmgAmt;
         }
     }
-
-    // move this stuff also to status effect
+    
+    public virtual void DealDamage(Entity target, float dmgAmt) {
+        target.TakeDamage(dmgAmt);
+    }
 
     public void ApplyEffect(StatusEffect _data)
     {
@@ -82,5 +86,4 @@ public class Entity : MonoBehaviour, IEffectable
         body.velocity = Vector3.zero;
     }
 
-    // move to status effect
 }
