@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Entity : MonoBehaviour, IEffectable
+public class Entity : MonoBehaviour //IEffectable
 {
+    public EntityStats entityStats;
+
     [SerializeField] private float maxHealth;
     [SerializeField] private float knockbackDelay;
     [SerializeField] private float knockbackForce;
@@ -13,7 +15,7 @@ public class Entity : MonoBehaviour, IEffectable
     private Rigidbody2D body;
 
     [SerializeField] private float attack;
-    private StatusEffect _data;
+   // private StatusEffect[] _statusEffects;
 
     //getters
     public float CurrentHealth {
@@ -36,9 +38,9 @@ public class Entity : MonoBehaviour, IEffectable
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (_data != null) {
-            _data.HandleEffect(this);
-        }
+       // if (_data != null) {
+        //    _data.HandleEffect(this);
+       // }
         //override in child classes
     }
 
@@ -60,7 +62,7 @@ public class Entity : MonoBehaviour, IEffectable
         target.TakeDamage(dmgAmt);
     }
 
-    public void ApplyEffect(StatusEffect _data)
+  /*  public void ApplyEffect(StatusEffect _data)
     {
         this._data = _data;
         //Debug.Log(_data.name);
@@ -71,7 +73,7 @@ public class Entity : MonoBehaviour, IEffectable
     public void RemoveEffect()
     {
         _data = null;
-    }
+    }*/
 
     public void Knockback(GameObject applier) {
         Debug.Log("KNOCK");

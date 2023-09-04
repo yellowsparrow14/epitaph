@@ -9,7 +9,7 @@ public class MoveSpeedStatusEffect : StatusEffect
     {
         currentEffectTime += Time.deltaTime;
         if (currentEffectTime >= lifeTime) {
-            entity.RemoveEffect();
+            //entity.RemoveEffect();
             return;
         }
 
