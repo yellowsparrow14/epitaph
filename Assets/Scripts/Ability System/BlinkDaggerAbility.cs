@@ -10,7 +10,6 @@ public class BlinkDaggerAbility : ProjectileAbility
     //private bool firing;
     // public GameObject dagger;
     //private bool canFire;
-    private float timer;
     public float delay;
     private bool daggerThrown;
     private GameObject thrownDagger;
@@ -28,11 +27,10 @@ public class BlinkDaggerAbility : ProjectileAbility
     // }
 
     public override void Init() {
+        base.Init();
         firing = false;
         teleported = false;
         daggerThrown = false;
-        canFire = true;
-        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     public override void AbilityBehavior(GameObject parent) {
