@@ -23,8 +23,6 @@ public class Enemy : Entity
     }
 
     public override void TakeDamage(float dmgAmt) {
-        GameObject player = GameObject.FindWithTag("Player");
         base.TakeDamage(dmgAmt);
-        //Knockback(player);
     }
 }
