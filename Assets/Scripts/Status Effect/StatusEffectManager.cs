@@ -2,13 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class StatusEffectManager : MonoBehaviour
 {
-    //StatusEffectManager is used to controll all status effects on an entity. 
+    private List<StatusEffectInstance> _statusEffects = new List<StatusEffectInstance>();
+    private List<StatusEffectCode> _statusEffectTypes = new List<StatusEffectCode>();
 
-    private List<StatusEffect> _statusEffects = new List<StatusEffect>();
     private Entity _entity;
+
+    private bool _hasListChanged = false;
+
+    private float _currTime;
 
     private void Start() {
         _entity = this.gameObject.GetComponent<Entity>();
@@ -16,6 +21,7 @@ public class StatusEffectManager : MonoBehaviour
     }
 
     private void Update() {
+        _currTime = Time.time;
         TickStatusEffects();
         UpdateEffectList();
     }
@@ -24,11 +30,11 @@ public class StatusEffectManager : MonoBehaviour
     private void TickStatusEffects()
     {
         for (int i = 0; i < _statusEffects.Count; i++) {
-            StatusEffect se = _statusEffects[i];
-            if (se.tickStatusEffect != null) {   
-                if(Time.time > se.lastTickTime + se.tickSpeed) {
-                    se.lastTickTime = Time.time;
-                    se.TickEffect();
+            StatusEffectInstance se = _statusEffects[i];
+            if (se.statusEffect.tickStatusEffect != null) {   
+                if(_currTime > se.nextTickTime) {
+                    se.nextTickTime = _currTime + se.statusEffect.tickTime;
+                    //se.TickEffect();
                 }
             }
         }
@@ -40,6 +46,49 @@ public class StatusEffectManager : MonoBehaviour
     private void UpdateEffectList()
     {
         throw new NotImplementedException();
+    }
+
+    private void ClearExpiredEffects()
+    {
+
+    }
+
+
+    public void AddEffect(StatusEffectInstance effect)
+    {
+        //C TODO: how do we want to handle effects that already exist?
+        //For now, I am assuming each effect code is only used once
+        StatusEffect se = effect.statusEffect;
+
+        if(_statusEffectTypes.Contains(se.effectCode)) {
+            StatusEffectInstance currEffect = _statusEffects.Where( s => s.statusEffect.effectCode == se.effectCode).First();
+            if(effect.expirationTime > currEffect.expirationTime)
+            {
+                currEffect.expirationTime = effect.expirationTime;
+            }
+        } 
+        else {
+            _statusEffects.Add(effect);
+            effect.expirationTime = _currTime + se.duration;
+            effect.nextTickTime = _currTime + se.tickTime;
+        }
+    }
+
+    public void RemoveEffect(StatusEffectCode code)
+    {
+        StatusEffectInstance effectInstance = _statusEffects.Where( s => s.statusEffect.effectCode == code).First();
+        RemoveEffect(effectInstance);
+    }
+
+    public void RemoveEffect(StatusEffect effect)
+    {
+        StatusEffectInstance effectInstance = _statusEffects.Where( s => s.statusEffect == effect).First();
+        RemoveEffect(effectInstance);
+    }
+
+    public void RemoveEffect(StatusEffectInstance effect)
+    {
+
     }
 
 }

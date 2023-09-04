@@ -9,15 +9,17 @@ public enum StatEnum
     WALKSPEED,    
 }
 
-
 [System.Serializable]
 public class ModifiableStat
 {
     public StatEnum statName;
     public float intialValue;
     public float currentValue;
+    public bool beneficial = true;
     public float? maxValue = null;
     public float? minValue = null;
+
+    public List<StatModifier> modifiers;
 
     public ModifiableStat(StatEnum name, float value)
     {
@@ -26,11 +28,12 @@ public class ModifiableStat
         this.currentValue = value;
     }
 
-    public ModifiableStat(StatEnum name, float value, float? maxValue, float? minValue)
+    public ModifiableStat(StatEnum name, float value, bool beneficial, float? maxValue, float? minValue)
     {
         this.statName = name;
         this.intialValue = value;
         this.currentValue = value;
+        this.beneficial = beneficial;
         this.maxValue = maxValue;
     }
 }
