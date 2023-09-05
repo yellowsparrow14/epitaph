@@ -12,7 +12,7 @@ public class BlinkDaggerAbility : ProjectileAbility
     //private bool canFire;
     public float delay;
     private bool daggerThrown;
-    private GameObject thrownDagger;
+    private Projectile thrownDagger;
     
     public bool teleported;
 
@@ -46,7 +46,7 @@ public class BlinkDaggerAbility : ProjectileAbility
 
         if (firing && !daggerThrown && canFire) {
             Vector2 pos = parent.transform.GetChild(0).GetChild(0).transform.position;
-            ThrowDagger(pos);
+            ThrowDagger(pos, parent);
         } else if (firing && daggerThrown && canFire) {
             GoToDagger(parent);
         }
@@ -88,11 +88,12 @@ public class BlinkDaggerAbility : ProjectileAbility
     }
 
     #region DaggerMethods
-    private void ThrowDagger(Vector2 pos) {
+    private void ThrowDagger(Vector2 pos, GameObject parent) {
         daggerThrown = true;
         canFire = false;
         teleported = false;
         thrownDagger = Instantiate(projectile, pos, Quaternion.identity);
+        thrownDagger.parent = parent;
         firing = false;
     }
 
@@ -101,7 +102,7 @@ public class BlinkDaggerAbility : ProjectileAbility
         canFire = false;
         teleported = true;
         parent.transform.position = thrownDagger.transform.position;
-        Destroy(thrownDagger);
+        Destroy(thrownDagger.gameObject);
         firing = false;
     }
     #endregion
