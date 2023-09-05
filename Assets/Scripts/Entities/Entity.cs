@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Entity : MonoBehaviour //IEffectable
 {
-    private EntityStats _entityStats;
+    [SerializeField] private EntityStats _entityStats;
     public EntityStats EntityStats => _entityStats;
-    private Health _health;
+    [SerializeField] private Health _health;
     public Health Health => _health;
 
 
@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour //IEffectable
     public virtual void DealDamage(Entity target, float dmgAmt) {
         target.TakeDamage(dmgAmt);
     }
-    
+
     public void Knockback(GameObject applier) {
         Debug.Log("KNOCK");
         StopAllCoroutines();
