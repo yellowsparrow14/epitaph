@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class StatusEffectManager : MonoBehaviour
 {
@@ -10,20 +11,22 @@ public class StatusEffectManager : MonoBehaviour
     private List<StatusEffectCode> _statusEffectTypes = new List<StatusEffectCode>();
 
     private EntityStats _stats;
-
-    private bool _hasListChanged = false;
+    private Health _health;
+    //private bool _hasListChanged = false;
 
     private float _currTime;
 
     private void Start() {
-        _stats = this.gameObject.GetComponent<EntityStats>();
+        _stats = gameObject.GetComponent<EntityStats>();
         if(_stats == null) Debug.LogError("Status Effect manager applied to an object with no entityStats class. This should not happen");
+        _health = gameObject.GetComponent<Health>();
+        if(_health == null) Debug.LogError("Status Effect manager applied to an object with no health class. This should not happen");
     }
 
     private void Update() {
         _currTime = Time.time;
         TickStatusEffects();
-        UpdateEffectList();
+        RemoveExpiredEffects();
     }
 
 
@@ -34,28 +37,45 @@ public class StatusEffectManager : MonoBehaviour
             if (se.statusEffect.tickStatusEffect != null) {   
                 if(_currTime > se.nextTickTime) {
                     se.nextTickTime = _currTime + se.statusEffect.tickTime;
-                    //se.TickEffect();
+                    AddModifiers(se.statusEffect.tickStatusEffect);
                 }
             }
         }
     }
 
-    // C: see https://www.reddit.com/r/gamedev/comments/50rrcs/code_design_for_an_ability_status_effect_system/
-    // for why this is implemented this way
     
-    private void UpdateEffectList()
+    private void RemoveExpiredEffects()
     {
-        
+        List<StatusEffectInstance> itemsToRemove = new();
+        foreach(StatusEffectInstance se in _statusEffects)
+        {
+            if(se.HasExpired()) 
+            {
+                AddModifiers(se.statusEffect.exitStatusEffect);
+                itemsToRemove.Add(se);
+            }
+        }
+        foreach(StatusEffectInstance se in itemsToRemove)
+        {
+            RemoveExpiredEffect(se);
+        }
     }
 
-    private void ClearExpiredEffects()
-    {
+    public void ApplyEffect(StatusEffect statusEffect) => ApplyEffects(new List<StatusEffect>() { statusEffect});
 
+    public void ApplyEffects(List<StatusEffect> statusEffects)
+    {
+        foreach(StatusEffect se in statusEffects)
+        {
+            StatusEffectInstance effect = new StatusEffectInstance
+            {
+                statusEffect = se
+            };
+            AddEffect(effect);
+        }
     }
 
-
-
-    public void AddEffect(StatusEffectInstance effect)
+    private void AddEffect(StatusEffectInstance effect)
     {
         //C TODO: how do we want to handle effects that already exist?
         //For now, I am assuming each effect code is only used once
@@ -72,28 +92,61 @@ public class StatusEffectManager : MonoBehaviour
             _statusEffects.Add(effect);
             effect.expirationTime = _currTime + se.duration;
             effect.nextTickTime = _currTime + se.tickTime;
-            
-            _hasListChanged = true;
-            //rebuild list
+            AddModifiers(se.entryStatusEffect);
+            AddModifiers(se.passiveStatusEffect);
         }
     }
 
-    public void RemoveEffect(StatusEffectCode code)
+    private void AddModifiers(List<StatModifier> statModifiers)
     {
-        StatusEffectInstance effectInstance = _statusEffects.Where( s => s.statusEffect.effectCode == code).First();
-        RemoveEffect(effectInstance);
+        foreach(StatModifier sm in statModifiers)
+            AddModifier(sm);
     }
 
-    public void RemoveEffect(StatusEffect effect)
+    private void AddModifier(StatModifier statModifier)
     {
-        StatusEffectInstance effectInstance = _statusEffects.Where( s => s.statusEffect == effect).First();
-        RemoveEffect(effectInstance);
+        StatEnum statEnum = statModifier.stat;
+        if(statEnum == StatEnum.HEALTH)
+        {
+            _health.AddModifier(statModifier);
+        }
+        else
+        {
+            ModifiableStat stat = _stats.GetStat(statEnum);
+            stat.AddModifier(statModifier);
+        }
+
     }
 
-    public void RemoveEffect(StatusEffectInstance effect)
+    private void RemoveExpiredEffect(StatusEffectInstance effect)
     {
-        if(effect.statusEffect.removableType == RemovableType.NonRemovable) return;
+        StatusEffect se = effect.statusEffect;
+        if(se.removableType == RemovableType.NonRemovable) return;
 
+        RemoveModifiers(se.entryStatusEffect);
+        RemoveModifiers(se.exitStatusEffect);
+        RemoveModifiers(se.tickStatusEffect);
+        RemoveModifiers(se.exitStatusEffect);
+    }
+
+    private void RemoveModifiers(List<StatModifier> statModifiers)
+    {
+        foreach(StatModifier sm in statModifiers)
+            RemoveModifier(sm);
+    }
+
+    private void RemoveModifier(StatModifier statModifier)
+    {
+        StatEnum statEnum = statModifier.stat;
+        if(statEnum == StatEnum.HEALTH)
+        {
+            _health.RemoveModifier(statModifier);
+        }
+        else
+        {
+            ModifiableStat stat = _stats.GetStat(statEnum);
+            stat.RemoveModifier(statModifier);
+        }
     }
 
 }

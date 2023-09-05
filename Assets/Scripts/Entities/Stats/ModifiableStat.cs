@@ -56,8 +56,18 @@ public class ModifiableStat
         return modifiedValue;
     }
 
+    protected float CalculateValue()
+    {
+        return CalculateValue(modifiers);
+    }
 
-    private float CalculateValue()
+    private float CalculateValue(StatModifier modifier)
+    {
+        return CalculateValue(new List<StatModifier>() {modifier});
+    }
+
+
+    private float CalculateValue(List<StatModifier> modifiers)
     {
         float baseVal = currentBaseValue;
         float add = 0;
@@ -99,7 +109,7 @@ public class ModifiableStat
         return baseVal;
     }
 
-    private float HandleBelowMinValue(float value)
+    protected virtual float HandleBelowMinValue(float value)
     {
         return minValue.HasValue ? minValue.Value : value;
     }
@@ -112,18 +122,17 @@ public class ModifiableStat
     public void AddModifier(StatModifier modifier)
     {
         _isDirty = true;
-        modifiers.Add(modifier);
-    }
-
-    public void RemoveModifier(StatEnum statEnum)
-    {
-        
+        if(modifier.changeBaseValue)
+            currentBaseValue = CalculateValue(modifier);
+        else
+            modifiers.Add(modifier);
     }
 
     public void RemoveModifier(StatModifier modifier)
     {
         _isDirty = true;
         modifiers.Remove(modifier);
+        //TODO: make this remove all, have modifiers be comparable
     }
 
 }

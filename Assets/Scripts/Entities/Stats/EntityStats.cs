@@ -7,53 +7,19 @@ using System.Linq;
 [System.Serializable]
 public class EntityStats
 {
-    public Health health = new Health();
-    [SerializeField] private List<ModifiableStat> stats = new()
+    [SerializeField] private List<ModifiableStat> _stats = new()
     {
         new(StatEnum.WALKSPEED, 5),
     };
 
+    public ModifiableStat GetStat(StatEnum stat)
+    {
+        return _stats.Where(s => s.statName == stat).FirstOrDefault();
+    }
 
     public float GetStatValue(StatEnum stat)
     {
-        ModifiableStat s = stats.Where(s => s.statName == stat).First();
-        return GetModifiedStat(s, null);
-    }
-
-    public float GetHealth()
-    {
-        return GetModifiedStat(health, null);
-    }
-
-    private float GetModifiedStat(ModifiableStat stat, List<StatModifier> modifiers)
-    {
-        float baseVal = stat.currentBaseValue;
-        modifiers.Sort();
-        foreach(StatModifier m in modifiers)
-        {
-            switch(m.applicationType)
-            {
-                case ApplicationType.ADD:
-                    baseVal += m.amount;
-                    break;
-
-                case ApplicationType.MULTIPLY:
-                    baseVal *= m.amount;
-                    break;
-
-                case ApplicationType.SET:
-                case ApplicationType.SET_AFFECTABLE:
-                    baseVal = m.amount;
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
-        if(stat.minValue != null && baseVal < stat.minValue) baseVal = (float) stat.minValue;
-        if(stat.maxValue != null && baseVal > stat.maxValue) baseVal = (float) stat.maxValue;
-
-        return baseVal;
+        ModifiableStat s = _stats.Where(s => s.statName == stat).First();
+        return s.GetStatValue();
     }
 }

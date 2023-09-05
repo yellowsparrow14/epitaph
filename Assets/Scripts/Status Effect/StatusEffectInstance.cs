@@ -10,5 +10,5 @@ public class StatusEffectInstance
     public float expirationTime;
     public float nextTickTime;
 
-    public bool HasExpired() => Time.time > expirationTime;
+    public bool HasExpired() => statusEffect.expirableType == ExpirableType.Expirable && Time.time > expirationTime;
 }

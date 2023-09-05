@@ -25,7 +25,7 @@ public class StatModifier: IComparable
 
     //If true, the stat will change the base value directly instead of being stored as a temp modifier.
     //ie damage and permanant buffs should change base value, while temporary buffs should not
-    public readonly bool changeBaseValue; 
+    public bool changeBaseValue; 
     
     public int CompareTo(object obj)
     {
@@ -41,11 +41,25 @@ public class StatModifier: IComparable
 [System.Serializable]
 public class Damage: StatModifier
 {
-    public Damage(int amount)
+    public Damage(float amount)
     {
         applicationType = ApplicationType.ADD;
         stat = StatEnum.HEALTH;
         this.amount = amount * -1;
         beneficial = false;
+        changeBaseValue = true;
+    }
+}
+
+[System.Serializable]
+public class Heal: StatModifier
+{
+    public Heal(float amount)
+    {
+        applicationType = ApplicationType.ADD;
+        stat = StatEnum.HEALTH;
+        this.amount = amount;
+        beneficial = true;
+        changeBaseValue = true;
     }
 }
