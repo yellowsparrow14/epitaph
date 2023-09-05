@@ -170,7 +170,7 @@ PrefabInstance:
     - target: {fileID: 3830640814083911512, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 03082b22ff7a6854189882137441b496, type: 2}
+      objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 3830640814083911512, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
       propertyPath: m_Parameters.widthMultiplier
       value: 1.5
@@ -1436,7 +1436,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.5
+  orthographic size: 8.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1480,11 +1480,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_AssetsPPU: 30
+  m_AssetsPPU: 16
   m_RefResolutionX: 480
   m_RefResolutionY: 270
   m_CropFrame: 0
-  m_GridSnapping: 2
+  m_GridSnapping: 1
   m_FilterMode: 0
   m_UpscaleRT: 0
   m_PixelSnapping: 0
@@ -7144,7 +7144,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 7020b53c5b7d8c640af5d613e6ebfedc, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 7385761558c75674e9c56bc9f7c6457b, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
