@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
     protected Vector3 direction;
     public float force;
     [SerializeField] StatusEffect _data;
+    [SerializeField] private float projectileTimer;
+    public GameObject parent;
+
     // increase sprite size
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,12 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (projectileTimer > 0)
+        {
+            projectileTimer -= Time.deltaTime;
+            return;
+        }
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
