@@ -9,15 +9,15 @@ public class StatusEffectManager : MonoBehaviour
     private List<StatusEffectInstance> _statusEffects = new List<StatusEffectInstance>();
     private List<StatusEffectCode> _statusEffectTypes = new List<StatusEffectCode>();
 
-    private Entity _entity;
+    private EntityStats _stats;
 
     private bool _hasListChanged = false;
 
     private float _currTime;
 
     private void Start() {
-        _entity = this.gameObject.GetComponent<Entity>();
-        if(_entity == null) Debug.LogError("Status Effect maanger applied to an object with no entity class. This should not happen");
+        _stats = this.gameObject.GetComponent<EntityStats>();
+        if(_stats == null) Debug.LogError("Status Effect manager applied to an object with no entityStats class. This should not happen");
     }
 
     private void Update() {
@@ -92,6 +92,7 @@ public class StatusEffectManager : MonoBehaviour
 
     public void RemoveEffect(StatusEffectInstance effect)
     {
+        if(effect.statusEffect.removableType == RemovableType.NonRemovable) return;
 
     }
 

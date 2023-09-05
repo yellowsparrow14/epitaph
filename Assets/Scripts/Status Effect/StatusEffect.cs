@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum RemovableType { Removable, NonRemovable };
+public enum ExpirableType { Expirable, NonExpireable };
 
 [CreateAssetMenu]
 public class StatusEffect : ScriptableObject
@@ -11,8 +13,8 @@ public class StatusEffect : ScriptableObject
     public readonly float tickTime;
     public readonly float duration;
 
-    public enum RemovableType { Removable, NonRemovable };
-    public enum ExpirableType { Expirable, NonExpireable };
+    public RemovableType removableType;
+    public ExpirableType expirableType;
 
     //C: Do not put passive status effects (ie +5 attack damage)
     // on entry, tick, or exit events. It will not work.

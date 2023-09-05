@@ -18,8 +18,8 @@ public class ModifiableStat
     public float intialValue;
     public float currentBaseValue;
     public bool beneficial = true;
-    public float? maxValue = null;
-    public float? minValue = null;
+    public SN<float> maxValue = null;
+    public SN<float> minValue = null;
 
     private List<StatModifier> modifiers;
     private bool _isDirty = true;
@@ -101,12 +101,12 @@ public class ModifiableStat
 
     private float HandleBelowMinValue(float value)
     {
-        return minValue ?? value;
+        return minValue.HasValue ? minValue.Value : value;
     }
 
     private float HandleAboveMaxValue(float value)
     {
-        return maxValue ?? value;
+        return maxValue.HasValue ? maxValue.Value : value;
     }
 
     public void AddModifier(StatModifier modifier)
