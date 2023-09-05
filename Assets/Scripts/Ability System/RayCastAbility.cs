@@ -38,12 +38,23 @@ public class RayCastAbility : Ability
         canTick = true;   
     } 
 
+    private void SetLineRMatLen(float len) {
+        lineRenderer.material.SetFloat("_Length", len);
+    }
+
     public override void AbilityBehavior(GameObject parent) {
         if (firing) {
             mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            lineRenderer.SetPosition(0, parent.transform.GetChild(0).transform.position);
-            lineRenderer.SetPosition(1, mousePos + new Vector3(0,0,10));
+
+            Vector3 pos1 = parent.transform.GetChild(0).transform.position;
+            Vector3 pos2 = mousePos + new Vector3(0,0,10);
+
+            lineRenderer.SetPosition(0, pos1);
+            lineRenderer.SetPosition(1, pos2);
             lineRenderer.enabled = true;
+
+            float len = (pos2-pos1).magnitude;
+            SetLineRMatLen(len);
 
             LayerMask mask = LayerMask.GetMask("Enemy");
             RaycastHit2D[] hits = Physics2D.CircleCastAll(parent.transform.GetChild(0).transform.position, rayWidth/2, mousePos - parent.transform.GetChild(0).transform.position, range, mask, -5, 5);
@@ -58,7 +69,6 @@ public class RayCastAbility : Ability
 
                 if (canTick) {
                     hit.transform.gameObject.GetComponent<Enemy>().TakeDamage(damage);
-                    Debug.Log(hit);
                     canTick = false;
                 }
 
