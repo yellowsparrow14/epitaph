@@ -1,25 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public enum ApplicationType
-{
-    NONE,
-    SET, //Will be applied last, so will override other multipliers
-    ADD,
-    MULTIPLY,
-    SET_AFFECTABLE, //Will be applied first, so can be affected by other multipliers
-};
-
-[System.Serializable]
-public class StatModifier
-{
-    public readonly ApplicationType applicationType;
-    public readonly StatEnum stat;
-    public readonly float amount;
-    public readonly bool beneficial; 
-}
 
 [CreateAssetMenu]
 public class StatusEffect : ScriptableObject

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Entity : MonoBehaviour //IEffectable
 {
     public EntityStats entityStats;
+    public Health health;
 
     [SerializeField] private float maxHealth;
     [SerializeField] private float knockbackDelay;

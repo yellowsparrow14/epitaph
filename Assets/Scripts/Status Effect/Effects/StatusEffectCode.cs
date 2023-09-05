@@ -3,5 +3,5 @@ public enum StatusEffectCode
 {
     NONE,
     BURN,
-    STRENGTH,
+    SLOWNESS,
 }

@@ -45,13 +45,14 @@ public class StatusEffectManager : MonoBehaviour
     
     private void UpdateEffectList()
     {
-        throw new NotImplementedException();
+        
     }
 
     private void ClearExpiredEffects()
     {
 
     }
+
 
 
     public void AddEffect(StatusEffectInstance effect)
@@ -71,6 +72,9 @@ public class StatusEffectManager : MonoBehaviour
             _statusEffects.Add(effect);
             effect.expirationTime = _currTime + se.duration;
             effect.nextTickTime = _currTime + se.tickTime;
+            
+            _hasListChanged = true;
+            //rebuild list
         }
     }
 

@@ -31,14 +31,14 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        var effectable = other.GetComponent<IEffectable>();
+        // var effectable = other.GetComponent<IEffectable>();
 
-        if (effectable != null) {
-            effectable.ApplyEffect(_data);
-            //effectable.GetComponent<Enemy>().
-        }
+        // if (effectable != null) {
+        //     effectable.ApplyEffect(_data);
+        //     //effectable.GetComponent<Enemy>().
+        // }
 
-        //Debug.Log($"Hit {other.gameObject.name}");
+        // //Debug.Log($"Hit {other.gameObject.name}");
 
         Destroy(this.gameObject);
     }
