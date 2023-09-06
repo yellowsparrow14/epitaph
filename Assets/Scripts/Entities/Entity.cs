@@ -20,6 +20,8 @@ public class Entity : MonoBehaviour //IEffectable
 
     [SerializeField] private float attack;
 
+    private bool _isDead;
+
     public float Attack {
         get { return attack; }
         set { attack = value; }
@@ -36,6 +38,7 @@ public class Entity : MonoBehaviour //IEffectable
     }
 
     public virtual void Die() {
+        if(_isDead) return;
         //override in child classes
         Debug.Log("dead");
     }
