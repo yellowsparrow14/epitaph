@@ -6,8 +6,9 @@ public class Entity : MonoBehaviour //IEffectable
 {
     [SerializeField] private EntityStats _entityStats;
     public EntityStats EntityStats => _entityStats;
-    [SerializeField] private Health _health;
-    public Health Health => _health;
+    [SerializeField] private float intialHealth;
+    private Health _health;
+    public float Health => _health.health;
 
 
     [SerializeField] private float knockbackDelay;
@@ -22,6 +23,10 @@ public class Entity : MonoBehaviour //IEffectable
     public float Attack {
         get { return attack; }
         set { attack = value; }
+    }
+
+    private void Awake() {
+        _health = new(this, intialHealth);
     }
 
     protected virtual void Start()

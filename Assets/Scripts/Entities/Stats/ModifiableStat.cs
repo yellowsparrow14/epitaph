@@ -21,7 +21,7 @@ public class ModifiableStat
     public SN<float> maxValue = null;
     public SN<float> minValue = null;
 
-    private List<StatModifier> modifiers;
+    private List<StatModifier> modifiers = new();
     private bool _isDirty = true;
     private float modifiedValue;
 
@@ -69,6 +69,9 @@ public class ModifiableStat
 
     private float CalculateValue(List<StatModifier> modifiers)
     {
+        if(modifiers == null) 
+            return currentBaseValue; //C: i have no idea how this happens
+
         float baseVal = currentBaseValue;
         float add = 0;
         float multipliers = 1;
@@ -103,8 +106,8 @@ public class ModifiableStat
 
         baseVal = baseVal * multipliers * (1 + additivePercent) + add;
 
-        if(minValue != null && baseVal < minValue) baseVal = HandleBelowMinValue(baseVal);
-        if(maxValue != null && baseVal > maxValue) baseVal = HandleAboveMaxValue(baseVal);
+        if(minValue != null && baseVal <= minValue) baseVal = HandleBelowMinValue(baseVal);
+        if(maxValue != null && baseVal >= maxValue) baseVal = HandleAboveMaxValue(baseVal);
 
         return baseVal;
     }

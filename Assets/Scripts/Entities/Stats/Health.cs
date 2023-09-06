@@ -14,6 +14,7 @@ public class Health : ModifiableStat
         statName = StatEnum.HEALTH;
         minValue = 0;
         _entity = entity;
+        beneficial = true;
     }
 
     public Health(Entity entity, float value)
@@ -23,6 +24,7 @@ public class Health : ModifiableStat
         statName = StatEnum.HEALTH;
         minValue = 0;
         _entity = entity;
+        beneficial = true;
     }
 
     public void TakeDamage(float amount)
