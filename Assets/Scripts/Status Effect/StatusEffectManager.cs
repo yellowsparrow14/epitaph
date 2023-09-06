@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using Unity.VisualScripting;
 
 public class StatusEffectManager : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class StatusEffectManager : MonoBehaviour
 
     private EntityStats _stats;
     private Health _health;
-    //private bool _hasListChanged = false;
 
     private float _currTime;
 
