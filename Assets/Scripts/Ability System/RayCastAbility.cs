@@ -7,6 +7,7 @@ using UnityEngine;
 public class RayCastAbility : Ability
 {
     private LineRenderer lineRenderer;
+    private ParticleSystem tipParticles;
     private Camera mainCamera;
     private Vector3 mousePos;
     private bool firing;
@@ -18,6 +19,9 @@ public class RayCastAbility : Ability
 
     private bool canTick;
     private float timer;
+
+    private Vector3 _prevPos;
+    [SerializeField] private float _laserSpeed = 0.5f;
 
     public override void Activate(GameObject parent)
     {
@@ -34,6 +38,7 @@ public class RayCastAbility : Ability
         lineRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<LineRenderer>();
         lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
+        tipParticles = lineRenderer.GetComponentInChildren<ParticleSystem>();
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         canTick = true;   
     } 
@@ -42,16 +47,26 @@ public class RayCastAbility : Ability
         lineRenderer.material.SetFloat("_Length", len);
     }
 
+    private void SetTipParticleEnabled(bool b) {
+        var e = tipParticles.emission; //Have to store in variable to prevent runtime error
+        e.enabled = b;
+    }
+
     public override void AbilityBehavior(GameObject parent) {
         if (firing) {
             mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
             Vector3 pos1 = parent.transform.GetChild(0).transform.position;
             Vector3 pos2 = mousePos + new Vector3(0,0,10);
+            pos2 = Vector3.MoveTowards(_prevPos, pos2, _laserSpeed);
+
+            _prevPos = pos2;
 
             lineRenderer.SetPosition(0, pos1);
             lineRenderer.SetPosition(1, pos2);
             lineRenderer.enabled = true;
+            tipParticles.transform.position = pos2;
+            SetTipParticleEnabled(true);
 
             float len = (pos2-pos1).magnitude;
             SetLineRMatLen(len);
@@ -76,6 +91,7 @@ public class RayCastAbility : Ability
 
         } else {
             lineRenderer.enabled = false;
+            SetTipParticleEnabled(false);
         }
     }
 
