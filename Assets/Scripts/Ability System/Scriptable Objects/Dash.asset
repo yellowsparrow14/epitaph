@@ -16,10 +16,6 @@ MonoBehaviour:
   aSprite: {fileID: 21300000, guid: 5f2d4cf21de555f49b8e446aac327694, type: 3}
   aSound: {fileID: 0}
   cooldownTime: 4
-  activeTime: 1
-  state: 0
-  abilityPressed: 0
-  currentActiveTime: -43.249428
-  currentCooldownTime: 0
-  fillAmount: 0
-  dashVelocity: 10
+  activeTime: 0.15
+  fillAmount: 1
+  moveSpeedMultiplier: 3
