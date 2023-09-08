@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 6086381338991058192}
   - component: {fileID: 4451322402477620099}
   - component: {fileID: 2305567050609022525}
+  - component: {fileID: 5672681696680130112}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -381,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b9470150fe2b9499a0569741455513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 8
   meleeHitbox: {fileID: 433368079217481562}
   canChangeDirection: 0
 --- !u!114 &6421672317329216225
@@ -831,3 +832,15 @@ MonoBehaviour:
     minValue:
       v: 0
       hasValue: 0
+--- !u!114 &5672681696680130112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263862798321204670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09223cbb5a0a6c479a50e752e7d8f60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
