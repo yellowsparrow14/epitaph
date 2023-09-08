@@ -17,8 +17,8 @@ MonoBehaviour:
   aSound: {fileID: 0}
   cooldownTime: 5
   activeTime: 5
-  fillAmount: 0.1836741
-  projectile: {fileID: 3681736836022034573, guid: 14310050085eb0249af316c86879d9aa, type: 3}
+  fillAmount: 1
+  projectile: {fileID: -4741330601030737148, guid: 14310050085eb0249af316c86879d9aa, type: 3}
   fireRate: 0
   delay: 0.3
   teleported: 0
