@@ -83,4 +83,18 @@ public class Entity : MonoBehaviour, IEffectable
     }
 
     // move to status effect
+
+    //Heal the entity
+    public void Heal(float healAmt)
+    {
+        if (currentHealth + healAmt >= maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += healAmt;
+        }
+        Debug.Log("Entity is healed");
+    }
 }
