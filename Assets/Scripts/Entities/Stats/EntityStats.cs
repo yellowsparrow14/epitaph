@@ -5,7 +5,7 @@ using System.Linq;
 
 //C: Put any stats you want on every entity here. These are the stats that can be modified by status effects
 [System.Serializable]
-public class EntityStats
+public class EntityStats : MonoBehaviour
 {
     [SerializeField] private List<ModifiableStat> _stats = new()
     {
