@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     protected Rigidbody2D rb;
     protected Vector3 direction;
     public float force;
-    [SerializeField] StatusEffect _data;
+    [SerializeField] List<StatusEffect> _statusEffects;
     [SerializeField] private float projectileTimer;
     public GameObject parent;
 
@@ -39,13 +39,9 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        var effectable = other.GetComponent<IEffectable>();
-
-        if (effectable != null) {
-            effectable.ApplyEffect(_data);
-            //effectable.GetComponent<Enemy>().
-        }
-
+        var statusEffectManager = other.GetComponent<StatusEffectManager>();
+            statusEffectManager?.ApplyEffects(_statusEffects);
+        
         //Debug.Log($"Hit {other.gameObject.name}");
 
         Destroy(this.gameObject);
