@@ -8,7 +8,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private EntityStats _entityStats;
     public EntityStats EntityStats => _entityStats;
     [SerializeField] private float intialHealth;
-    private Health _health;
+    protected Health _health;
     public float Health => _health.health;
 
     private StatusEffectManager _statusEffectManager;
@@ -24,6 +24,7 @@ public class Entity : MonoBehaviour
     [SerializeField] private float attack;
 
     private bool _isDead;
+
 
     public float Attack {
         get { return attack; }
@@ -47,7 +48,7 @@ public class Entity : MonoBehaviour
         Debug.Log("dead");
     }
 
-    public void TakeDamage(float amount)
+    public virtual void TakeDamage(float amount)
     {
         _health.TakeDamage(amount);
     }
@@ -55,6 +56,7 @@ public class Entity : MonoBehaviour
     public virtual void DealDamage(Entity target, float dmgAmt) {
         target.TakeDamage(dmgAmt);
     }
+
 
     public void Knockback(GameObject applier) {
         Debug.Log("KNOCK");
