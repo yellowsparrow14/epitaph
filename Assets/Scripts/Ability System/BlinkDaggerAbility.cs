@@ -14,10 +14,11 @@ public class BlinkDaggerAbility : ProjectileAbility
     private bool daggerThrown;
     private Projectile thrownDagger;
     
-    public float aoeRadius = 10;
+    [SerializeField]
+    private float aoeRadius = 1;
 
+    [SerializeField]
     private float damage = 5;
-
     public bool teleported;
 
 
@@ -123,15 +124,10 @@ public class BlinkDaggerAbility : ProjectileAbility
         List<Collider2D> enemiesHit = new List<Collider2D>();
         int i = Physics2D.OverlapCircle(parent.transform.position, aoeRadius, filter, enemiesHit); 
 
-        Debug.Log(i);
-        Debug.Log(enemiesHit);
-
         Entity player = parent.GetComponent<Entity>();
 
         foreach(Collider2D collider in enemiesHit) {
             Enemy enemy = collider.GetComponent<Enemy>();
-            Debug.Log(enemy);
-            Debug.Log(player);
             player.DealDamage(enemy, damage);
         }
 
