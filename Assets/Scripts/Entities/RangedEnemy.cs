@@ -10,25 +10,23 @@ public class RangedEnemy : Entity
     {
         //UPDATE LATER WITH UNIQUE BEHAVIOR, IF NEEDED
         base.Start();
-        target = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     protected override void Update()
     {
-        //UPDATE LATER WITH UNIQUE BEHAVIOR, IF NEEDED
+        //UPDATE LATER WITH UNIQUE BEHAVfIOR, IF NEEDED
         GameObject player = GameObject.FindWithTag("Player");
-        float dist = Vector3.Distance(transform.position, target.transform.position);
-        if (dist < 1000)
+        float dist = Vector3.Distance(transform.position, player.transform.position);
+        if (dist < 10)
         {
-            StopEnemy(agent);
+            movementSpeed = 0;
+        }
+        else
+        {
+            movementSpeed = 6;
         }
         base.Update();
-    }
-
-    public void StopEnemy(UnityEngine.AI.NavMeshAgent agent)
-    {
-        agent.isStopped = true;
     }
 
     protected override void Die() {
