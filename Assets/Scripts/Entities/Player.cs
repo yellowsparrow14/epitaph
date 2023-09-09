@@ -12,7 +12,7 @@ public class Player : Entity
     // relaying data to augment manager
     public override void TakeDamage(float amount)
     {
-        Health.TakeDamage(amount);
+        _health.TakeDamage(amount);
         _augmentManager.updateDamageTaken(amount);
     }
 
@@ -26,7 +26,7 @@ public class Player : Entity
     // handle augmented damage taken after initial
     public void TakeDamageAugmented(float amount)
     {
-        Health.TakeDamage(amount);
+        _health.TakeDamage(amount);
     }
 
     // handle augmented damage dealt after initial
