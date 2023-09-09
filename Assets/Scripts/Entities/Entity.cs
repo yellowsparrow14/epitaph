@@ -90,11 +90,13 @@ public class Entity : MonoBehaviour, IEffectable
         if (currentHealth + healAmt >= maxHealth)
         {
             currentHealth = maxHealth;
+            Debug.Log("Entity is at max health");
         }
         else
         {
             currentHealth += healAmt;
+            Debug.Log("Entity is healed. Current health: " + currentHealth);
         }
-        Debug.Log("Entity is healed");
+        
     }
 }

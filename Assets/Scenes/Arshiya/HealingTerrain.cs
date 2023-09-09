@@ -30,9 +30,9 @@ public class HealingTerrain : MonoBehaviour
 
     public void Update()
     {
-        if (Contains(playerRenderer))
+        if(Contains(playerRenderer))
         {
-            Debug.Log("Player found");
+            //Debug.Log("Player found");
             player.GetComponent<Entity>().Heal(healAmount);
 
         }
