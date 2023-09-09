@@ -5,14 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Controller
 {
-    [SerializeField] private float moveSpeed =  5f;
-    [SerializeField] private GameObject meleeHitbox;
-    private MeleeAttack meleeAttack;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private List<GameObject> meleeHitboxes;
     private PlayerInput playerInput;
     private Camera mainCam;
     private Rigidbody2D rb;
     private bool canMove;
     private Vector2 movementInput;
+    private int currentAttack;
     public bool CanMove {
         get { return canMove; }
         set { canMove = value; }
@@ -21,10 +21,10 @@ public class PlayerController : Controller
     {
         canMove = true;
         playerInput = GetComponent<PlayerInput>();
-        meleeAttack = meleeHitbox.GetComponent<MeleeAttack>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         movementInput = Vector2.zero;
+        currentAttack = 0;
     }
 
     // Update is called once per frame
@@ -49,10 +49,16 @@ public class PlayerController : Controller
     }
     IEnumerator AttackDelay() {
         Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        MeleeAttack meleeAttack = meleeHitboxes[currentAttack].GetComponent<MeleeAttack>();
         meleeAttack.SetActive();
         meleeAttack.Attack(mousePos);
         yield return new WaitForSeconds(0.3f);
         meleeAttack.SetInactive();
         canMove = true;
+        if (currentAttack >= meleeHitboxes.Count - 1) {
+            currentAttack = 0;
+        } else {
+            currentAttack++;
+        }
     }
 }
