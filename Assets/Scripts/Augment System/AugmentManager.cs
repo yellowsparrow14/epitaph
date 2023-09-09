@@ -55,6 +55,7 @@ public class AugmentManager : MonoBehaviour
         augments.Add(augment);
     }
 
+    // deactive augments
     public void removeAugment(Augment augment)
     {
         augments.Remove(augment);

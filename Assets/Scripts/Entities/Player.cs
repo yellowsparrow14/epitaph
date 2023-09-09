@@ -9,12 +9,14 @@ public class Player : Entity
     [SerializeField]
     private AugmentManager _augmentManager;
 
+    // relaying data to augment manager
     public override void TakeDamage(float amount)
     {
         _health.TakeDamage(amount);
         _augmentManager.updateDamageTaken(amount);
     }
 
+    // relaying data to augment manager
     public override void DealDamage(Entity target, float dmgAmt)
     {
         target.TakeDamage(dmgAmt);
