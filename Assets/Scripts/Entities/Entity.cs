@@ -8,8 +8,9 @@ public class Entity : MonoBehaviour
     [SerializeField] private EntityStats _entityStats;
     public EntityStats EntityStats => _entityStats;
     [SerializeField] private float intialHealth;
-    protected Health _health;
-    public float Health => _health.health;
+    private Health _health;
+    public float HealthVal => _health.health;
+    public Health Health => _health;
 
     private StatusEffectManager _statusEffectManager;
     public StatusEffectManager StatusEffectManager => _statusEffectManager;
@@ -34,6 +35,7 @@ public class Entity : MonoBehaviour
     private void Awake() {
         _health = new(this, intialHealth);
         _statusEffectManager = gameObject.GetComponent<StatusEffectManager>();
+        _statusEffectManager.entity = this;
     }
 
     protected virtual void Start()
