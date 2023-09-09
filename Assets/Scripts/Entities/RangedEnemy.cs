@@ -1,41 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class RangedEnemy : Entity
 {
+    private float timer = 3f;
 
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        //UPDATE LATER WITH UNIQUE BEHAVIOR, IF NEEDED
-        base.Start();
-    }
-
-    // Update is called once per frame
-    protected override void Update()
-    {
-        //UPDATE LATER WITH UNIQUE BEHAVfIOR, IF NEEDED
-        GameObject player = GameObject.FindWithTag("Player");
-        float dist = Vector3.Distance(transform.position, player.transform.position);
-        if (dist < 10)
-        {
-            movementSpeed = 0;
-        }
-        else
-        {
-            movementSpeed = 6;
-        }
-        base.Update();
-    }
-
-    protected override void Die() {
+    public override void Die() {
         Destroy(gameObject);
     }
 
-    public override void TakeDamage(float dmgAmt) {
-        GameObject player = GameObject.FindWithTag("Player");
-        base.TakeDamage(dmgAmt);
-        //Knockback(player);
+    public float movementSpeed {
+        get { return movementSpeed; }
+    }
+
+    public override void DealDamage(Entity target, float dmgAmt)    
+    {
+        UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        float dist = Vector3.Distance(transform.position, target.transform.position);
+        if (dist < 2)
+        {
+            Debug.Log("it work");
+            new StopAgentNode(this.gameObject.transform, agent);
+            // Add shoot logic with damage to player
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                // Spawn Bullet or whatever else
+            }
+        }
+        else
+        {
+            Debug.Log("why");
+            new StopAgentNode(this.gameObject.transform, agent);
+        }
     }
 }
