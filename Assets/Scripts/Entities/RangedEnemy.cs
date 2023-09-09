@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RangedEnemy : Entity
 {
-    GameObject target;
-    UnityEngine.AI.NavMeshAgent agent;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -19,6 +17,7 @@ public class RangedEnemy : Entity
     protected override void Update()
     {
         //UPDATE LATER WITH UNIQUE BEHAVIOR, IF NEEDED
+        GameObject player = GameObject.FindWithTag("Player");
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if (dist < 1000)
         {
