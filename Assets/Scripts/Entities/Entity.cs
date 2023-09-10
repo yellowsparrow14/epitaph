@@ -18,19 +18,9 @@ public class Entity : MonoBehaviour
     [SerializeField] private float knockbackDelay;
     [SerializeField] private float knockbackForce;
 
-    private float currentHealth;
-    private float movementSpeed;
     private Rigidbody2D body;
 
-    [SerializeField] private float attack;
-
     private bool _isDead;
-
-
-    public float Attack {
-        get { return attack; }
-        set { attack = value; }
-    }
 
     private void Awake() {
         _health = new(this, intialHealth);

@@ -10,6 +10,7 @@ public class EntityStats
     [SerializeField] private List<ModifiableStat> _stats = new()
     {
         new(StatEnum.WALKSPEED, 5),
+        new(StatEnum.ATTACK, 10)
     };
 
     public ModifiableStat GetStat(StatEnum stat)
