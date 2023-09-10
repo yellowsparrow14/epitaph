@@ -164,6 +164,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4323706495432064238, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: chainAttackTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323706495432064238, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
       propertyPath: meleeHitboxes.Array.size
       value: 3
       objectReference: {fileID: 0}

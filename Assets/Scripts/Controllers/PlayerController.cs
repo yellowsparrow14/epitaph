@@ -1,11 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerController : Controller
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float chainAttackTime = 0.1f;
     [SerializeField] private List<GameObject> meleeHitboxes;
     private PlayerInput playerInput;
     private Camera mainCam;
@@ -13,6 +16,8 @@ public class PlayerController : Controller
     private bool canMove;
     private Vector2 movementInput;
     private int currentAttack;
+    private bool hasBufferAttack;
+    private bool canChainAttack;
     public bool CanMove {
         get { return canMove; }
         set { canMove = value; }
@@ -25,6 +30,8 @@ public class PlayerController : Controller
         rb = GetComponent<Rigidbody2D>();
         movementInput = Vector2.zero;
         currentAttack = 0;
+        hasBufferAttack = false;
+        canChainAttack = false;
     }
 
     // Update is called once per frame
@@ -42,12 +49,25 @@ public class PlayerController : Controller
     }
 
     public void OnMelee(InputAction.CallbackContext ctx) {
-        if (canMove == true) {
-            canMove = false;
-            StartCoroutine(AttackDelay());
+        if (ctx.performed) {
+            if (canMove == true) {
+                canMove = false;
+                StartCoroutine(AttackDelay());
+            } else if (!hasBufferAttack) {
+                StartCoroutine(BufferAttack());
+            }
         }
     }
     IEnumerator AttackDelay() {
+        if (canChainAttack) {
+            if (currentAttack >= meleeHitboxes.Count - 1) {
+            currentAttack = 0;
+            } else {
+                currentAttack++;
+            }
+        } else {
+            currentAttack = 0;
+        }
         Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         MeleeAttack meleeAttack = meleeHitboxes[currentAttack].GetComponent<MeleeAttack>();
         meleeAttack.SetActive();
@@ -55,10 +75,18 @@ public class PlayerController : Controller
         yield return new WaitForSeconds(0.3f);
         meleeAttack.SetInactive();
         canMove = true;
-        if (currentAttack >= meleeHitboxes.Count - 1) {
-            currentAttack = 0;
-        } else {
-            currentAttack++;
-        }
+        StartCoroutine(AttackChainTimeWindow());
+    }
+    IEnumerator BufferAttack() {
+        hasBufferAttack = true;
+        yield return new WaitUntil(() => canMove == true);
+        canMove = false;
+        StartCoroutine(AttackDelay());
+        hasBufferAttack = false;
+    }
+    IEnumerator AttackChainTimeWindow() {
+        canChainAttack = true;
+        yield return new WaitForSeconds(chainAttackTime);
+        canChainAttack = false;
     }
 }
