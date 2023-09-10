@@ -438,7 +438,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8039f5099d1aeee43bd0f715a413edba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _entityStats: {fileID: 0}
+  _entityStats:
+    _stats:
+    - statName: 1
+      intialValue: 5
+      currentBaseValue: 5
+      beneficial: 1
+      maxValue:
+        v: 0
+        hasValue: 0
+      minValue:
+        v: 0
+        hasValue: 0
   intialHealth: 10
   knockbackDelay: 0.75
   knockbackForce: 40
@@ -480,3 +491,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09223cbb5a0a6c479a50e752e7d8f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entity: {fileID: 0}

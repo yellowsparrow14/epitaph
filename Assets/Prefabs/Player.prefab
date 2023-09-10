@@ -800,6 +800,7 @@ MonoBehaviour:
   knockbackDelay: 0
   knockbackForce: 0
   attack: 3
+  _augmentManager: {fileID: 0}
 --- !u!114 &4451322402477620099
 MonoBehaviour:
   m_ObjectHideFlags: 0
