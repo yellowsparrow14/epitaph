@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 public class HealingTerrain : MonoBehaviour
 {
     //variable declarations
-    [SerializeField] private string source;
+    [SerializeField] private bool setByPlayer;
     [SerializeField] private float healAmount;
     [SerializeField] private float timeInterval;
     private bool isPlayer;
@@ -19,7 +19,7 @@ public class HealingTerrain : MonoBehaviour
         isPlayer = (collision.gameObject.GetComponent<Player>()!= null);
         
         //if it is and the source is player OR if it isn't and the source is enemy
-        if((isPlayer && source.Equals("Player")) || (!isPlayer && !source.Equals("Player")))
+        if((isPlayer && setByPlayer) || (!isPlayer && !setByPlayer))
         {
             //add the Entity to the list of entities currently in the pool
             entitiesBeingHealed.Add(collision.gameObject);
@@ -64,11 +64,10 @@ public class HealingTerrain : MonoBehaviour
     }
 
     //called from an external script when a Player or enemy places down a healing pool
-    //takes in a gameObject parameter that would be the gameObject that placed the healing pool down
-    public void SetSource(GameObject sourceEntity)
+    //takes in boolean parameter that would be true if this method was called by a Player ability and false otherwise
+    public void SetSource(bool wasPlayer)
     {
-        //if the source gameObject is not a player, it is assumed to be an enemy
-        source = sourceEntity.gameObject.name;
+        setByPlayer = wasPlayer;
     }
    
 }
