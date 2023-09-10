@@ -55,7 +55,7 @@ public class MeleeAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Enemy") {
             Enemy enemy = other.GetComponent<Enemy>();
-            source.DealDamage(enemy , source.Attack);
+            source.DealDamage(enemy , source.EntityStats.GetStatValue(StatEnum.ATTACK));
 
             //knockback here?
         }

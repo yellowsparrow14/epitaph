@@ -8,17 +8,26 @@ public class DashAbility : Ability
 {
     public float moveSpeedMultiplier;
 
+    private Dash modifier;
+    
+    public override void Init() {
+        modifier = new Dash(moveSpeedMultiplier);
+    }
+
     public override void Activate(GameObject parent)
     {
         Debug.Log("dash start");
-        parent.GetComponent<PlayerController>().moveSpeed *= moveSpeedMultiplier;
+        ModifiableStat speed = parent.GetComponent<Player>().EntityStats.GetStat(StatEnum.WALKSPEED);
+        speed.AddModifier(modifier);
+        Debug.Log(speed.GetStatValue());
         parent.GetComponent<PlayerController>().canChangeDirection = false;
     }
 
     public override void Deactivate(GameObject parent)
     {
         Debug.Log("dash end");
-        parent.GetComponent<PlayerController>().moveSpeed /= moveSpeedMultiplier;
+        ModifiableStat speed = parent.GetComponent<Player>().EntityStats.GetStat(StatEnum.WALKSPEED);
+        speed.RemoveModifier(modifier);
         parent.GetComponent<PlayerController>().canChangeDirection = true;
     }
 
