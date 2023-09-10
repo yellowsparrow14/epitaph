@@ -4,37 +4,36 @@ using UnityEngine;
 
 public class HealingTerrain : MonoBehaviour
 {
-    //variable declarations
+    //variable
+    [SerializeField] private string source;
     [SerializeField] private float healAmount;
-    public SpriteRenderer spriteRenderer;
-    float minX, minY, maxX, maxY;
-    public SpriteRenderer playerRenderer;
-    public GameObject player;
-    public void Start()
-    {
-        spriteRenderer = this.gameObject.GetComponent<SpriteRenderer>();
-        playerRenderer = player.gameObject.GetComponent<SpriteRenderer>();
-        minX = spriteRenderer.bounds.min.x;
-        minY = spriteRenderer.bounds.min.y;
-        maxX = spriteRenderer.bounds.max.x;
-        maxY = spriteRenderer.bounds.max.y; 
-    }
+    [SerializeField] private float timeInterval;
+    public GameObject entity;
 
-    private bool Contains(SpriteRenderer other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        return minX <= other.bounds.min.x
-            && minY <= other.bounds.min.y
-            && maxX >= other.bounds.max.x
-            && maxY >= other.bounds.max.y;
-    }
-
-    public void Update()
-    {
-        if(Contains(playerRenderer))
+        if (collision.gameObject.tag.Equals(source))
         {
-            //Debug.Log("Player found");
-            player.GetComponent<Entity>().Heal(healAmount);
-
+            entity = collision.gameObject;
+            InvokeRepeating("Heal", 0f, timeInterval);
         }
+
     }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        CancelInvoke();
+    }
+
+    private void Heal()
+    {
+        entity.gameObject.GetComponent<Entity>().Health.Heal(healAmount);
+        Debug.Log("healed");
+    }
+
+    public void SetSource(string sourceName)
+    {
+        source = sourceName;
+    }
+   
 }
