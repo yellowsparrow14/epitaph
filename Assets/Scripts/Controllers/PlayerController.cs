@@ -18,6 +18,8 @@ public class PlayerController : Controller
     private int currentAttack;
     private bool hasBufferAttack;
     private bool canChainAttack;
+    private Vector2 lastMovementInput;
+    public bool canChangeDirection;
     public bool CanMove {
         get { return canMove; }
         set { canMove = value; }
@@ -25,6 +27,7 @@ public class PlayerController : Controller
     void Start()
     {
         canMove = true;
+        canChangeDirection = true;
         playerInput = GetComponent<PlayerInput>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
@@ -38,7 +41,11 @@ public class PlayerController : Controller
     void FixedUpdate()
     {
         if(canMove == true) {
-            rb.velocity = movementInput * moveSpeed;
+            if (canChangeDirection) {
+                rb.velocity = movementInput * moveSpeed;
+            } else {
+                rb.velocity = lastMovementInput * moveSpeed;
+            }
         } else {
             rb.velocity = Vector3.zero;
         }
@@ -46,6 +53,9 @@ public class PlayerController : Controller
 
     public void OnMove(InputAction.CallbackContext ctx) {
         movementInput = ctx.ReadValue<Vector2>();
+        if (canChangeDirection){
+            lastMovementInput = movementInput;
+        }
     }
 
     public void OnMelee(InputAction.CallbackContext ctx) {
