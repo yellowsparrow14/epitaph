@@ -19,7 +19,6 @@ public class DashAbility : Ability
         Debug.Log("dash start");
         ModifiableStat speed = parent.GetComponent<Player>().EntityStats.GetStat(StatEnum.WALKSPEED);
         speed.AddModifier(modifier);
-        Debug.Log(speed.GetStatValue());
         parent.GetComponent<PlayerController>().canChangeDirection = false;
     }
 
