@@ -14,7 +14,14 @@ public class BlinkDaggerAbility : ProjectileAbility
     private bool daggerThrown;
     private Projectile thrownDagger;
     
+    [SerializeField]
+    private float aoeRadius = 1;
+
+    [SerializeField]
+    private float damage = 5;
     public bool teleported;
+
+
 
     // public override void Activate(GameObject parent)
     // {
@@ -35,6 +42,8 @@ public class BlinkDaggerAbility : ProjectileAbility
 
     public override void AbilityBehavior(GameObject parent) {
         mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+
+        //Debug.Log("Blink Started");
 
         if (!canFire) {
             timer += Time.deltaTime;
@@ -104,6 +113,25 @@ public class BlinkDaggerAbility : ProjectileAbility
         parent.transform.position = thrownDagger.transform.position;
         Destroy(thrownDagger.gameObject);
         firing = false;
+
+        // Damage enemies in a small area
+
+        // Mask for enemies
+        LayerMask mask = LayerMask.GetMask("Enemy");
+
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.SetLayerMask(mask);
+        List<Collider2D> enemiesHit = new List<Collider2D>();
+        int i = Physics2D.OverlapCircle(parent.transform.position, aoeRadius, filter, enemiesHit); 
+
+        Entity player = parent.GetComponent<Entity>();
+
+        foreach(Collider2D collider in enemiesHit) {
+            Enemy enemy = collider.GetComponent<Enemy>();
+            player.DealDamage(enemy, damage);
+        }
+
     }
     #endregion
+
 }
