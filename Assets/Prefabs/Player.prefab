@@ -381,7 +381,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b9470150fe2b9499a0569741455513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
   meleeHitbox: {fileID: 433368079217481562}
   canChangeDirection: 0
 --- !u!114 &6421672317329216225
@@ -787,8 +786,18 @@ MonoBehaviour:
   _entityStats:
     _stats:
     - statName: 1
-      intialValue: 5
-      currentBaseValue: 5
+      intialValue: 10
+      currentBaseValue: 10
+      beneficial: 1
+      maxValue:
+        v: 0
+        hasValue: 0
+      minValue:
+        v: 0
+        hasValue: 0
+    - statName: 0
+      intialValue: 100
+      currentBaseValue: 100
       beneficial: 1
       maxValue:
         v: 0
@@ -799,7 +808,7 @@ MonoBehaviour:
   intialHealth: 100
   knockbackDelay: 0
   knockbackForce: 0
-  attack: 3
+  _augmentManager: {fileID: 0}
 --- !u!114 &4451322402477620099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -818,7 +827,7 @@ MonoBehaviour:
   newAbility: {fileID: 0}
   abilityToDiscard: {fileID: 0}
   startingAbilities: []
-  dashAbility: {fileID: 0}
+  dashAbility: {fileID: 11400000, guid: 7ed3257df13a0594fa64d5a6895f3c62, type: 2}
 --- !u!114 &5672681696680130112
 MonoBehaviour:
   m_ObjectHideFlags: 0
