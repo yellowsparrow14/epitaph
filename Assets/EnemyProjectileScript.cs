@@ -7,7 +7,7 @@ public class EnemyProjectileScript : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     private Enemy enemy;
-    private float timer;
+    private float timer = 0;
 
     public float force;
 
@@ -34,7 +34,7 @@ public class EnemyProjectileScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Player"){
             Destroy(gameObject);
-            enemy.DealDamage(other.gameObject.GetComponent<Player>(), enemy.Attack);
+            enemy.DealDamage(other.gameObject.GetComponent<Player>(), stats.GetStatValue(StatEnum.ATTACK));
         }
     }
 }
