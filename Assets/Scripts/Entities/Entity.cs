@@ -23,6 +23,7 @@ public class Entity : MonoBehaviour
     private bool _isDead;
 
     // need a reference to this to adjust damage dealt and taken
+    [SerializeField]
     private AugmentManager _augmentManager;
 
     private void Awake() {
