@@ -22,10 +22,15 @@ public class Entity : MonoBehaviour
 
     private bool _isDead;
 
+    // need a reference to this to adjust damage dealt and taken
+    private AugmentManager _augmentManager;
+
     private void Awake() {
         _health = new(this, intialHealth);
         _statusEffectManager = gameObject.GetComponent<StatusEffectManager>();
         _statusEffectManager.entity = this;
+        _augmentManager = gameObject.GetComponent<AugmentManager>();
+        _augmentManager.setCurrent(this);
     }
 
     protected virtual void Start()
@@ -40,12 +45,29 @@ public class Entity : MonoBehaviour
         Debug.Log("dead");
     }
 
-    public virtual void TakeDamage(float amount)
+    // relaying data to augment manager
+    public void TakeDamage(float amount)
     {
-        _health.TakeDamage(amount);
+        Health.TakeDamage(amount);
+        _augmentManager.updateDamageTaken(amount);
     }
-    
-    public virtual void DealDamage(Entity target, float dmgAmt) {
+
+    // relaying data to augment manager
+    public void DealDamage(Entity target, float dmgAmt)
+    {
+        target.TakeDamage(dmgAmt);
+        _augmentManager.updateDamageDealt(target, dmgAmt);
+    }
+
+    // handle augmented damage taken after initial
+    public void TakeDamageAugmented(float amount)
+    {
+        Health.TakeDamage(amount);
+    }
+
+    // handle augmented damage dealt after initial
+    public void DealDamageAugmented(Entity target, float dmgAmt)
+    {
         target.TakeDamage(dmgAmt);
     }
 
