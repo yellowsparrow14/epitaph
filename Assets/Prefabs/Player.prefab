@@ -805,6 +805,16 @@ MonoBehaviour:
       minValue:
         v: 0
         hasValue: 0
+    - statName: 2
+      intialValue: 3
+      currentBaseValue: 3
+      beneficial: 1
+      maxValue:
+        v: 0
+        hasValue: 0
+      minValue:
+        v: 0
+        hasValue: 0
   intialHealth: 100
   knockbackDelay: 0
   knockbackForce: 0
