@@ -5,14 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Controller
 {
-    [SerializeField] private float moveSpeed =  5f;
     [SerializeField] private GameObject meleeHitbox;
+    private Entity player;
+    private EntityStats stats;
     private MeleeAttack meleeAttack;
     private PlayerInput playerInput;
     private Camera mainCam;
     private Rigidbody2D rb;
     private bool canMove;
     private Vector2 movementInput;
+    private Vector2 lastMovementInput;
+    public bool canChangeDirection;
     public bool CanMove {
         get { return canMove; }
         set { canMove = value; }
@@ -20,18 +23,25 @@ public class PlayerController : Controller
     void Start()
     {
         canMove = true;
+        canChangeDirection = true;
         playerInput = GetComponent<PlayerInput>();
         meleeAttack = meleeHitbox.GetComponent<MeleeAttack>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         movementInput = Vector2.zero;
+        player = GetComponent<Player>();
+        stats = player.EntityStats;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         if(canMove == true) {
-            rb.velocity = movementInput * moveSpeed;
+            if (canChangeDirection) {
+                rb.velocity = movementInput * stats.GetStatValue(StatEnum.WALKSPEED);
+            } else {
+                rb.velocity = lastMovementInput * stats.GetStatValue(StatEnum.WALKSPEED);
+            }
         } else {
             rb.velocity = Vector3.zero;
         }
@@ -39,6 +49,9 @@ public class PlayerController : Controller
 
     public void OnMove(InputAction.CallbackContext ctx) {
         movementInput = ctx.ReadValue<Vector2>();
+        if (canChangeDirection){
+            lastMovementInput = movementInput;
+        }
     }
 
     public void OnMelee(InputAction.CallbackContext ctx) {
