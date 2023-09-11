@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public enum StatEnum
 {
     HEALTH,
-    WALKSPEED,    
+    WALKSPEED,
+    ATTACK
 }
 
 [System.Serializable]
@@ -101,7 +102,6 @@ public class ModifiableStat
         }
 
         baseVal = baseVal * multipliers * (1 + additivePercent) + add;
-
         if(minValue != null && baseVal <= minValue) baseVal = HandleBelowMinValue(baseVal);
         if(maxValue != null && baseVal >= maxValue) baseVal = HandleAboveMaxValue(baseVal);
 
