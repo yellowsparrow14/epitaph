@@ -7,7 +7,7 @@ using UnityEngine;
 public class RayCastAbility : Ability
 {
     private LineRenderer lineRenderer;
-    private ParticleSystem tipParticles;
+    private LaserParticleMan laserParticleMan;
     private Camera mainCamera;
     private Vector3 mousePos;
     private bool firing;
@@ -35,10 +35,13 @@ public class RayCastAbility : Ability
 
     public override void Init()
     {
+        Debug.Log("hello");
         lineRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<LineRenderer>();
         lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
-        tipParticles = lineRenderer.GetComponentInChildren<ParticleSystem>();
+        
+        laserParticleMan = lineRenderer.gameObject.GetComponentInChildren<LaserParticleMan>(includeInactive: true);
+        
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         canTick = true;   
     } 
@@ -47,9 +50,8 @@ public class RayCastAbility : Ability
         lineRenderer.material.SetFloat("_Length", len);
     }
 
-    private void SetTipParticleEnabled(bool b) {
-        var e = tipParticles.emission; //Have to store in variable to prevent runtime error
-        e.enabled = b;
+    private void EnableParticleMan(bool b) {
+        laserParticleMan.gameObject.SetActive(b);
     }
 
     public override void AbilityBehavior(GameObject parent) {
@@ -65,8 +67,8 @@ public class RayCastAbility : Ability
             lineRenderer.SetPosition(0, pos1);
             lineRenderer.SetPosition(1, pos2);
             lineRenderer.enabled = true;
-            tipParticles.transform.position = pos2;
-            SetTipParticleEnabled(true);
+            EnableParticleMan(true);
+            laserParticleMan.UpdateParticles(pos1, pos2);
 
             float len = (pos2-pos1).magnitude;
             SetLineRMatLen(len);
@@ -84,7 +86,6 @@ public class RayCastAbility : Ability
 
                 if (canTick) {
                     parent.GetComponent<Entity>().DealDamage(hit.transform.gameObject.GetComponent<Entity>(), damage);
-                    Debug.Log(hit);
                     canTick = false;
                 }
 
@@ -92,7 +93,7 @@ public class RayCastAbility : Ability
 
         } else {
             lineRenderer.enabled = false;
-            SetTipParticleEnabled(false);
+            EnableParticleMan(false);
         }
     }
 
