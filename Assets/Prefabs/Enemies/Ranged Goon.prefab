@@ -285,7 +285,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.82, y: 2.1, z: 0}
-  m_LocalScale: {x: 0.6148, y: 0.6148, z: 0.6148}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6230253979109479335}
@@ -477,6 +477,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c55701937e17794196565fafe575849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectile: {fileID: 3681736836022034573, guid: d23dd2301c73a8d4fa83268033ad61b5, type: 3}
+  projectilePos: {fileID: 0}
 --- !u!114 &3341176197572623987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,7 +503,7 @@ MonoBehaviour:
       minValue:
         v: 0
         hasValue: 0
-  intialHealth: 20
-  knockbackDelay: 2
-  knockbackForce: 2
+  intialHealth: 15
+  knockbackDelay: 0
+  knockbackForce: 0
   attack: 2

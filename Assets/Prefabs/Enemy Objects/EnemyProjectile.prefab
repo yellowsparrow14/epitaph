@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3108380054243470153}
   - component: {fileID: 3619814854486958252}
-  - component: {fileID: 821187670631513303}
   - component: {fileID: 7509041470071400577}
   - component: {fileID: 2951822557027470164}
+  - component: {fileID: 3608137750753341286}
   m_Layer: 3
   m_Name: EnemyProjectile
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.395, y: -0.013, z: 0.5}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -87,22 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &821187670631513303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3681736836022034573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ae956b02304c76489ad53ddee42c81a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 5
-  _statusEffects: []
-  projectileTimer: 5
-  parent: {fileID: 0}
 --- !u!50 &7509041470071400577
 Rigidbody2D:
   serializedVersion: 4
@@ -164,4 +148,17 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.12
+  m_Radius: 1
+--- !u!114 &3608137750753341286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3681736836022034573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd16478ca79e4cc4089a62d9269f881f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 4
