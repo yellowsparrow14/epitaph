@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : Controller
 {
-    [SerializeField] public float moveSpeed =  5f;
     [SerializeField] private GameObject meleeHitbox;
+    private Entity player;
+    private EntityStats stats;
     private MeleeAttack meleeAttack;
     private PlayerInput playerInput;
     private Camera mainCam;
@@ -28,6 +29,8 @@ public class PlayerController : Controller
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         movementInput = Vector2.zero;
+        player = GetComponent<Player>();
+        stats = player.EntityStats;
     }
 
     // Update is called once per frame
@@ -35,9 +38,9 @@ public class PlayerController : Controller
     {
         if(canMove == true) {
             if (canChangeDirection) {
-                rb.velocity = movementInput * moveSpeed;
+                rb.velocity = movementInput * stats.GetStatValue(StatEnum.WALKSPEED);
             } else {
-                rb.velocity = lastMovementInput * moveSpeed;
+                rb.velocity = lastMovementInput * stats.GetStatValue(StatEnum.WALKSPEED);
             }
         } else {
             rb.velocity = Vector3.zero;

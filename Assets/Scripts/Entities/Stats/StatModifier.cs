@@ -63,3 +63,16 @@ public class Heal: StatModifier
         changeBaseValue = true;
     }
 }
+
+[System.Serializable]
+public class Dash: StatModifier
+{
+    public Dash(float multiplier)
+    {
+        applicationType = ApplicationType.MULTIPLY;
+        stat = StatEnum.WALKSPEED;
+        this.amount = multiplier;
+        beneficial = true;
+        changeBaseValue = false;
+    }
+}
