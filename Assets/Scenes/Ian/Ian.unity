@@ -687,6 +687,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b508dc3b1d4391f4f830037fcced6474, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &718840696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3341176197572623987, guid: 37d7423d30062f14180fbcb28a8fb121, type: 3}
+  m_PrefabInstance: {fileID: 1730357472}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8039f5099d1aeee43bd0f715a413edba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &867298787
 GameObject:
   m_ObjectHideFlags: 0
@@ -20652,17 +20663,6 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
---- !u!114 &1315106261 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -3566511538589579447, guid: 37d7423d30062f14180fbcb28a8fb121, type: 3}
-  m_PrefabInstance: {fileID: 1730357472}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5571dcc6119f648ad5f9c62ad76086, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1320100118
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20905,10 +20905,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3341176197572623987, guid: 37d7423d30062f14180fbcb28a8fb121, type: 3}
+      propertyPath: attack
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341176197572623987, guid: 37d7423d30062f14180fbcb28a8fb121, type: 3}
+      propertyPath: intialHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341176197572623987, guid: 37d7423d30062f14180fbcb28a8fb121, type: 3}
+      propertyPath: knockbackDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3341176197572623987, guid: 37d7423d30062f14180fbcb28a8fb121, type: 3}
+      propertyPath: knockbackForce
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4223745297603692118, guid: 37d7423d30062f14180fbcb28a8fb121, type: 3}
       propertyPath: entityToTrack
       value: 
-      objectReference: {fileID: 1315106261}
+      objectReference: {fileID: 718840696}
     - target: {fileID: 7869210425373712410, guid: 37d7423d30062f14180fbcb28a8fb121, type: 3}
       propertyPath: m_Name
       value: Ranged Goon
