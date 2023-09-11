@@ -7,6 +7,7 @@ public class EnemyProjectileScript : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     private Enemy enemy;
+    private EntityStats stats;
     private float timer = 0;
 
     public float force;
@@ -19,6 +20,7 @@ public class EnemyProjectileScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         Vector3 direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(direction.x, direction.y).normalized * force;
+        stats = enemy.EntityStats;
     }
 
     // Update is called once per frame
