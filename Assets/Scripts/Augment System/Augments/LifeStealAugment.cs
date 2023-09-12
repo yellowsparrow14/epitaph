@@ -10,6 +10,7 @@ public class LifeStealAugment : Augment
 
     private float damageDealt;
 
+
     public override void stackAugments()
     {
         return;
@@ -20,15 +21,17 @@ public class LifeStealAugment : Augment
         Debug.Log("LifeSteal activated.");
     }
 
-    public override float applyAugmentDamageDealt(float damageDealt)
+    public override float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target)
     {
         this.damageDealt = damageDealt;
         return 0;
     }
 
     // note that this is negative because we want to heal
-    public override float applyAugmentDamageTaken(float damageTaken)
+    public override float applyAugmentDamageTaken(float damageTaken, Entity current, Entity target)
     {
-        return -stealFactor * damageDealt;
+        float healthGain = -stealFactor * damageDealt;
+        this.damageDealt = 0;
+        return healthGain;
     }
 }
