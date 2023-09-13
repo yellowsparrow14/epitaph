@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(StatusEffectManager))]
+[RequireComponent(typeof(AugmentManager))]
 public class Entity : MonoBehaviour 
 {
     [SerializeField] private EntityStats _entityStats;
@@ -18,24 +19,20 @@ public class Entity : MonoBehaviour
     [SerializeField] private float knockbackDelay;
     [SerializeField] private float knockbackForce;
 
-    private float currentHealth;
-    private float movementSpeed;
     private Rigidbody2D body;
-
-    [SerializeField] private float attack;
 
     private bool _isDead;
 
-
-    public float Attack {
-        get { return attack; }
-        set { attack = value; }
-    }
+    // need a reference to this to adjust damage dealt and taken
+    [SerializeField]
+    private AugmentManager _augmentManager;
 
     private void Awake() {
         _health = new(this, intialHealth);
         _statusEffectManager = gameObject.GetComponent<StatusEffectManager>();
         _statusEffectManager.entity = this;
+        _augmentManager = gameObject.GetComponent<AugmentManager>();
+        _augmentManager.setCurrent(this);
     }
 
     protected virtual void Start()
@@ -50,12 +47,29 @@ public class Entity : MonoBehaviour
         Debug.Log("dead");
     }
 
-    public virtual void TakeDamage(float amount)
+    // relaying data to augment manager
+    public void TakeDamage(float amount)
     {
-        _health.TakeDamage(amount);
+        Health.TakeDamage(amount);
+        _augmentManager.updateDamageTaken(amount);
     }
-    
-    public virtual void DealDamage(Entity target, float dmgAmt) {
+
+    // relaying data to augment manager
+    public void DealDamage(Entity target, float dmgAmt)
+    {
+        target.TakeDamage(dmgAmt);
+        _augmentManager.updateDamageDealt(target, dmgAmt);
+    }
+
+    // handle augmented damage taken after initial
+    public void TakeDamageAugmented(float amount)
+    {
+        Health.TakeDamage(amount);
+    }
+
+    // handle augmented damage dealt after initial
+    public void DealDamageAugmented(Entity target, float dmgAmt)
+    {
         target.TakeDamage(dmgAmt);
     }
 
@@ -72,5 +86,4 @@ public class Entity : MonoBehaviour
         yield return new WaitForSeconds(knockbackDelay);
         body.velocity = Vector3.zero;
     }
-
 }

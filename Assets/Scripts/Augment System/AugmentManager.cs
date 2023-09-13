@@ -5,7 +5,7 @@ using UnityEngine;
 public class AugmentManager : MonoBehaviour
 {
     [SerializeField]
-    private Player player;
+    private Entity current;
 
     private Entity target;
 
@@ -20,6 +20,7 @@ public class AugmentManager : MonoBehaviour
     public void updateDamageTaken(float damage)
     {
         this.damageTaken = damage;
+        // Debug.Log(current.name + ": " + current.HealthVal); // just for testing
         takeAugmentedDamage();
     }
 
@@ -36,7 +37,7 @@ public class AugmentManager : MonoBehaviour
     {
         foreach (Augment augment in augments)
         {
-            player.TakeDamageAugmented(augment.applyAugmentDamageTaken(damageTaken));
+            current.TakeDamageAugmented(augment.applyAugmentDamageTaken(damageTaken, current, target));
         }
     }
 
@@ -45,8 +46,13 @@ public class AugmentManager : MonoBehaviour
     {
         foreach(Augment augment in augments)
         {
-            player.DealDamageAugmented(target, augment.applyAugmentDamageDealt(damageDealt));
+            current.DealDamageAugmented(target, augment.applyAugmentDamageDealt(damageDealt, current, target));
         }
+    }
+
+    public void setCurrent(Entity current)
+    {
+        this.current = current;
     }
 
     // add active augments

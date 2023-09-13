@@ -5,33 +5,34 @@ using UnityEngine.AI;
 
 public class EnemyController : Controller
 {
-    private bool isColliding;
-    private Enemy enemy;
+    protected bool isColliding;
+    protected Enemy enemy;
+    protected EntityStats stats;
     
     public bool IsColliding {
         get {return isColliding;}
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         isColliding = false;
         enemy = GetComponent<Enemy>();
+        stats = enemy.EntityStats;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
     }
 
-    void OnCollisionEnter2D(Collision2D other) {
+    protected virtual void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Player") {
-            enemy.DealDamage(other.gameObject.GetComponent<Player>(), enemy.Attack);
             isColliding = true;
         }
     }
 
-    void OnCollisionExit2D(Collision2D other) {
+    protected virtual void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.tag == "Player") {
             isColliding = false;
         }
