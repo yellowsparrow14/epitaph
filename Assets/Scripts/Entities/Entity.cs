@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(StatusEffectManager))]
+[RequireComponent(typeof(AugmentManager))]
 public class Entity : MonoBehaviour 
 {
     [SerializeField] private EntityStats _entityStats;
