@@ -24,6 +24,7 @@ public class EnemyController : Controller
     // Update is called once per frame
     protected virtual void Update()
     {
+        
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D other) {
