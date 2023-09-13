@@ -13,9 +13,8 @@ public class RangedGoonController : EnemyController
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         GameObject target = GameObject.FindWithTag("Player");
         float dist = Vector3.Distance(transform.position, target.transform.position);
-        if (dist < 7)
+        if (dist < 12)
         {
-            Debug.Log("it work");
             agent.velocity = Vector2.zero;
             // Add shoot logic with damage to player
             timer += Time.deltaTime;
@@ -25,10 +24,6 @@ public class RangedGoonController : EnemyController
                 timer = 0;
                 Shoot();
             }
-        }
-        else
-        {
-            Debug.Log("nuh-uh");
         }
     }
 
