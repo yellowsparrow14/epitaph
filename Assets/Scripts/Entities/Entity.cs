@@ -86,5 +86,4 @@ public class Entity : MonoBehaviour
         yield return new WaitForSeconds(knockbackDelay);
         body.velocity = Vector3.zero;
     }
-
 }
