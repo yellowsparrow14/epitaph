@@ -12,7 +12,7 @@ public class DamageAuraAugment : ListenerAugment
     [SerializeField]
     private float damage;
 
-    public override IEnumerator passiveBehavior(Player player)
+    public override IEnumerator passiveBehavior(Entity player)
     {
         Debug.Log(player);
         while (true)

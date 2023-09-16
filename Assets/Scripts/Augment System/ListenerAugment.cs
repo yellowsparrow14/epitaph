@@ -6,7 +6,7 @@ public class ListenerAugment : Augment
 {
     private float interval;
 
-    private bool coroutineStarted;
+    private bool coroutineStarted = false;
 
     public bool getCoroutineStarted()
     {
@@ -18,7 +18,7 @@ public class ListenerAugment : Augment
         this.coroutineStarted = value;
     }
 
-    public virtual IEnumerator passiveBehavior(Player player)
+    public virtual IEnumerator passiveBehavior(Entity player)
     {
         yield return new WaitForSeconds(interval);
     }
