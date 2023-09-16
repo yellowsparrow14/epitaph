@@ -13,19 +13,20 @@ public class Augment : ScriptableObject
     [SerializeField]
     private float activeTime = 1f; // not sure if they will all be timed or not
     [SerializeField]
-    private bool augmentEnabled = false; // prevent stacking or have some sort of mechanism for stacking
+    private bool augmentEnabled = true; 
 
     public void enableAugment()
     {
-        if (augmentEnabled)
-        {
-            stackAugments();
-        }
-        else
+        if (!augmentEnabled)
         {
             firstActivation();
-            augmentEnabled = true;
         }
+        augmentEnabled = true;
+    }
+
+    public void disableAugment()
+    {
+        augmentEnabled = false;
     }
 
     public virtual void firstActivation()
@@ -33,23 +34,6 @@ public class Augment : ScriptableObject
         // initial buff
     }
 
-    public virtual void stackAugments()
-    {
-        // return if you don't want stacking
-        // or implement custom mechanism
-    }
-
-    public virtual float applyAugmentDamageTaken(float damageTaken)
-    {
-        // used in AugmentManager to actually apply
-        return 0;
-    }
-
-    public virtual float applyAugmentDamageDealt(float damageDealt)
-    {
-        // used in AugmentManager to actually apply
-        return 0;
-    }
 
     public Augment GetAugment()
     {

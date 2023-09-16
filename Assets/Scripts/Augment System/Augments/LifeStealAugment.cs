@@ -3,17 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class LifeStealAugment : Augment
+public class LifeStealAugment : OnHitAugment
 {
     [SerializeField]
     private float stealFactor = 0.5f; // assuming that you gain health by a factor of the damage you deal
 
     private float damageDealt;
 
-    public override void stackAugments()
-    {
-        return;
-    }
 
     public override void firstActivation()
     {

@@ -6,7 +6,9 @@ using UnityEngine;
 public class TestAugment : MonoBehaviour
 {
     [SerializeField]
-    private Augment augment;
+    private OnHitAugment onhit;
+    [SerializeField]
+    private ListenerAugment listener;
     [SerializeField]
     private AugmentManager augmentManager;
     // Update is called once per frame
@@ -14,8 +16,9 @@ public class TestAugment : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            augment.enableAugment();
-            augmentManager.addAugment(augment);
+            listener.enableAugment();
+            augmentManager.addListenerAugment(listener);
+            augmentManager.startCoroutines();
         }
     }
 }

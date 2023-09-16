@@ -14,7 +14,22 @@ public class AugmentManager : MonoBehaviour
     private float damageDealt = 0;
 
     // active augments should be handled in the backend, no need to expose
-    private List<Augment> augments = new List<Augment>();
+    private List<OnHitAugment> onHitAugments = new List<OnHitAugment>();
+    private List<ListenerAugment> listenerAugments = new List<ListenerAugment>();
+
+    public void startCoroutines()
+    {
+        foreach (ListenerAugment augment in listenerAugments)
+        {
+            if (!augment.getCoroutineStarted())
+            {
+                augment.setCoroutineStarted(true);
+                StartCoroutine(augment.passiveBehavior(player));
+            }
+        }
+    }
+
+
 
     // called whenever the player takes damage
     public void updateDamageTaken(float damage)
@@ -34,7 +49,7 @@ public class AugmentManager : MonoBehaviour
     // this applies the augment AFTER we already took damage
     public void takeAugmentedDamage()
     {
-        foreach (Augment augment in augments)
+        foreach (OnHitAugment augment in onHitAugments)
         {
             player.TakeDamageAugmented(augment.applyAugmentDamageTaken(damageTaken));
         }
@@ -43,22 +58,36 @@ public class AugmentManager : MonoBehaviour
     // applies the augment AFTER we already deal damage
     public void dealAugmentedDamage()
     {
-        foreach(Augment augment in augments)
+        foreach(OnHitAugment augment in onHitAugments)
         {
             player.DealDamageAugmented(target, augment.applyAugmentDamageDealt(damageDealt));
         }
     }
 
-    // add active augments
-    public void addAugment(Augment augment)
+
+    // add active on hit augments
+    public void addOnHitAugment(OnHitAugment augment)
     {
-        augments.Add(augment);
+        onHitAugments.Add(augment);
+    }
+
+    // deactive on hit augments
+    public void removeAugment(OnHitAugment augment)
+    {
+        onHitAugments.Remove(augment);
+    }
+
+    // add active augments
+    public void addListenerAugment(ListenerAugment augment)
+    {
+        listenerAugments.Add(augment);
     }
 
     // deactive augments
-    public void removeAugment(Augment augment)
+    public void removeListenerAugment(ListenerAugment augment)
     {
-        augments.Remove(augment);
+        listenerAugments.Remove(augment);
     }
+
 
 }
