@@ -11,6 +11,11 @@ public class TestAugment : MonoBehaviour
     private ListenerAugment listener;
     [SerializeField]
     private AugmentManager augmentManager;
+
+    private void Awake()
+    {
+        this.augmentManager = gameObject.GetComponent<AugmentManager>();
+    }
     // Update is called once per frame
     void Update()
     {

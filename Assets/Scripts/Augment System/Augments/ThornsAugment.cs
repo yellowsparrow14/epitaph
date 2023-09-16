@@ -12,15 +12,15 @@ public class ThornsAugment : OnHitAugment
 
     public override void firstActivation()
     {
-        Debug.Log("LifeSteal activated.");
+        Debug.Log("Thorns activated.");
     }
 
-    public override float applyAugmentDamageDealt(float damageDealt)
+    public override float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target)
     {
         return damageTaken;
     }
 
-    public override float applyAugmentDamageTaken(float damageTaken)
+    public override float applyAugmentDamageTaken(float damageTaken, Entity current, Entity target)
     {
         this.damageTaken = damageTaken;
         return 0;
