@@ -4,25 +4,18 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-
+// Adds/Removes charges to the consumable
+// Updates number of charges on the slot
+// Updates image on the slot
 public class ConsumableHolder : MonoBehaviour
 {
-    [Header("Consumable 1")]
-    private Consumable consumable1;
-    private Image consumable1Img;
-    
-    [Header("Consumable 2")]
-    private Consumable consumable2;
-    private Image consumable2Img;
-
-    [Header("Consumablee 3")]
-    private Consumable consumable3;
-    private Image consumable3Img;
+    [Header("Rosary Beads Consumable")]
+    private RosaryBeadsConsumable beadsConsumable;
+    private Image beadsConsumableImg;
 
     GameObject parent;
 
-    // [SerializeField] private GameObject abilitySelection;
-    [SerializeField] private ConsumableInventoryManager consumableManager;
+    // [SerializeField] private ConsumableInventoryManager consumableManager;
 
     // Start is called before the first frame update
     void Start()
@@ -32,23 +25,15 @@ public class ConsumableHolder : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {  
-        
+    {
+        // update number of charges and image and cooldown
     }
 
-    public void OnConsumable1(InputAction.CallbackContext context) 
+    public void OnConsumable(InputAction.CallbackContext context) 
     {
-        // activate consumable, remove the consumable from the hotbar
-    }
-
-    public void OnConsumable2(InputAction.CallbackContext context) 
-    {
-        // activate consumable, remove the consumable from the hotbar
-    }
-
-    public void OnConsumable3(InputAction.CallbackContext context) 
-    {
-        // activate consumable, remove the consumable from the hotbar
+        // activate consumable, decrease number of charges
+        // pass in the player entity to the consumable
+        consumable.Activate(parent.GetComponent<Player>);
     }
 
 }   
