@@ -106,6 +106,10 @@ public class AbilityInventoryManager : MonoBehaviour
             SlotClass slot = abilities[i];
             if (slot.isClear() == false) {
                 Debug.Log("Found Ability <" + slot.GetAbility() + "> in abilities list");
+                if (slot.GetAbility().getPassiveAbility() == null) {
+                    Debug.Log("[AbilityInventoryManager] Ability " + slot.GetAbility() + " has no associated passive. This shouldn't happen");
+                    continue;
+                }
                 augmentManager.addAugment(slot.GetAbility().getPassiveAbility());
             };
         }
