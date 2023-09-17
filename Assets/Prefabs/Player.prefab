@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 4451322402477620099}
   - component: {fileID: 5672681696680130112}
   - component: {fileID: 2463335323862573007}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1132,10 @@ MonoBehaviour:
   hotbarSlotHolder: {fileID: 0}
   newAbility: {fileID: 0}
   abilityToDiscard: {fileID: 0}
-  startingAbilities: []
+  startingAbilities:
+  - ability: {fileID: 11400000, guid: 1f9323a04fe5d6c4cae7914b97d5261c, type: 2}
+  - ability: {fileID: 11400000, guid: 8608b9fd89d27124b925db2bc02fb71e, type: 2}
+  - ability: {fileID: 11400000, guid: 35d014d610ade4f4a91d66c2b61b2abc, type: 2}
   dashAbility: {fileID: 11400000, guid: 7ed3257df13a0594fa64d5a6895f3c62, type: 2}
 --- !u!114 &5672681696680130112
 MonoBehaviour:
