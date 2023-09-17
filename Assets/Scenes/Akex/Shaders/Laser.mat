@@ -95,20 +95,22 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _Helix_Speed: -0.4
+    - _Helix_Speed: -1
+    - _Helix_Speed_Variation: 0
+    - _Helix_Speed_Variation_Speed: 0
     - _Length: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _animSpeed: 8
+    - _animSpeed: 16
     - _noiseSpeed: 0.2
     - _noiseStrength: 0.3
     - _speed: -1
-    - _vibA: 0.01
+    - _vibA: 0.04
     - _vibP: 75
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Emission: {r: 64, g: 0, b: 0, a: 0}
-    - _Emissive_Mult: {r: 6.8831816, g: 6.8831816, b: 6.8831816, a: 0}
+    - _Emissive_Mult: {r: 11.984315, g: 11.984315, b: 11.984315, a: 0}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _Helix_Color: {r: 0.22385189, g: 0.24270722, b: 0.4528302, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
