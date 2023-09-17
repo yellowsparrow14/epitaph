@@ -15,6 +15,7 @@ public class PerlinMap : MonoBehaviour
     private int[,] map;
     private Tilemap tilemap;
     private Vector2Int seed;
+    private Collider2D collider;
 
     private PerlinGenerator perlin;
 
@@ -28,7 +29,11 @@ public class PerlinMap : MonoBehaviour
 
         map = perlin.InitPerlin(seed, tile);
 
+        collider = gameObject.GetComponent<Collider2D>();
+        
+        collider.enabled = false;
         RenderMap();
+        collider.enabled = true;
     }
     public void RenderMap() {
         tilemap.ClearAllTiles();
