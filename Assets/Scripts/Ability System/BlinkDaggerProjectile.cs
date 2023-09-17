@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlinkDaggerProjectile : Projectile
+public class BlinkDaggerProjectile : PlayerProjectile
 {   
     public float acceleration;
 
