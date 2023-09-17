@@ -8,6 +8,7 @@ public class RayCastAbility : Ability
 {
     private LineRenderer lineRenderer;
     private LaserParticleMan laserParticleMan;
+    private MandalaManager mandalaMan;
     private Camera mainCamera;
     private Vector3 mousePos;
     private bool firing;
@@ -41,6 +42,7 @@ public class RayCastAbility : Ability
         lineRenderer.useWorldSpace = true;
         
         laserParticleMan = lineRenderer.gameObject.GetComponentInChildren<LaserParticleMan>(includeInactive: true);
+        mandalaMan = lineRenderer.gameObject.GetComponentInChildren<MandalaManager>(includeInactive: true);
         
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         canTick = true;   
@@ -58,11 +60,12 @@ public class RayCastAbility : Ability
         if (firing) {
             mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-            Vector3 pos1 = parent.transform.GetChild(0).transform.position;
+            Vector3 pos1 = mandalaMan.GetMandalaCenter();
             Vector3 pos2 = mousePos + new Vector3(0,0,10);
             pos2 = Vector3.MoveTowards(_prevPos, pos2, _laserSpeed);
 
             _prevPos = pos2;
+
 
             lineRenderer.SetPosition(0, pos1);
             lineRenderer.SetPosition(1, pos2);

@@ -40,6 +40,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _HelixTex:
+        m_Texture: {fileID: 18700000, guid: 8599873d84d05344faa6a93abe4ae009, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Helix_Tex:
         m_Texture: {fileID: 2800000, guid: 8599873d84d05344faa6a93abe4ae009, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -62,6 +66,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_328049ab5cff4a278b3dccb7f291dcdc_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: 8599873d84d05344faa6a93abe4ae009, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_7b11eee3f410453382d45e5820e311d8_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: d96af70aa63d2ff4c970138fd3e651d4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_e77daa1fa9874fdca021b29914229d9b_Texture_1_Texture2D:
@@ -87,15 +95,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
-    - _Helix_Speed: -4
+    - _Helix_Speed: -0.4
     - _Length: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _animSpeed: 50
+    - _animSpeed: 8
     - _noiseSpeed: 0.2
     - _noiseStrength: 0.3
     - _speed: -1
-    - _vibA: 0.075
+    - _vibA: 0.01
     - _vibP: 75
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
