@@ -11,10 +11,13 @@ public class PerlinMap : MonoBehaviour
     [SerializeField] private Tilemap tilebase;
     [SerializeField] private TileBase tile;
 
+    [SerializeField] private bool randomSeed;
+    [SerializeField] private Vector2Int seed;
+
+
     private Vector3Int origin;
     private int[,] map;
     private Tilemap tilemap;
-    private Vector2Int seed;
     private Collider2D collider;
 
     private PerlinGenerator perlin;
@@ -23,7 +26,9 @@ public class PerlinMap : MonoBehaviour
     void Start()
     {
         tilemap = gameObject.GetComponent<Tilemap>();
-        seed = new Vector2Int((int)Random.Range(0, 1000), (int)Random.Range(0, 1000));
+        if (randomSeed) {
+            seed = new Vector2Int((int)Random.Range(0, 1000), (int)Random.Range(0, 1000));
+        }
         origin = tilebase.origin;
         perlin = new PerlinGenerator(tilemap, tilebase, threshold, magnification);
 

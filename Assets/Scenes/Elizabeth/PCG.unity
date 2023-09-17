@@ -1808,6 +1808,8 @@ MonoBehaviour:
   magnification: 10
   tilebase: {fileID: 1303979486}
   tile: {fileID: 11400000, guid: 29445d43d0de75a439e113cdce7714e2, type: 2}
+  randomSeed: 1
+  seed: {x: 0, y: 0}
 --- !u!1 &1290587624
 GameObject:
   m_ObjectHideFlags: 0
