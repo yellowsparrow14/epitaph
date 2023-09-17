@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,20 +10,22 @@ public class AbilityInventoryManager : MonoBehaviour
     [SerializeField] private GameObject slotHolder;
     [SerializeField] private GameObject hotbarSlotHolder;
 
-    [SerializeField] private Ability newAbility;
-    [SerializeField] private Ability abilityToDiscard;
+    [SerializeField] private AbilityWrapper newAbility;
+    [SerializeField] private AbilityWrapper abilityToDiscard;
 
 
     //public List<Ability> abilities11 = new List<Ability>();
 
     [SerializeField] private SlotClass[] startingAbilities;
-    [SerializeField] private Ability dashAbility;
+    [SerializeField] private AbilityWrapper dashAbility;
     private SlotClass[] abilities;
     private SlotClass[] hotbarAbilities;
 
     private GameObject[] slots;
     private GameObject[] hotbarSlots;
     private static int NUMBER_OF_ABILITIES;
+
+    private AugmentManager augmentManager;
 
 
     private SlotClass movingSlot;
@@ -65,9 +68,12 @@ public class AbilityInventoryManager : MonoBehaviour
         }
 
         // Add the dash ability image to the hotbar
-        hotbarSlots[0].transform.GetChild(0).GetComponent<Image>().sprite = dashAbility.aSprite;
+        hotbarSlots[0].transform.GetChild(0).GetComponent<Image>().sprite = dashAbility.getActiveAbility().aSprite;
         hotbarSlots[0].transform.GetChild(0).GetComponent<Image>().enabled = true;
 
+        // Add AugmentManager reference so we can update augments
+        augmentManager = gameObject.GetComponent<AugmentManager>();
+        
         RefreshUI();    
         Add(newAbility);
         Remove(abilityToDiscard);
@@ -77,7 +83,7 @@ public class AbilityInventoryManager : MonoBehaviour
         abilityCursor.SetActive(isMovingItem);
         abilityCursor.transform.position = Input.mousePosition; 
         if (isMovingItem) {
-            abilityCursor.GetComponent<Image>().sprite = movingSlot.GetAbility().aSprite;
+            abilityCursor.GetComponent<Image>().sprite = movingSlot.GetAbility().getActiveAbility().aSprite;
         }
 
         if (Input.GetMouseButtonDown(0)) 
@@ -88,8 +94,27 @@ public class AbilityInventoryManager : MonoBehaviour
                 BeginItemMove();
             }
         }
+
     }
 
+    #region Active / Passive Utils
+
+    public void RefreshEnabledAugments() {
+
+        augmentManager.clearAugments();
+        for (int i = 0; i < abilities.Length - NUMBER_OF_ABILITIES; i++) {
+            SlotClass slot = abilities[i];
+            if (slot.isClear() == false) {
+                Debug.Log("Found Ability <" + slot.GetAbility() + "> in abilities list");
+                augmentManager.addAugment(slot.GetAbility().getPassiveAbility());
+            };
+        }
+        // Realistically we want this to be only applied to the AugmentManager attached to the player, so this is safe
+        
+
+    }
+
+    #endregion
 
     #region Inventory Utils
 
@@ -98,7 +123,7 @@ public class AbilityInventoryManager : MonoBehaviour
         for (int i = 0; i < slots.Length; i++) {
             try {
                 //slots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[i].GetAbility().aSprite;
-                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[i].GetAbility().aSprite;
+                slots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[i].GetAbility().getActiveAbility().aSprite;
                 slots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
             } catch {
                 slots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
@@ -106,27 +131,36 @@ public class AbilityInventoryManager : MonoBehaviour
             }
         }
 
+        bool allClear = true;
+        foreach (SlotClass slot in abilities) {
+            if (slot.isClear() == false) {
+                Debug.Log("[AbilityInventoryManager/RefreshUI] Found ability <" + slot + "> in passive List");
+                allClear = false;
+            }
+        }
+        if (allClear) Debug.Log("[AbilityInventoryManager/RefreshUI] All slots cleared");
+        RefreshEnabledAugments();
         RefreshHotBar();
     }
 
     public void RefreshHotBar() 
     {
         // Refresh the dash ability on the hotbar
-        hotbarAbilities[0].GetAbility().Init();
-        hotbarAbilities[0].GetAbility().SetState(AbilityState.ready);
+        hotbarAbilities[0].GetAbility().getActiveAbility().Init();
+        hotbarAbilities[0].GetAbility().getActiveAbility().SetState(AbilityState.ready);
         hotbarSlots[0].transform.GetChild(0).GetComponent<Image>().fillAmount = 0;
 
         // Start at 1 to account for the dash ability taking up a slot
         for (int i = 1; i < hotbarSlots.Length; i++) {
             try {
                 //slots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[i].GetAbility().aSprite;
-                hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[(i - 1) + NUMBER_OF_ABILITIES * 2].GetAbility().aSprite;
+                hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = abilities[(i - 1) + NUMBER_OF_ABILITIES * 2].GetAbility().getActiveAbility().aSprite;
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = true;
                 hotbarAbilities[i] = abilities[(i - 1) + NUMBER_OF_ABILITIES * 2];
 
                 if (hotbarAbilities[i].GetAbility() != null) {
-                    hotbarAbilities[i].GetAbility().Init();
-                    hotbarAbilities[i].GetAbility().SetState(AbilityState.ready);
+                    hotbarAbilities[i].GetAbility().getActiveAbility().Init();
+                    hotbarAbilities[i].GetAbility().getActiveAbility().SetState(AbilityState.ready);
                     hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().fillAmount = 0;
                 }
 
@@ -138,7 +172,7 @@ public class AbilityInventoryManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    public bool Add(Ability ability)
+    public bool Add(AbilityWrapper ability)
     {
         //abilities.Add(ability);
         SlotClass slot = Contains(ability);
@@ -157,7 +191,7 @@ public class AbilityInventoryManager : MonoBehaviour
         return true;
     }
 
-    public bool Remove(Ability ability)
+    public bool Remove(AbilityWrapper ability)
     {
         //abilities.Remove(ability); 
         SlotClass temp = Contains(ability);
@@ -180,7 +214,7 @@ public class AbilityInventoryManager : MonoBehaviour
 
     }
 
-    public SlotClass Contains(Ability ability) 
+    public SlotClass Contains(AbilityWrapper ability) 
     {
         for (int i = 0; i < abilities.Length; i++) {
             if (abilities[i].GetAbility() == ability) {

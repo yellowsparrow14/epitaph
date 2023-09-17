@@ -30,6 +30,10 @@ public class AugmentManager : MonoBehaviour
         }
     }
 
+    public void stopAllCoroutines() {
+        StopAllCoroutines();
+    }
+
     public void setCurrent(Entity current)
     {
         this.current = current;
@@ -68,30 +72,49 @@ public class AugmentManager : MonoBehaviour
         }
     }
 
-
-    // add active on hit augments
-    public void addOnHitAugment(OnHitAugment augment)
-    {
-        onHitAugments.Add(augment);
+    public void addAugment(Augment augment) {
+        Debug.Log("Adding augment");
+        Debug.Log(augment.GetType());
+        if (augment is OnHitAugment) {
+            Debug.Log("Adding OnHitAugment");
+            onHitAugments.Add((OnHitAugment)augment);
+        }
+        if (augment is ListenerAugment) {
+            Debug.Log("Adding ListenerAugment");
+            listenerAugments.Add((ListenerAugment)augment);
+        }
     }
 
-    // deactive on hit augments
-    public void removeAugment(OnHitAugment augment)
-    {
-        onHitAugments.Remove(augment);
+    public void clearAugments() {
+        Debug.Log("[Augment Manager] Clearing all augments");
+        onHitAugments.Clear();
+        listenerAugments.Clear();
+
     }
 
-    // add active augments
+    // public void addOnHitAugment(OnHitAugment augment)
+    // {
+    //     onHitAugments.Add(augment);
+    // }
+
+    // // deactive on hit augments
+    // public void removeAugment(OnHitAugment augment)
+    // {
+    //     onHitAugments.Remove(augment);
+    // }
+
+    // // add active augments
     public void addListenerAugment(ListenerAugment augment)
     {
         listenerAugments.Add(augment);
     }
 
-    // deactive augments
-    public void removeListenerAugment(ListenerAugment augment)
-    {
-        listenerAugments.Remove(augment);
-    }
+    // // deactive augments
+    // public void removeListenerAugment(ListenerAugment augment)
+    // {
+    //     listenerAugments.Remove(augment);
+    // }
+
 
 
 }

@@ -44,7 +44,7 @@ public class Entity : MonoBehaviour
     public virtual void Die() {
         if(_isDead) return;
         //override in child classes
-        Debug.Log("dead");
+        //Debug.Log("dead");
     }
 
     // relaying data to augment manager
