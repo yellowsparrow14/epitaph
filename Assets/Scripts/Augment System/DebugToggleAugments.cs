@@ -12,7 +12,10 @@ public class DebugToggleAugments : MonoBehaviour
     {
         this.augmentManager = gameObject.GetComponent<AugmentManager>();
     }
-    // Update is called once per frame
+    /**
+     * Add this to Player and use Space Bar to toggle coroutines
+     * After we have a proper system for runs we can scrap this
+     **/
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))

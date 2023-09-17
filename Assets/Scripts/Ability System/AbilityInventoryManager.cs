@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class AbilityInventoryManager : MonoBehaviour
 {
+
+    [SerializeField] private bool DEBUG = false;
+
     [SerializeField] private GameObject abilityCursor;
     [SerializeField] private GameObject slotHolder;
     [SerializeField] private GameObject hotbarSlotHolder;
@@ -105,9 +108,9 @@ public class AbilityInventoryManager : MonoBehaviour
         for (int i = 0; i < abilities.Length - NUMBER_OF_ABILITIES; i++) {
             SlotClass slot = abilities[i];
             if (slot.isClear() == false) {
-                Debug.Log("Found Ability <" + slot.GetAbility() + "> in abilities list");
+                if (DEBUG) Debug.Log("Found Ability <" + slot.GetAbility() + "> in abilities list");
                 if (slot.GetAbility().getPassiveAbility() == null) {
-                    Debug.Log("[AbilityInventoryManager] Ability " + slot.GetAbility() + " has no associated passive. This shouldn't happen");
+                    if (DEBUG) Debug.Log("[AbilityInventoryManager] Ability " + slot.GetAbility() + " has no associated passive. This shouldn't happen");
                     continue;
                 }
                 augmentManager.addAugment(slot.GetAbility().getPassiveAbility());
@@ -138,11 +141,11 @@ public class AbilityInventoryManager : MonoBehaviour
         bool allClear = true;
         foreach (SlotClass slot in abilities) {
             if (slot.isClear() == false) {
-                Debug.Log("[AbilityInventoryManager/RefreshUI] Found ability <" + slot + "> in passive List");
+                if (DEBUG) Debug.Log("[AbilityInventoryManager/RefreshUI] Found ability <" + slot + "> in passive List");
                 allClear = false;
             }
         }
-        if (allClear) Debug.Log("[AbilityInventoryManager/RefreshUI] All slots cleared");
+        if (allClear) if (DEBUG) Debug.Log("[AbilityInventoryManager/RefreshUI] All slots cleared");
         RefreshEnabledAugments();
         RefreshHotBar();
     }

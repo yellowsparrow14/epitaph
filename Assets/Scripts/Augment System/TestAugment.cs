@@ -22,7 +22,7 @@ public class TestAugment : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             listener.enableAugment();
-            augmentManager.addListenerAugment(listener);
+            augmentManager.addAugment(listener);
             augmentManager.startCoroutines();
         }
     }
