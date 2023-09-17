@@ -1,34 +1,52 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class RangedGoonController : EnemyController
+public class SpawnerGoonController : EnemyController
 {
 
     public GameObject spawningEnemy;
+
+    public Transform spawnPos;
 
     public float shortestSpawnTime;
 
     public float longestSpawnTime;
 
+    public float spawnRadius = 5f;
+
+    public float spawnAmount = 2f;
+
     private float timer;
+
+    private float randomTime;
+
+    private UnityEngine.Vector2 randomPos;
+
     void Start(){
-        agent.velocity = Vector2.zero;
-        randomTime = 
+        randomTime = Random.Range(shortestSpawnTime, longestSpawnTime + 1);
     }
     void Update(){
         UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        agent.velocity = Vector2.zero;
         GameObject target = GameObject.FindWithTag("Player");
         timer += Time.deltaTime;
-        if (timer > unloadSpeed)
+        if (timer > randomTime)
         {
             // Spawn Bullet or whatever else
+            float i = 0;
+            while (i < spawnAmount) {
+                Spawn();
+                i=i+1;
+            }
             timer = 0;
-            Spawn();
-            randomTime = 
+            randomTime = Random.Range(shortestSpawnTime, longestSpawnTime + 1);
             }
         }
     void Spawn(){
         //logic to spawn
+        Vector2 randomPos = (Random.insideUnitCircle * spawnRadius);
+        randomPos += (Vector2)spawnPos.position;
+        Instantiate(spawningEnemy, randomPos, Quaternion.identity);
     }    
 }
