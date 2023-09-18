@@ -22,7 +22,6 @@ public class RayCastAbility : Ability
     private float timer;
 
     private Vector3 _prevPos;
-    [SerializeField] private float _laserSpeed = 0.5f;
 
     public override void Activate(GameObject parent)
     {
@@ -36,7 +35,6 @@ public class RayCastAbility : Ability
 
     public override void Init()
     {
-        Debug.Log("hello");
         lineRenderer = GameObject.FindGameObjectWithTag("Player").GetComponent<LineRenderer>();
         lineRenderer.enabled = false;
         lineRenderer.useWorldSpace = true;
@@ -48,6 +46,7 @@ public class RayCastAbility : Ability
         canTick = true;   
     } 
 
+    //Tells the shader how long the laser is so the shader scales correctly.
     private void SetLineRMatLen(float len) {
         lineRenderer.material.SetFloat("_Length", len);
     }
@@ -60,12 +59,10 @@ public class RayCastAbility : Ability
         if (firing) {
             mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-            Vector3 pos1 = mandalaMan.GetMandalaCenter();
+            Vector3 pos1 = mandalaMan.GetMandalaCenter(); //laser origin should be the mandala's center
             Vector3 pos2 = mousePos + new Vector3(0,0,10);
-            pos2 = Vector3.MoveTowards(_prevPos, pos2, _laserSpeed);
 
             _prevPos = pos2;
-
 
             lineRenderer.SetPosition(0, pos1);
             lineRenderer.SetPosition(1, pos2);
