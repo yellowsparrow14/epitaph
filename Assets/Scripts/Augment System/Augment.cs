@@ -15,6 +15,12 @@ public class Augment : ScriptableObject
     [SerializeField]
     private bool augmentEnabled = false; // prevent stacking or have some sort of mechanism for stacking
 
+    // entity to which augment is being applied
+    private Entity current;
+
+    // entity which current is interacting with
+    private Entity target;
+
     public void enableAugment()
     {
         if (augmentEnabled)
@@ -39,15 +45,21 @@ public class Augment : ScriptableObject
         // or implement custom mechanism
     }
 
-    public virtual float applyAugmentDamageTaken(float damageTaken)
+    public virtual float applyAugmentDamageTaken(float damageTaken, Entity current, Entity target)
     {
-        // used in AugmentManager to actually apply
+        // base implementation only has references to current and target entity,
+        // from which all stats can be derived using getter methods
+        this.current = current;
+        this.target = target;
         return 0;
     }
 
-    public virtual float applyAugmentDamageDealt(float damageDealt)
+    public virtual float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target)
     {
-        // used in AugmentManager to actually apply
+        // base implementation only has references to current and target entity,
+        // from which all stats can be derived using getter methods
+        this.current = current;
+        this.target = target;
         return 0;
     }
 
