@@ -9,9 +9,9 @@ public class SpawnerGoonController : EnemyController
 
     public Transform spawnPos;
 
-    public float shortestSpawnTime;
+    [SerializeField] public float shortestSpawnTime;
 
-    public float longestSpawnTime;
+    [SerializeField] public float longestSpawnTime;
 
     public float spawnRadius = 5f;
 
