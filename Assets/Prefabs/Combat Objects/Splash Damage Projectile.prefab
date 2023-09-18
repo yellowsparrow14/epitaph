@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8512210624129908140}
   - component: {fileID: 1162483817475055334}
   - component: {fileID: -5958714553493642004}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Splash Damage Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
