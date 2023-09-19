@@ -527,5 +527,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780b30c740f88dd4d8e9de4a0a6f807f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackDelay: 2
-  knockbackForce: 10
+  knockbackDelay: 0.15
+  knockbackForce: 100
