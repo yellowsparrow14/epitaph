@@ -57,7 +57,8 @@ public class MeleeAttack : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
             source.DealDamage(enemy, source.EntityStats.GetStatValue(StatEnum.ATTACK));
 
-            //knockback here?
+            var kb = other.GetComponent<Knockback>();
+            kb?.KnockbackEntity(source.gameObject);
         }
      }
 
