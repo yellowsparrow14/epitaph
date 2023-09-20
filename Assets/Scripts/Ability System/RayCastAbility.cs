@@ -43,7 +43,8 @@ public class RayCastAbility : Ability
         mandalaMan = lineRenderer.gameObject.GetComponentInChildren<MandalaManager>(includeInactive: true);
         
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        canTick = true;   
+        canTick = true;
+        firing = false;
     } 
 
     //Tells the shader how long the laser is so the shader scales correctly.
