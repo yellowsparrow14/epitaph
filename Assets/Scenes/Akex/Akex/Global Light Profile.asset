@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Global Light Profile
   m_EditorClassIdentifier: 
   components:
-  - {fileID: 4116441030236488470}
---- !u!114 &4116441030236488470
+  - {fileID: 2869105018728378148}
+--- !u!114 &2869105018728378148
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,19 +32,19 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.9
+    m_Value: 1
   intensity:
     m_OverrideState: 1
     m_Value: 1
   scatter:
-    m_OverrideState: 0
-    m_Value: 0.7
+    m_OverrideState: 1
+    m_Value: 0.801
   clamp:
     m_OverrideState: 0
     m_Value: 65472
   tint:
     m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 1, g: 0, b: 0, a: 1}
   highQualityFiltering:
     m_OverrideState: 0
     m_Value: 0
