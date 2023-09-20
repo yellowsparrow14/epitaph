@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8758510c72d90c47874e8a5fae182c6, type: 3}
   m_Name: Projectile Ability Wrapper
   m_EditorClassIdentifier: 
-  activeAbility: {fileID: 0}
+  activeAbility: {fileID: 11400000, guid: 35d014d610ade4f4a91d66c2b61b2abc, type: 2}
   passiveAbility: {fileID: 0}
