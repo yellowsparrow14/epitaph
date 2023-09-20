@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AugmentManager : MonoBehaviour
 {
+
+    [SerializeField] private bool DEBUG = false;
+
     [SerializeField]
     private Entity current;
 
@@ -28,6 +31,10 @@ public class AugmentManager : MonoBehaviour
                 StartCoroutine(augment.passiveBehavior(current));
             }
         }
+    }
+
+    public void stopAllCoroutines() {
+        StopAllCoroutines();
     }
 
     public void setCurrent(Entity current)
@@ -68,30 +75,24 @@ public class AugmentManager : MonoBehaviour
         }
     }
 
-
-    // add active on hit augments
-    public void addOnHitAugment(OnHitAugment augment)
-    {
-        onHitAugments.Add(augment);
+    public void addAugment(Augment augment) {
+        if (DEBUG) Debug.Log("Adding augment");
+        if (DEBUG) Debug.Log(augment.GetType());
+        if (augment is OnHitAugment) {
+            if (DEBUG) Debug.Log("Adding OnHitAugment");
+            onHitAugments.Add((OnHitAugment)augment);
+        }
+        if (augment is ListenerAugment) {
+            if (DEBUG) Debug.Log("Adding ListenerAugment");
+            listenerAugments.Add((ListenerAugment)augment);
+        }
     }
 
-    // deactive on hit augments
-    public void removeAugment(OnHitAugment augment)
-    {
-        onHitAugments.Remove(augment);
-    }
+    public void clearAugments() {
+        if (DEBUG) Debug.Log("[Augment Manager] Clearing all augments");
+        onHitAugments.Clear();
+        listenerAugments.Clear();
 
-    // add active augments
-    public void addListenerAugment(ListenerAugment augment)
-    {
-        listenerAugments.Add(augment);
     }
-
-    // deactive augments
-    public void removeListenerAugment(ListenerAugment augment)
-    {
-        listenerAugments.Remove(augment);
-    }
-
 
 }
