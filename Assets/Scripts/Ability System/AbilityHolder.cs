@@ -70,7 +70,7 @@ public class AbilityHolder : MonoBehaviour
         // ability2.Init();
         // ability3.Init();
 
-        abilitySelection.SetActive(abilityInventoryActive);
+        EnableInventory(abilityInventoryActive);
     }
 
     // Update is called once per frame
@@ -183,7 +183,13 @@ public class AbilityHolder : MonoBehaviour
 
     public void OnAbilityInventory(InputAction.CallbackContext context) {
         abilityInventoryActive = !abilityInventoryActive;
-        abilitySelection.SetActive(abilityInventoryActive);
+        EnableInventory(abilityInventoryActive);
+       // abilitySelection.SetActive(abilityInventoryActive);
+    }
+
+    public void EnableInventory(bool active) {
+        abilitySelection.SetActive(active);
+        abilityManager.SetManagerActive(active);
     }
 
 }   
