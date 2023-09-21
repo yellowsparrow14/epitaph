@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 3602888971014494569}
   - component: {fileID: 1211476201762339997}
   - component: {fileID: 178942149774406120}
-  - component: {fileID: 2853582103318912331}
   - component: {fileID: 6629062362710751275}
   - component: {fileID: 8340306186780545914}
+  - component: {fileID: -6877318721612754130}
   m_Layer: 7
   m_Name: Ranged Goon
   m_TagString: Enemy
@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775b2743fe1296740aa09b967eb879a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
 --- !u!114 &1211476201762339997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,22 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0935540c92d974147b6c88c2abccb923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2853582103318912331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2158871877376159656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c55701937e17794196565fafe575849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 3681736836022034573, guid: d23dd2301c73a8d4fa83268033ad61b5, type: 3}
-  projectilePos: {fileID: 430836534676522199}
-  distanceAway: 10
-  unloadSpeed: 2
 --- !u!114 &6629062362710751275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,8 +251,6 @@ MonoBehaviour:
         v: 0
         hasValue: 0
   intialHealth: 15
-  knockbackDelay: 0
-  knockbackForce: 0
   _augmentManager: {fileID: 0}
 --- !u!114 &8340306186780545914
 MonoBehaviour:
@@ -284,6 +265,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   current: {fileID: 0}
+--- !u!114 &-6877318721612754130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2158871877376159656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337ac2db46aabb646ae9493f18c7f2c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 3681736836022034573, guid: d23dd2301c73a8d4fa83268033ad61b5, type: 3}
+  projectilePos: {fileID: 0}
+  distanceAway: 6
+  unloadSpeed: 4
 --- !u!1 &6177357470798160452
 GameObject:
   m_ObjectHideFlags: 0
