@@ -16,7 +16,7 @@ MonoBehaviour:
   aSprite: {fileID: 21300000, guid: e2c10a05e8e10cb428d1476b5957c731, type: 3}
   aSound: {fileID: 0}
   cooldownTime: 5
-  activeTime: 1
-  fillAmount: 0
+  activeTime: 0.5
+  fillAmount: 0.51480556
   projectile: {fileID: 8512210624129908140, guid: c0c21416827464958b27c4de83c6cda3, type: 3}
   fireRate: 1

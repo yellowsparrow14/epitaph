@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc6980fb5b55478cbaac40dca562399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 10
   _statusEffects: []
   projectileTimer: 5
   parent: {fileID: 0}
