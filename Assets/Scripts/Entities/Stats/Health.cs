@@ -9,7 +9,6 @@ public class Health : ModifiableStat
     {
         statName = StatEnum.HEALTH;
         minValue = 0;
-        maxValue = 100;
         _entity = entity;
         beneficial = true;
     }
@@ -20,7 +19,6 @@ public class Health : ModifiableStat
         currentBaseValue = value;
         statName = StatEnum.HEALTH;
         minValue = 0;
-        maxValue = 100;
         _entity = entity;
         beneficial = true;
     }
