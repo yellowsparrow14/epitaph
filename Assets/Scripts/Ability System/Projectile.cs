@@ -8,9 +8,9 @@ public class Projectile : MonoBehaviour
     protected Rigidbody2D rb;
     protected Vector3 direction;
     public float force;
-    [SerializeField] private float damage;
+    [SerializeField] protected float damage;
     [SerializeField] List<StatusEffect> _statusEffects;
-    [SerializeField] private float projectileTimer;
+    [SerializeField] protected float projectileTimer;
     public GameObject parent;
 
     // increase sprite size

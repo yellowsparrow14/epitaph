@@ -18,6 +18,15 @@ public class PlayerProjectile : Projectile
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
+    protected override void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Enemy") {
+            var statusEffectManager = other.GetComponent<StatusEffectManager>();
+                statusEffectManager?.ApplyEffects(_statusEffects);
+            
+            Debug.Log($"Hit {other.gameObject.name}");
 
+        }
+            Destroy(this.gameObject);
+    }
 
 }

@@ -19,7 +19,7 @@ public class DashAbility : Ability
         Debug.Log("dash start");
         ModifiableStat speed = parent.GetComponent<Player>().EntityStats.GetStat(StatEnum.WALKSPEED);
         speed.AddModifier(modifier);
-        parent.GetComponent<PlayerController>().canChangeDirection = false;
+        parent.GetComponent<PlayerController>().CanChangeDirection = false;
     }
 
     public override void Deactivate(GameObject parent)
@@ -27,7 +27,7 @@ public class DashAbility : Ability
         Debug.Log("dash end");
         ModifiableStat speed = parent.GetComponent<Player>().EntityStats.GetStat(StatEnum.WALKSPEED);
         speed.RemoveModifier(modifier);
-        parent.GetComponent<PlayerController>().canChangeDirection = true;
+        parent.GetComponent<PlayerController>().CanChangeDirection = true;
     }
 
     public override void AbilityCooldownHandler(GameObject parent) {
