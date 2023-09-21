@@ -30,9 +30,12 @@ public class AbilityInventoryManager : MonoBehaviour
     private SlotClass originalSlot;
     bool isMovingItem;
 
+    private bool managerActive;
+
     // Start is called before the first frame update
     private void Start()
     {
+        managerActive = false;
         slots = new GameObject[slotHolder.transform.childCount];
         abilities = new SlotClass[slots.Length];
 
@@ -76,11 +79,13 @@ public class AbilityInventoryManager : MonoBehaviour
     private void Update() {
         abilityCursor.SetActive(isMovingItem);
         abilityCursor.transform.position = Input.mousePosition; 
-        if (isMovingItem) {
+        if (isMovingItem && managerActive) {
             abilityCursor.GetComponent<Image>().sprite = movingSlot.GetAbility().aSprite;
+        } else if (isMovingItem && !managerActive) {
+            EndItemMove();
         }
-
-        if (Input.GetMouseButtonDown(0)) 
+        Debug.Log(isMovingItem);
+        if (Input.GetMouseButtonDown(0) && managerActive) 
         {
             if (isMovingItem) {
                 EndItemMove();
@@ -250,5 +255,9 @@ public class AbilityInventoryManager : MonoBehaviour
 
     public GameObject[] GetHotbarSlots() {
         return hotbarSlots;
+    }
+
+    public void SetManagerActive(bool active) {
+        managerActive = active;
     }
 }
