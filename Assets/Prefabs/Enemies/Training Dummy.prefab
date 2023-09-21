@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -410521683847230291}
   m_Layer: 0
   m_Name: Training Dummy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,9 +197,7 @@ MonoBehaviour:
       minValue:
         v: 0
         hasValue: 0
-  intialHealth: 0
-  knockbackDelay: 0
-  knockbackForce: 0
+  intialHealth: 150
   _augmentManager: {fileID: 0}
 --- !u!114 &8494798398200300328
 MonoBehaviour:
