@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a39f918719d3d5448a5c5f61aee9f2cc, type: 3}
   m_Name: Speed Increase Effect
   m_EditorClassIdentifier: 
-  aName: New Consumable Modifier
+  cmName: New Consumable Modifier
   tickRate: 0.5
-  baseMoveSpeedMultiplier: 2
+  basedOnTickRate: 0
+  effectActive: 0
+  baseMoveSpeedMultiplier: 1.5
