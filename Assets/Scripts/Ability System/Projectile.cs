@@ -9,7 +9,7 @@ public class Projectile : MonoBehaviour
     protected Vector3 direction;
     public float force;
     [SerializeField] protected float damage;
-    [SerializeField] List<StatusEffect> _statusEffects;
+    [SerializeField] protected List<StatusEffect> _statusEffects;
     [SerializeField] protected float projectileTimer;
     public GameObject parent;
 
@@ -35,7 +35,6 @@ public class Projectile : MonoBehaviour
         if (entity != null) {
             parent.GetComponent<Entity>().DealDamage(entity, damage);
         }
-
         var statusEffectManager = other.GetComponent<StatusEffectManager>();
             statusEffectManager?.ApplyEffects(_statusEffects);
         

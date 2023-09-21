@@ -100,11 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 10
+  damage: 2
   _statusEffects: []
   projectileTimer: 5
   parent: {fileID: 0}
   radius: 5
-  damage: 1
+  splashDamage: 2
 --- !u!58 &1162483817475055334
 CircleCollider2D:
   m_ObjectHideFlags: 0
