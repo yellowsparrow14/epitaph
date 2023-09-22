@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7509041470071400577}
   - component: {fileID: 2951822557027470164}
   - component: {fileID: -6228182864214638976}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: EnemyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.05
+  m_Radius: 0.02
 --- !u!114 &-6228182864214638976
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,13 @@ public class EnemyProjectile : Projectile
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot+90);
         enemy = parent.GetComponent<Enemy>();
+        if (enemy != null){
+            Debug.Log($"yay it gets the component");
+        }
+        else{
+            Debug.Log($"DID NOT WORK");
+        }
+
         stats = enemy.EntityStats;
     }
 
@@ -25,7 +32,7 @@ public class EnemyProjectile : Projectile
         if (other.gameObject.tag == "Player"){
             Destroy(gameObject);
             var entity = other.GetComponent<Entity>();
-            parent.GetComponent<Entity>().DealDamage(enemy, damage);
+            entity.GetComponent<Entity>().DealDamage(entity, damage);
             Debug.Log($"Hit {other.gameObject.name}");
             // Uncomment this to add in status effects when the projectile hits the player
             //var statusEffectManager = player.GetComponent<StatusEffectManager>();
