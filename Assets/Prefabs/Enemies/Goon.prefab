@@ -464,6 +464,7 @@ MonoBehaviour:
         hasValue: 0
   intialHealth: 10
   _augmentManager: {fileID: 0}
+  coin: {fileID: 3681736836022034573, guid: b713356956b7f5d4a96ebdbae100f727, type: 3}
 --- !u!114 &1866140760894025706
 MonoBehaviour:
   m_ObjectHideFlags: 0

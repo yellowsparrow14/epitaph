@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Player : Entity
 {
     [SerializeField] private bool killable;
+    private int _currencyTotal;
+    public int CurrencyTotal => _currencyTotal;
     protected override void Start() {
         base.Start();
         _health.maxValue = 100;
@@ -19,5 +21,7 @@ public class Player : Entity
 
     }
 
-
+    public void CollectCoin(int coinValue) {
+        _currencyTotal += coinValue;
+    }
 }
