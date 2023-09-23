@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,8 +18,64 @@ public class AugmentManager : MonoBehaviour
     private float damageDealt = 0;
 
     // active augments should be handled in the backend, no need to expose
+
+    // Augments that are procced on hit
     private List<OnHitAugment> onHitAugments = new List<OnHitAugment>();
+
+    // Augments that proc on player-related event
     private List<ListenerAugment> listenerAugments = new List<ListenerAugment>();
+
+    // Augments that are continuous from run start to run end
+    private List<StaticAugment> staticAugments = new List<StaticAugment>();
+    public void setCurrent(Entity current)
+    {
+        this.current = current;
+    }
+
+    #region Run Event Triggers
+
+    /*
+    * Unused
+    * This should be called right before player gets control on a run room i guess
+    */
+    public void onRunStart() {
+        initializeStaticAugments();
+        startCoroutines();
+    }
+
+    /*
+    * Also unused
+    * Called right after player loses control on a run room
+    */
+    public void onRunEnd() {
+        removeStaticAugments();
+        stopAllCoroutines();
+        //clearAugments(); //disabled for the sake of debugging, should exist once we get rid of the debug script
+    }
+
+    #endregion
+
+    #region Static Augments
+
+    private void initializeStaticAugments() {
+        if (!this.current) return;
+
+        foreach (StaticAugment augment in staticAugments) {
+            augment.applyAugment(this.current);
+        }
+    }
+
+    private void removeStaticAugments() {
+        if (!this.current) return;
+
+        foreach (StaticAugment augment in staticAugments) {
+            augment.removeAugment();
+        }
+    }
+
+    #endregion
+
+    #region Listener Augments
 
     public void startCoroutines()
     {
@@ -37,10 +94,15 @@ public class AugmentManager : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public void setCurrent(Entity current)
-    {
-        this.current = current;
-    }
+    #endregion
+
+    #region On-Hit Augments
+    /*
+    *   We have a bit of an issue here
+    *   Apparently static and listener augments should be able to alter damage across the board
+    *   There's probably something we can do here to make that happen
+    *   Like half of the proposed passives need this to happen :(
+    */
 
     // called whenever the player takes damage
     public void updateDamageTaken(float damage)
@@ -75,6 +137,9 @@ public class AugmentManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region General Utils
     public void addAugment(Augment augment) {
         if (DEBUG) Debug.Log("Adding augment");
         if (DEBUG) Debug.Log(augment.GetType());
@@ -86,13 +151,20 @@ public class AugmentManager : MonoBehaviour
             if (DEBUG) Debug.Log("Adding ListenerAugment");
             listenerAugments.Add((ListenerAugment)augment);
         }
+        if (augment is StaticAugment) {
+            if (DEBUG) Debug.Log("Adding StaticAugment");
+            staticAugments.Add((StaticAugment)augment);
+        }
     }
 
     public void clearAugments() {
         if (DEBUG) Debug.Log("[Augment Manager] Clearing all augments");
         onHitAugments.Clear();
         listenerAugments.Clear();
+        staticAugments.Clear();
 
     }
+
+    #endregion
 
 }

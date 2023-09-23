@@ -21,15 +21,14 @@ public class DebugToggleAugments : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!active) {
-                Debug.Log("Starting Coroutines");
-                augmentManager.startCoroutines();
-                active = !active;
+                Debug.Log("Starting Run");
+                augmentManager.onRunStart();
             }
             else {
-                Debug.Log("Stopping Coroutines");
-                augmentManager.stopAllCoroutines();
-                active = !active;
+                Debug.Log("Stopping Run");
+                augmentManager.onRunEnd();
             } 
+            active = !active;
         }
     }
 }
