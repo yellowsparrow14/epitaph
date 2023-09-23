@@ -54,6 +54,12 @@ public class Entity : MonoBehaviour
     // relaying data to augment manager
     public void DealDamage(Entity target, float dmgAmt)
     {
+        DealDamage(target, dmgAmt, new HashSet<AbilityTag>());
+    }
+
+    // relaying data to augment manager with tag
+    public void DealDamage(Entity target, float dmgAmt, HashSet<AbilityTag> tags)
+    {
         target.TakeDamage(dmgAmt);
         _augmentManager.updateDamageDealt(target, dmgAmt);
     }

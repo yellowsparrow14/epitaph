@@ -46,7 +46,7 @@ public class Augment : ScriptableObject
         return 0;
     }
 
-    public virtual float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target)
+    public virtual float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target, HashSet<AbilityTag> tags)
     {
         // used in AugmentManager to actually apply
         return 0;

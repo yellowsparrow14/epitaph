@@ -112,11 +112,11 @@ public class AugmentManager : MonoBehaviour
     }
 
     // called whenever the player deals damage
-    public void updateDamageDealt(Entity target, float damage)
+    public void updateDamageDealt(Entity target, float damage, HashSet<AbilityTag> tags)
     {
         this.target = target;
         this.damageDealt = damage;
-        dealAugmentedDamage();
+        dealAugmentedDamage(tags);
     }
 
     // this applies the augment AFTER we already took damage
@@ -126,17 +126,38 @@ public class AugmentManager : MonoBehaviour
         {
             current.TakeDamageAugmented(augment.applyAugmentDamageTaken(damageTaken, current, target));
         }
-    }
 
-    // applies the augment AFTER we already deal damage
-    public void dealAugmentedDamage()
-    {
-        foreach(OnHitAugment augment in onHitAugments)
+        foreach (StaticAugment augment in staticAugments)
         {
-            current.DealDamageAugmented(target, augment.applyAugmentDamageDealt(damageDealt, current, target));
+            current.TakeDamageAugmented(augment.applyAugmentDamageTaken(damageTaken, current, target));
+        }
+
+        foreach (ListenerAugment augment in listenerAugments)
+        {
+            current.TakeDamageAugmented(augment.applyAugmentDamageTaken(damageTaken, current, target));
         }
     }
 
+    // applies the augment AFTER we already deal damage
+    public void dealAugmentedDamage(HashSet<AbilityTag> tags)
+    {
+        foreach(OnHitAugment augment in onHitAugments)
+        {
+            current.DealDamageAugmented(target, augment.applyAugmentDamageDealt(damageDealt, current, target, tags));
+        }
+
+        foreach (StaticAugment augment in staticAugments)
+        {
+            current.DealDamageAugmented(target, augment.applyAugmentDamageDealt(damageTaken, current, target, tags));
+        }
+
+        foreach (ListenerAugment augment in listenerAugments)
+        {
+            current.DealDamageAugmented(target, augment.applyAugmentDamageDealt(damageTaken, current, target, tags));
+        }
+    }
+
+    
     #endregion
 
     #region General Utils
