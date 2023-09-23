@@ -108,8 +108,9 @@ public class AbilityInventoryManager : MonoBehaviour
     #region Active / Passive Utils
 
     public void RefreshEnabledAugments() {
-
         augmentManager.clearAugments();
+        Debug.Log("Num abilities: " + NUMBER_OF_ABILITIES);
+
         for (int i = 0; i < abilities.Length - NUMBER_OF_ABILITIES; i++) {
             SlotClass slot = abilities[i];
             if (slot.isClear() == false) {
