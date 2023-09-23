@@ -6,6 +6,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RayCastAbility : Ability
 {
+    private HashSet<AbilityTag> tags = new HashSet<AbilityTag> { AbilityTag.FIRE };
     private LineRenderer lineRenderer;
     private LaserParticleMan laserParticleMan;
     private MandalaManager mandalaMan;
@@ -86,7 +87,7 @@ public class RayCastAbility : Ability
                 }
 
                 if (canTick) {
-                    parent.GetComponent<Entity>().DealDamage(hit.transform.gameObject.GetComponent<Entity>(), damage);
+                    parent.GetComponent<Entity>().DealDamage(hit.transform.gameObject.GetComponent<Entity>(), damage, tags);
                     canTick = false;
                 }
 

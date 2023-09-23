@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // What other damage types do we want to have?
-public enum AbilityTag { PHYSICAL, FIRE };
+public enum AbilityTag { PHYSICAL, FIRE, AOE };
 public class Ability : ScriptableObject
 {
     public HashSet<AbilityTag> tags;

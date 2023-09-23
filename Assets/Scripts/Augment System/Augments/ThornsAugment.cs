@@ -15,7 +15,7 @@ public class ThornsAugment : OnHitAugment
         Debug.Log("Thorns activated.");
     }
 
-    public override float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target)
+    public override float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target, HashSet<AbilityTag> tags)
     {
         return damageTaken;
     }

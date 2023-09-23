@@ -116,7 +116,6 @@ public class AbilityInventoryManager : MonoBehaviour
 
         augmentManager.clearAugments();
         for (int i = 0; i < abilities.Length - hotbarSlots.Length + 1; i++) {
-            Debug.Log(NUMBER_OF_ABILITIES + ":" + hotbarSlots.Length);
             SlotClass slot = abilities[i];
             if (slot.isClear() == false) {
                 if (DEBUG) Debug.Log("Found Ability <" + slot.GetAbility() + "> in abilities list");

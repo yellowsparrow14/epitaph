@@ -16,7 +16,7 @@ public class LifeStealAugment : OnHitAugment
         Debug.Log("LifeSteal activated.");
     }
 
-    public override float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target)
+    public override float applyAugmentDamageDealt(float damageDealt, Entity current, Entity target, HashSet<AbilityTag> tags)
     {
         this.damageDealt = damageDealt;
         return 0;
