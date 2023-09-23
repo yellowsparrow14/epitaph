@@ -30,7 +30,7 @@ public class RosaryBeadsConsumable : ScriptableObject
     private HashSet<ConsumableModifier> consumableModifiers;
 
     // Upgrades to the consumable will affect these fields
-    private int currentCharges;
+    public int currentCharges;
     private float effectDuration;
     private float cooldownTime;
 

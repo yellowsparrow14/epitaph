@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using TMPro;
 
 // Updates number of charges on the slot
 // Updates image on the slot
@@ -13,7 +14,8 @@ public class ConsumableHolder : MonoBehaviour
     // private Image beadsConsumableImg;
 
     // add text for number of charges
-
+    [SerializeField]
+    private TextMeshProUGUI chargeCounter;
     GameObject parent;
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class ConsumableHolder : MonoBehaviour
     {
         rosaryBeadsConsumable.ConsumableCooldownHandler(parent);
         rosaryBeadsConsumable.ConsumableBehavior(parent.GetComponent<Player>());
+        chargeCounter.SetText("" + rosaryBeadsConsumable.currentCharges);
         // beadsConsumableImg.fillAmount = beadsConsumable.fillAmount;
         // update counter of charges on hotbar
     }
