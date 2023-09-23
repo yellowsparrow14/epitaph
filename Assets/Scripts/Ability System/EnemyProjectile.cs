@@ -18,11 +18,6 @@ public class EnemyProjectile : Projectile
         float rot = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, rot+90);
         enemy = parent.GetComponent<Enemy>();
-        if (enemy != null){
-            Debug.Log($"yay it gets the component");
-        }
-        else{
-            Debug.Log($"DID NOT WORK");
         }
 
         stats = enemy.EntityStats;
