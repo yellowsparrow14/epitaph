@@ -61,7 +61,7 @@ public class Entity : MonoBehaviour
     public void DealDamage(Entity target, float dmgAmt, HashSet<AbilityTag> tags)
     {
         target.TakeDamage(dmgAmt);
-        _augmentManager.updateDamageDealt(target, dmgAmt);
+        _augmentManager.updateDamageDealt(target, dmgAmt, tags);
     }
 
     // handle augmented damage taken after initial
