@@ -22,7 +22,10 @@ public class PlayerProjectile : Projectile
         if (other.gameObject.tag == "Enemy") {
             var statusEffectManager = other.GetComponent<StatusEffectManager>();
                 statusEffectManager?.ApplyEffects(_statusEffects);
-            
+            var entity = other.GetComponent<Entity>();
+            if (entity != null) {
+                parent.GetComponent<Entity>().DealDamage(entity, damage);
+            }
             Debug.Log($"Hit {other.gameObject.name}");
 
         }
