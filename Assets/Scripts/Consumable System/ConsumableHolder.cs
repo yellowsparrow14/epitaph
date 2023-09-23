@@ -4,36 +4,45 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-// Adds/Removes charges to the consumable
 // Updates number of charges on the slot
 // Updates image on the slot
 public class ConsumableHolder : MonoBehaviour
 {
-    [Header("Rosary Beads Consumable")]
-    private RosaryBeadsConsumable beadsConsumable;
-    private Image beadsConsumableImg;
+    [SerializeField]
+    private RosaryBeadsConsumable rosaryBeadsConsumable;
+    // private Image beadsConsumableImg;
+
+    // add text for number of charges
 
     GameObject parent;
-
-    // [SerializeField] private ConsumableInventoryManager consumableManager;
 
     // Start is called before the first frame update
     void Start()
     {
         parent = this.gameObject;
+        rosaryBeadsConsumable.Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // update number of charges and image and cooldown
+        rosaryBeadsConsumable.ConsumableCooldownHandler(parent);
+        rosaryBeadsConsumable.ConsumableBehavior(parent.GetComponent<Player>());
+        // beadsConsumableImg.fillAmount = beadsConsumable.fillAmount;
+        // update counter of charges on hotbar
     }
 
     public void OnConsumable(InputAction.CallbackContext context) 
     {
-        // activate consumable, decrease number of charges
-        // pass in the player entity to the consumable
-        consumable.Activate(parent.GetComponent<Player>);
+        if (context.started) {   
+            rosaryBeadsConsumable.SetConsumablePressed(true);
+            if (!rosaryBeadsConsumable.hasCharges()) {
+                Debug.Log("Out of consumable charges");
+            }
+        }
+        else if (context.canceled) {
+            rosaryBeadsConsumable.SetConsumablePressed(false);
+        }
     }
 
 }   

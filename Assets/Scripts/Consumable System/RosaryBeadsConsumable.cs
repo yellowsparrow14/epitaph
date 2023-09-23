@@ -2,50 +2,138 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// set up this class such that the activate function will activate any "ConsumableEffects" which will be from other classes
-// that derive from a base effect class. The base effect class is not the same as the default heal effect. Then when you activate
-// the consumable, you will loop through the effects and activate each of them in turn
+// Handles the duration, cooldown, and activation of all consumable effects.
+// Not yet implemented: Cooldown indicator on hotbar, # of charges indicator on hotbar
+[CreateAssetMenu]
 public class RosaryBeadsConsumable : ScriptableObject
 {
     [SerializeField]
     public string cName = "Rosary Beads";
     [SerializeField]
-    public Sprite aSprite;
+    public Sprite cSprite;
     [SerializeField]
-    public AudioClip aSound;
+    public AudioClip cSound;
     [SerializeField]
-    public float activeTime = 1f;
-    protected bool consumablePressed;
-    protected CooldownState state;
-    public virtual void Init() {
+    public int startingCharges = 3;
+    [SerializeField]
+    public float baseEffectDuration = 5.0f;
+    [SerializeField]
+    public float baseCooldownTime = 1f;
+    [SerializeField]
+    public List<ConsumableModifier> startingModifiers;
 
+    private bool consumablePressed;
+    private CooldownState state;
+    private float currentActiveTime;
+    private float currentCooldownTime;
+    private bool consumableEffectsActive;
+    private HashSet<ConsumableModifier> consumableModifiers;
+
+    // Upgrades to the consumable will affect these fields
+    private int currentCharges;
+    private float effectDuration;
+    private float cooldownTime;
+
+    public void Init() {
+        currentCharges = startingCharges;
+        effectDuration = baseEffectDuration;
+        cooldownTime = baseCooldownTime;
+        consumableEffectsActive = false;
+        state = CooldownState.ready;
+        consumableModifiers = new HashSet<ConsumableModifier>();
+        foreach(ConsumableModifier modifier in startingModifiers) {
+            consumableModifiers.Add(modifier);
+            modifier.Init();
+        }
     }
-    // Activate the heal over time effect of the rosary beads, and any additional effects
-    public virtual void Activate(Entity player) {
 
-    }
-    // Handles what an ability does
-    public virtual void ConsumableBehavior(GameObject parent) {
-
+    public void Activate(GameObject parent) {
+        consumableEffectsActive = true;
     }
 
-    public RosaryBeadsConsumable GetConsumable() {
-        return this;
+    public void Deactivate(GameObject parent) {
+        consumableEffectsActive = false;
     }
 
-    public virtual void Activate(GameObject parent) {}
-    public virtual void Deactivate(GameObject parent) {}
-    // Handles ability cooldown system
-    public virtual void ConsumableCooldownHandler(GameObject parent) {}
+    public void ConsumableBehavior(Entity player) {
+        if (consumableEffectsActive) {
+            Debug.Log("consumable active");
+            foreach(ConsumableModifier modifier in consumableModifiers) {
+                if (modifier.basedOnTickRate) {
+                    modifier.Activate(player);
+                } else {
+                    if (!modifier.effectActive) {
+                        modifier.Activate(player);
+                    }
+                }
+            }
+        } else {
+            foreach(ConsumableModifier modifier in consumableModifiers) {
+                if (!modifier.basedOnTickRate) {
+                    modifier.Deactivate(player);
+                }
+            }
+        }
+    }
+
+    // Handles consumable cooldown system
+    public void ConsumableCooldownHandler(GameObject parent) {
+        switch (state) {
+            case CooldownState.ready:
+                if (consumablePressed && hasCharges()) {
+                    Activate(parent);
+                    state = CooldownState.active;
+                    currentActiveTime = effectDuration;
+                    // fillAmount = 1;
+                    consumablePressed = false;
+                    decreaseCharges();
+                }
+            break;
+            case CooldownState.active:
+                if (currentActiveTime > 0) {
+                    currentActiveTime -= Time.deltaTime;
+                } else {
+                    state = CooldownState.cooldown;
+                    currentCooldownTime = cooldownTime;
+                    Deactivate(parent);
+                }
+            break;
+            case CooldownState.cooldown:
+                if (currentCooldownTime > 0) {
+                    currentCooldownTime -= Time.deltaTime;
+                    // fillAmount -= 1/cooldownTime * Time.deltaTime;
+                } else {
+                    state = CooldownState.ready;
+                    // fillAmount = 1;
+                }
+            break;
+        }
+    }
 
     public void SetConsumablePressed(bool pressed) {
         consumablePressed = pressed;
     }
 
-    public void SetState(CooldownState state) {
-        this.state = state;
+    // Intended for use in the shop when buying upgrades for the consumable
+    public bool AddConsumableModifier(ConsumableModifier modifier) {
+        modifier.Init();
+        return consumableModifiers.Add(modifier);
+    }
+
+    public bool hasCharges() {
+        return currentCharges > 0;
+    }
+
+    // Intended for use in shop when buying more charges
+    public void addCharges(int chargeAmount) {
+        currentCharges += chargeAmount;
+    }
+
+    public void decreaseCharges() {
+        currentCharges--;
     }
 }
+
 public enum CooldownState {
     ready,
     active,

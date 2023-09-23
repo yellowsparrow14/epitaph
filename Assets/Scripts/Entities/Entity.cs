@@ -9,15 +9,12 @@ public class Entity : MonoBehaviour
     [SerializeField] private EntityStats _entityStats;
     public EntityStats EntityStats => _entityStats;
     [SerializeField] private float intialHealth;
-    private Health _health;
+    protected Health _health;
     public float HealthVal => _health.health;
     public Health Health => _health;
 
     private StatusEffectManager _statusEffectManager;
     public StatusEffectManager StatusEffectManager => _statusEffectManager;
-
-    [SerializeField] private float knockbackDelay;
-    [SerializeField] private float knockbackForce;
 
     private Rigidbody2D body;
 
@@ -71,19 +68,5 @@ public class Entity : MonoBehaviour
     public void DealDamageAugmented(Entity target, float dmgAmt)
     {
         target.TakeDamage(dmgAmt);
-    }
-
-
-    public void Knockback(GameObject applier) {
-        Debug.Log("KNOCK");
-        StopAllCoroutines();
-        Vector2 direction = (transform.position - applier.transform.position).normalized;
-        body.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
-        StartCoroutine(ResetKnockBack());
-    }
-
-    private IEnumerator ResetKnockBack() {
-        yield return new WaitForSeconds(knockbackDelay);
-        body.velocity = Vector3.zero;
     }
 }
