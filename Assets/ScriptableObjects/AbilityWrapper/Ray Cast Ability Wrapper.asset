@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ray Cast Ability Wrapper
   m_EditorClassIdentifier: 
   activeAbility: {fileID: 11400000, guid: 8608b9fd89d27124b925db2bc02fb71e, type: 2}
-  passiveAbility: {fileID: 0}
+  passiveAbility: {fileID: 11400000, guid: e33643f426ef4bb4098040a3891a04eb, type: 2}

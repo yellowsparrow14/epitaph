@@ -17,4 +17,4 @@ MonoBehaviour:
   aSound: {fileID: 0}
   activeTime: 1
   augmentEnabled: 1
-  cooldownReduction: 0.4
+  cooldownReduction: 0.5
