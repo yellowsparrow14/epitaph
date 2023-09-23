@@ -24,6 +24,9 @@ public class AbilityInventoryManager : MonoBehaviour
     private SlotClass[] abilities;
     private SlotClass[] hotbarAbilities;
 
+    // Getter so we can influence skill behavior using augments
+    public SlotClass[] HotBarAbilities { get { return hotbarAbilities; }}
+
     private GameObject[] slots;
     private GameObject[] hotbarSlots;
     private static int NUMBER_OF_ABILITIES;
@@ -86,6 +89,8 @@ public class AbilityInventoryManager : MonoBehaviour
     }
 
     private void Update() {
+        // One less than hotbar slots length bc dash ability takes up a slot
+        NUMBER_OF_ABILITIES = hotbarSlots.Length - 1;
         abilityCursor.SetActive(isMovingItem);
         abilityCursor.transform.position = Input.mousePosition; 
         if (isMovingItem && managerActive) {
@@ -93,7 +98,7 @@ public class AbilityInventoryManager : MonoBehaviour
         } else if (isMovingItem && !managerActive) {
             EndItemMove();
         }
-        if (DEBUG) Debug.Log(isMovingItem);
+        //if (DEBUG) Debug.Log(isMovingItem);
         if (Input.GetMouseButtonDown(0) && managerActive) 
         {
             if (isMovingItem) {
@@ -110,7 +115,8 @@ public class AbilityInventoryManager : MonoBehaviour
     public void RefreshEnabledAugments() {
 
         augmentManager.clearAugments();
-        for (int i = 0; i < abilities.Length - NUMBER_OF_ABILITIES; i++) {
+        for (int i = 0; i < abilities.Length - hotbarSlots.Length + 1; i++) {
+            Debug.Log(NUMBER_OF_ABILITIES + ":" + hotbarSlots.Length);
             SlotClass slot = abilities[i];
             if (slot.isClear() == false) {
                 if (DEBUG) Debug.Log("Found Ability <" + slot.GetAbility() + "> in abilities list");
