@@ -84,7 +84,6 @@ public class AbilityInventoryManager : MonoBehaviour
         } else if (isMovingItem && !managerActive) {
             EndItemMove();
         }
-        Debug.Log(isMovingItem);
         if (Input.GetMouseButtonDown(0) && managerActive) 
         {
             if (isMovingItem) {
