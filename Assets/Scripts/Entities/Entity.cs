@@ -70,3 +70,4 @@ public class Entity : MonoBehaviour
         target.TakeDamage(dmgAmt);
     }
 }
+    
