@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3619814854486958252}
   - component: {fileID: 7509041470071400577}
   - component: {fileID: 2951822557027470164}
-  - component: {fileID: 3608137750753341286}
-  m_Layer: 3
+  - component: {fileID: -6228182864214638976}
+  m_Layer: 9
   m_Name: EnemyProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,13 +143,13 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.01
---- !u!114 &3608137750753341286
+  m_Radius: 0.02
+--- !u!114 &-6228182864214638976
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,7 +158,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3681736836022034573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd16478ca79e4cc4089a62d9269f881f, type: 3}
+  m_Script: {fileID: 11500000, guid: fb5c9a28ce0895a41a237081044545ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   force: 7
+  damage: 3
+  _statusEffects: []
+  projectileTimer: 5
+  parent: {fileID: 2158871877376159656, guid: 3f2d7d28572ffbb47a99857eac6e3197, type: 3}
+  target: {fileID: 8263862798321204670, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
