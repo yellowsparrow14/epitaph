@@ -7,7 +7,7 @@ public class EnemyController : Controller
 {
     protected bool isColliding;
     protected Enemy enemy;
-    protected EntityStats stats;
+
     
     public bool IsColliding {
         get {return isColliding;}
@@ -18,6 +18,7 @@ public class EnemyController : Controller
     {
         isColliding = false;
         enemy = GetComponent<Enemy>();
+        canMove = true;
         stats = enemy.EntityStats;
     }
 
