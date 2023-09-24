@@ -27,8 +27,6 @@ public class FollowPlayerNode : Node
         _agent.isStopped = false;
         _agent.SetDestination(_target.transform.position);
         _agent.speed = _movespeed;
-        Debug.Log("hello");
-        Debug.Log(_movespeed);
         return NodeState.SUCCESS;
     }
 }
