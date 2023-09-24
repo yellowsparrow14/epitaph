@@ -28,6 +28,7 @@ public class ReduceQCooldownAugment : StaticAugment
     }
 
     public override void removeAugment() {
+        if (targetSlot.isClear()) return;
         targetSlot.GetAbility().getActiveAbility().cooldownTime = originalCooldown;
     }
 
