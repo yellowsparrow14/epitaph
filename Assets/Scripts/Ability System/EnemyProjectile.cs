@@ -24,7 +24,6 @@ public class EnemyProjectile : Projectile
 
     protected override void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Player"){
-            Destroy(gameObject);
             var entity = other.GetComponent<Entity>();
             entity.GetComponent<Entity>().DealDamage(entity, damage);
             Debug.Log($"Hit {other.gameObject.name}");
@@ -32,5 +31,7 @@ public class EnemyProjectile : Projectile
             //var statusEffectManager = player.GetComponent<StatusEffectManager>();
             //    statusEffectManager?.ApplyEffects(_statusEffects);
         }
+        Destroy(this.gameObject);
+
     }
 }
