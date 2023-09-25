@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : Entity
 {
-
-
+     protected override void Start() {
+        base.Start();
+        _health.maxValue = 100;
+    }
 
 }
