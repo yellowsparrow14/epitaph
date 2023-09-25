@@ -8,10 +8,10 @@ public class DashAbility : Ability
 {
     public float moveSpeedMultiplier;
 
-    private Dash modifier;
+    private SpeedIncrease modifier;
     
     public override void Init() {
-        modifier = new Dash(moveSpeedMultiplier);
+        modifier = new SpeedIncrease(moveSpeedMultiplier);
     }
 
     public override void Activate(GameObject parent)

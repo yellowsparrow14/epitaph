@@ -43,16 +43,24 @@ Material:
         m_Texture: {fileID: 2800000, guid: 7d709bb31611e5941b77e46234fc2d4a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _tex0:
+        m_Texture: {fileID: 18700000, guid: 747839e3a927bbe459f0457a01d4a7e7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex1:
+        m_Texture: {fileID: 18700000, guid: 747839e3a927bbe459f0457a01d4a7e7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _tex2:
-        m_Texture: {fileID: 2800000, guid: 368a8cb13fb2bda4aaa21a856b888827, type: 3}
+        m_Texture: {fileID: 18700000, guid: 2c5f335aa0c5ade4a80200fb7d0df82c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _tex3:
-        m_Texture: {fileID: 2800000, guid: 45a7e2df17ed1164f85f6a922d4f8f4d, type: 3}
+        m_Texture: {fileID: 18700000, guid: b613da6a680cf3a4aa2baacf8121b3cb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _tex4:
-        m_Texture: {fileID: 2800000, guid: 9b989438e5e4db849896cfa419c46762, type: 3}
+        m_Texture: {fileID: 18700000, guid: 1ab8603e065a5cf479fddf4503580f2c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -74,11 +82,15 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _alpha: 0.5
+    - _animProgress: 16
+    - _animSpeed: 24
     - _gradientSpeed: 1
+    - _numStartupFrames: 16
     - _rotSpeed: 1
-    - _rotSpeed2: 2
-    - _rotSpeed3: 2
-    - _rotSpeed4: 3
+    - _rotSpeed1: 2
+    - _rotSpeed2: 3
+    - _rotSpeed3: 3.5
+    - _rotSpeed4: 4
     m_Colors:
     - _Color: {r: 3.0566037, g: 0.86417055, b: 2.8460252, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}

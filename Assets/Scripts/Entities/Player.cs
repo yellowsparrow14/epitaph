@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class Player : Entity
 {
+    protected override void Start() {
+        base.Start();
+        _health.maxValue = 100;
+    }
     public override void Die() {
         Destroy(gameObject);
         SceneManager.LoadScene("DeathScreen");
 
-    }
+
 
 }
