@@ -7,7 +7,8 @@ public class LichBT : BehaviorTree
 {
     // Lich can spawn enemies
     // Spells
-    //3 health crystals
+    [SerializeField]
+    private List<GameObject> shieldCrystals;
 
      protected override Node SetupTree() {
         GameObject target = GameObject.FindWithTag("Player");
@@ -17,17 +18,24 @@ public class LichBT : BehaviorTree
         agent.updateUpAxis = false;
 
         Node root = new SelectorNode(new List<Node>{
-            new UnableToMoveNode(),
+            new CrystalDaemon(new List<Node>{ new BossMeteorNode() }),
+            new NoShieldDaemon(),
+            new LowHealthDaemon(),
             new SequenceNode(new List<Node>{
-                new DetectPlayerNode(),
-                new StopAgentNode(),
-            }),
-            new FollowPlayerNode(target),
+                new BossShootNode(),
+                new BossSpawnEnemyNode()
+            })
         });
+
+
+        List<Crystal> crystals = new List<Crystal>(this.transform.parent.gameObject.GetComponentsInChildren<Crystal>());
+
         root.SetData("gameobject", this.gameObject);
+        root.SetData("crystals", crystals);
         root.SetData("entity", GetComponent<Entity>());
         root.SetData("agent", agent);
-        root.SetData("controller", GetComponent<Controller>());
+        root.SetData("controller", GetComponent<LichController>());
+        root.SetData("player", GameObject.FindGameObjectsWithTag("Player")[0]); //KINDA LAME BUT MAYBE FIX LATER
 
         return root;
     }
