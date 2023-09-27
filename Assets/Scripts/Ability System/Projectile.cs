@@ -30,6 +30,8 @@ public class Projectile : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    
+
     protected virtual void OnTriggerEnter2D(Collider2D other) {
         var entity = other.GetComponent<Entity>();
         if (entity != null) {

@@ -582,6 +582,7 @@ GameObject:
   - component: {fileID: 4451322402477620099}
   - component: {fileID: 5672681696680130112}
   - component: {fileID: 2463335323862573007}
+  - component: {fileID: 3434454387022078660}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -649,10 +650,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -807406213
+  m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1043709ea18b3ee4aa4a334092062c07, type: 3}
+  m_Sprite: {fileID: 1666564762, guid: af2c12106ff89db45bc437f7736fe966, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -681,7 +682,6 @@ MonoBehaviour:
   - {fileID: 433368079217481562}
   - {fileID: 6925524437547162389}
   - {fileID: 2020586579564352269}
-  canChangeDirection: 0
 --- !u!114 &6421672317329216225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -863,6 +863,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: bae1b9eb-d233-404b-bd6c-9394131fb399
     m_ActionName: Player/Dash[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3434454387022078660}
+        m_TargetAssemblyTypeName: ConsumableHolder, Assembly-CSharp
+        m_MethodName: OnConsumable
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b1a62e62-8d89-4995-bb18-d37b39ff6921
+    m_ActionName: Player/RosaryBeadConsumable[/Keyboard/1]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1115,8 +1131,6 @@ MonoBehaviour:
         v: 0
         hasValue: 0
   intialHealth: 100
-  knockbackDelay: 0
-  knockbackForce: 0
   _augmentManager: {fileID: 0}
 --- !u!114 &4451322402477620099
 MonoBehaviour:
@@ -1166,6 +1180,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   current: {fileID: 0}
+--- !u!114 &3434454387022078660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8263862798321204670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454ea10829cb018478323a66ffff2a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rosaryBeadsConsumable: {fileID: 11400000, guid: c43a9f784babdf042be5b25b65b7dddf, type: 2}
 --- !u!1 &8356434180221140268
 GameObject:
   m_ObjectHideFlags: 0
