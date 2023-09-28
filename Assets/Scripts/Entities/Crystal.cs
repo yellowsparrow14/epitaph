@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crystal : Enemy
+public class Crystal : Entity
 {
+    LichController lich;
     bool damaged = false;
     float lastDamaged;
     // Start is called before the first frame update
     protected override void Start()
     {
+        lich = this.transform.parent.GetComponentInChildren<LichController>();
         lastDamaged = Time.time;
     }
 
@@ -29,5 +31,11 @@ public class Crystal : Enemy
     public bool WasDamaged()
     {
         return damaged;
+    }
+
+    public override void Die()
+    {
+        lich.RemoveCrystal();
+        Destroy(gameObject);
     }
 }

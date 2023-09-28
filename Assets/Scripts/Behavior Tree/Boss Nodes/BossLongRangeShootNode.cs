@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace BTArchitecture
 {
-    public class BossSpawnEnemyNode : Node
+    public class BossLongRangeShootNode : Node
     {
-        public BossSpawnEnemyNode() { }
+        public BossLongRangeShootNode() { }
 
         public override NodeState Evaluate()
         {
+
             return NodeState.SUCCESS;
         }
     }

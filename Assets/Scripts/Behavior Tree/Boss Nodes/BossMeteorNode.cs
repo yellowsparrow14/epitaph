@@ -6,16 +6,11 @@ namespace BTArchitecture
 {
     public class BossMeteorNode : Node
     {
-        // Start is called before the first frame update
-        void Start()
+        public BossMeteorNode() { }
+
+        public override NodeState Evaluate()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            return NodeState.SUCCESS;
         }
     }
 }

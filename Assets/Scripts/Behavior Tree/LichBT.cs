@@ -5,8 +5,6 @@ using BTArchitecture;
 
 public class LichBT : BehaviorTree
 {
-    // Lich can spawn enemies
-    // Spells
     [SerializeField]
     private List<GameObject> shieldCrystals;
 
@@ -19,10 +17,10 @@ public class LichBT : BehaviorTree
 
         Node root = new SelectorNode(new List<Node>{
             new CrystalDaemon(new List<Node>{ new BossMeteorNode() }),
-            new NoShieldDaemon(),
             new LowHealthDaemon(),
+            new NoShieldDaemon(),
             new SequenceNode(new List<Node>{
-                new BossShootNode(),
+                new BossLongRangeShootNode(),
                 new BossSpawnEnemyNode()
             })
         });
