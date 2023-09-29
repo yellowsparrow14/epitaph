@@ -17,7 +17,6 @@ public class RangedGoonController : EnemyController
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if (dist < distanceAway)
         {
-            Debug.Log("away");
             agent.velocity = Vector2.zero;
             timer += Time.deltaTime;
             if (timer > unloadSpeed)
