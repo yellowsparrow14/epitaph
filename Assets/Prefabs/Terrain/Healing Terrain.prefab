@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8316764082345019280}
   - component: {fileID: 6766091621589694110}
   - component: {fileID: 5063030812145340046}
-  - component: {fileID: 8266587667403624541}
+  - component: {fileID: 5299715400581207397}
   m_Layer: 0
   m_Name: Healing Terrain
   m_TagString: Untagged
@@ -102,7 +102,7 @@ MonoBehaviour:
   setByPlayer: 0
   healAmount: 0.5
   timeInterval: 3
---- !u!60 &8266587667403624541
+--- !u!60 &5299715400581207397
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.6, y: 0.3}
+    oldSize: {x: 3.75, y: 1.875}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,17 +146,19 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.00007069111, y: 0.30696803}
-      - {x: -0.17220762, y: 0.24930067}
-      - {x: -0.31161356, y: 0.14664876}
-      - {x: -0.31161335, y: 0.14664875}
-      - {x: -0.16756105, y: 0.046083476}
-      - {x: -0.109501734, y: 0.01754919}
-      - {x: -0.0105443, y: -0.0029839184}
-      - {x: 0.17481534, y: 0.039746076}
-      - {x: 0.306968, y: 0.13968068}
-      - {x: 0.29999998, y: 0.19}
-      - {x: 0.18051454, y: 0.2535462}
+    - - {x: -0.39030504, y: 1.8841037}
+      - {x: -1.3987355, y: 1.6305932}
+      - {x: -1.8847761, y: 1.0796201}
+      - {x: -1.8786359, y: 0.7954424}
+      - {x: -1.7335491, y: 0.5587436}
+      - {x: -1.3345485, y: 0.2414931}
+      - {x: -0.55856895, y: -0.025939956}
+      - {x: 0.41282797, y: -0.012908097}
+      - {x: 1.2428846, y: 0.19817331}
+      - {x: 1.875, y: 0.807597}
+      - {x: 1.8757496, y: 1.055783}
+      - {x: 1.4350672, y: 1.6054474}
+      - {x: 0.5241232, y: 1.8847764}
   m_UseDelaunayMesh: 0
 --- !u!1 &4259913150029633420
 GameObject:
@@ -446,7 +448,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.15
-      minScalar: 0.08
+      minScalar: 1
       maxCurve:
         serializedVersion: 2
         m_Curve:
