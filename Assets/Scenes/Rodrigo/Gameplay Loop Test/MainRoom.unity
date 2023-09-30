@@ -471,7 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transition: {fileID: 1927000520}
   sceneHasCombat: 1
-  nextLevel: 1
+  nextLevel: 0
 --- !u!4 &320284540
 Transform:
   m_ObjectHideFlags: 0
