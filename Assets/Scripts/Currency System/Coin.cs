@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    // Temp coin value
-    private int coinValue = 10;
+    // Default coin value is 10
+    public int coinValue = 10;
     // public int CurrencyVal => _value;
 
     protected Rigidbody2D rb;
@@ -36,5 +36,9 @@ public class Coin : MonoBehaviour
              Debug.Log($"Coin collected by player");
              Destroy(this.gameObject);
         }
+    }
+
+    public void setCoinValue(int value) {
+        coinValue = value;
     }
 }
