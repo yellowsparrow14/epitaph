@@ -33,6 +33,10 @@ public class PlayerController : Controller
         stats = entity.EntityStats;
     }
 
+    public void resetPos()
+    {
+        this.transform.position = new Vector3(0, 0, 0);
+    }
     // Update is called once per frame
     void FixedUpdate()
     {

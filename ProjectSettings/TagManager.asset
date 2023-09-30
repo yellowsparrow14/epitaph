@@ -7,6 +7,11 @@ TagManager:
   - RotatePoint
   - Enemy
   - Walkable
+  - Cursor
+  - Slots
+  - HotBar
+  - UI
+  - LevelController
   layers:
   - Default
   - TransparentFX

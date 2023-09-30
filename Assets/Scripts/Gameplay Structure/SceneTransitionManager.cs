@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class SceneTransitionManager : MonoBehaviour
 {
     // Update is called once per frame
-    [SerializeField]
     private Animator transition;
     private bool forceInventoryTransition = false;
 
@@ -21,7 +20,12 @@ public class SceneTransitionManager : MonoBehaviour
     private AbilityInventoryManager abilityInventoryManager;
 
     private PlayerInput playerInput;
+
+    private GameObject player;
+
     public void LoadNextLevel(int sceneToLoad) {
+        player = GameObject.FindWithTag("Player");
+        player.GetComponent<PlayerController>().resetPos();
         if (!loadingScene) {
             StartCoroutine(AsyncLoadNextLevel(sceneToLoad));
             loadingScene = true;
@@ -47,6 +51,7 @@ public class SceneTransitionManager : MonoBehaviour
     }
 
     void Awake() {
+        transition = GameObject.FindWithTag("UI").GetComponent<Animator>();
         transition.SetBool("InterludeRoom", !sceneHasCombat);
     }
     void Start() {
