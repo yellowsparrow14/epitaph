@@ -23,11 +23,11 @@ public class SceneTransitionManager : MonoBehaviour
 
     private GameObject player;
 
-    public void LoadNextLevel(int sceneToLoad) {
+    public void LoadNextLevel() {
         player = GameObject.FindWithTag("Player");
         player.GetComponent<PlayerController>().resetPos();
         if (!loadingScene) {
-            StartCoroutine(AsyncLoadNextLevel(sceneToLoad));
+            StartCoroutine(AsyncLoadNextLevel(nextLevel));
             loadingScene = true;
         }
     }
@@ -37,11 +37,7 @@ public class SceneTransitionManager : MonoBehaviour
     IEnumerator AsyncLoadNextLevel(int sceneToLoad) {
         if (!playerInput) Debug.Log("[SceneTransitionManager] PlayerInput not found. Is the player not loaded?");
         else playerInput.DeactivateInput();
-
-        transition.SetTrigger("RunEnd");
-
-        yield return new WaitForSeconds(1f);
-
+        transition.ResetTrigger("RunEnd");
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
 
         while (!asyncLoad.isDone)
@@ -90,6 +86,7 @@ public class SceneTransitionManager : MonoBehaviour
     public void OnRunEnd() {
         playerInput.DeactivateInput();
         transition.ResetTrigger("RunStart");
-        LoadNextLevel(nextLevel);
+        transition.SetTrigger("RunEnd");
+
     }
 }

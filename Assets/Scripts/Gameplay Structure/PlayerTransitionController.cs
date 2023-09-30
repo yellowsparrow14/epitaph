@@ -8,10 +8,11 @@ public class PlayerTransitionController : MonoBehaviour
     // Start is called before the first frame update
     private Boundaries playerBoundaries;
 
-    public SceneTransitionManager sceneTransitionManager;
+    private SceneTransitionManager sceneTransitionManager;
     void Start()
     {
         playerBoundaries = this.transform.GetComponent<Boundaries>();
+        sceneTransitionManager = GameObject.FindGameObjectWithTag("LevelController").GetComponent<SceneTransitionManager>();
     }
 
     // Update is called once per frame
