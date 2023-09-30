@@ -30,6 +30,9 @@ public class AbilityHolder : MonoBehaviour
     private bool abilityInventoryActive;
 
     // Start is called before the first frame update
+    void Awake() {
+        abilityInventoryActive = false;
+    }
     void Start()
     {
         // if (abilityManager.GetHotbarAbilities()[0].GetAbility() != null) {
@@ -49,7 +52,6 @@ public class AbilityHolder : MonoBehaviour
 
 
 
-        abilityInventoryActive = false;
 
         // ability1Img.sprite = ability1.aSprite;
         // ability2Img.sprite = ability2.aSprite;
@@ -69,8 +71,6 @@ public class AbilityHolder : MonoBehaviour
         // ability1.Init();
         // ability2.Init();
         // ability3.Init();
-
-        EnableInventory(abilityInventoryActive);
     }
 
     // Update is called once per frame
@@ -185,6 +185,12 @@ public class AbilityHolder : MonoBehaviour
         abilityInventoryActive = !abilityInventoryActive;
         EnableInventory(abilityInventoryActive);
        // abilitySelection.SetActive(abilityInventoryActive);
+    }
+
+    // Programmaticaly triggered inventory - for scene transitions
+    public void OnAbilityInventory() {
+        abilityInventoryActive = !abilityInventoryActive;
+        EnableInventory(abilityInventoryActive);
     }
 
     public void EnableInventory(bool active) {

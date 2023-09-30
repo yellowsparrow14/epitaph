@@ -8,11 +8,12 @@ public class Player : Entity
     protected override void Start() {
         base.Start();
         _health.maxValue = 100;
+        DontDestroyOnLoad(this);
     }
     public override void Die() {
         Destroy(gameObject);
         SceneManager.LoadScene("DeathScreen");
-
+    }
 
 
 }

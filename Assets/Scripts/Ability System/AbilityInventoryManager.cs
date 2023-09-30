@@ -42,9 +42,13 @@ public class AbilityInventoryManager : MonoBehaviour
     private bool managerActive;
 
     // Start is called before the first frame update
+    private void Awake() {
+        managerActive = false;
+        Debug.Log("Manager Inactive");
+    }
     private void Start()
     {
-        managerActive = false;
+
         slots = new GameObject[slotHolder.transform.childCount];
         abilities = new SlotClass[slots.Length];
 
@@ -106,6 +110,7 @@ public class AbilityInventoryManager : MonoBehaviour
                 BeginItemMove();
             }
         }
+        Debug.Log(managerActive);
 
     }
 
@@ -303,6 +308,8 @@ public class AbilityInventoryManager : MonoBehaviour
     }
 
     public void SetManagerActive(bool active) {
+        Debug.Log("Setting Active: " + active);
         managerActive = active;
+        Debug.Log("Manager Active: " + active);
     }
 }
