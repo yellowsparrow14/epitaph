@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TeleportAbility : BossAbility
 {
-
     public GameObject teleportationPoints;
     List<Vector2> tppoints = new List<Vector2>();
 
@@ -19,9 +18,10 @@ public class TeleportAbility : BossAbility
         }
     }
 
-    public override void AbilityBehavior(GameObject parent)
+    public override void AbilityBehavior(GameObject caster)
     {
+        print("teleporting boss");
         currentPoint = (currentPoint + 1) % tppoints.Count;
-        this.transform.position = tppoints[currentPoint];
+        caster.transform.position = tppoints[currentPoint];
     }
 }

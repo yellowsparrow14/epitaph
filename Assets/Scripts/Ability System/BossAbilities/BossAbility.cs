@@ -10,7 +10,7 @@ public class BossAbility : MonoBehaviour
     public float activeTime = 1f;
     protected float currentActiveTime;
 
-    public virtual void AbilityBehavior(GameObject parent) { 
+    public virtual void AbilityBehavior(GameObject caster) { 
         
     }
 

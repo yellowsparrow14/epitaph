@@ -7,7 +7,7 @@ using UnityEngine;
 namespace BTArchitecture {
     public class CrystalDaemon : Node
     {
-        int number;
+        int number = 0;
         public CrystalDaemon() : base() { }
 
         public CrystalDaemon(List<Node> children) : base(children) { }
