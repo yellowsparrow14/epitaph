@@ -13,6 +13,9 @@ public class LongRangeCircleAbility : BossAbility
     private float damage = 5;
 
     [SerializeField]
+    private float bulletSpeed;
+
+    [SerializeField]
     private float maxRounds;
 
     public override void AbilityBehavior(GameObject parent)
@@ -38,7 +41,7 @@ public class LongRangeCircleAbility : BossAbility
     {
         for (int i = 0; i < 8; i++)
         {
-            float angle = ((45 + (22.5f * offset)) * i) / 180 * Mathf.PI;
+            float angle = ((45 * i) + (22.5f * offset)) / 180 * Mathf.PI;
             float offsetX = Mathf.Cos(angle) * 2;
             float offsetY = Mathf.Sin(angle) * 2;
             Vector2 directionOut = new Vector2(center.x + offsetX, center.y + offsetY);
@@ -52,10 +55,14 @@ public class LongRangeCircleAbility : BossAbility
         for (int i = createdProjectiles.Count - 1; i >= 0; i--)
         {
             BossProjectile proj = createdProjectiles[i];
-            float angle = ((45 + (22.5f * offset)) * i) / 180 * Mathf.PI;
-            float offsetX = Mathf.Cos(angle);
-            float offsetY = Mathf.Sin(angle);
-            proj.GetRB().velocity = new Vector2(Mathf.Cos(offsetX), Mathf.Sin(offsetY)).normalized * 2;
+            float angle = ((45 * i) + (22.5f * offset)) / 180 * Mathf.PI;
+            float x = Mathf.Cos(angle);
+            float y = Mathf.Sin(angle);
+            Rigidbody2D rb = proj.GetRB();
+            if (rb != null)
+            {
+                rb.velocity = new Vector2(x, y).normalized * bulletSpeed;
+            }
         }
     }
 }
