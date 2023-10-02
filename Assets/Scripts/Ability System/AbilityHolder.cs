@@ -27,7 +27,7 @@ public class AbilityHolder : MonoBehaviour
 
     [SerializeField] private GameObject abilitySelection;
     [SerializeField] private AbilityInventoryManager abilityManager;
-    private bool abilityInventoryActive;
+    public bool abilityInventoryActive {get; private set;}
 
     // Start is called before the first frame update
     void Awake() {
@@ -85,6 +85,8 @@ public class AbilityHolder : MonoBehaviour
             ability1 = abilityManager.GetHotbarAbilities()[1].GetAbility().getActiveAbility();
             ability1Img = abilityManager.GetHotbarSlots()[1].GetComponent<Image>();
 
+        } else {
+            ability1 = null;
         }
 
         if (abilityManager.GetHotbarAbilities()[2].GetAbility() != null) {
@@ -92,6 +94,8 @@ public class AbilityHolder : MonoBehaviour
             ability2Img = abilityManager.GetHotbarSlots()[2].GetComponent<Image>();
 
 
+        } else {
+            ability2 = null;
         }
 
         if (abilityManager.GetHotbarAbilities()[3].GetAbility() != null) {
@@ -99,6 +103,8 @@ public class AbilityHolder : MonoBehaviour
             ability3Img = abilityManager.GetHotbarSlots()[3].GetComponent<Image>();
 
 
+        } else {
+            ability3 = null;
         }
 
         if (ability1 != null) {

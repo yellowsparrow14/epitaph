@@ -68,7 +68,8 @@ public class SceneTransitionManager : MonoBehaviour
 
         if (sceneHasCombat || forceInventoryTransition) {
             playerInput.DeactivateInput();
-            abilityHolder.OnAbilityInventory();
+            if (abilityHolder.abilityInventoryActive == false)
+                abilityHolder.OnAbilityInventory();
         }
 
         loadingScene = false;

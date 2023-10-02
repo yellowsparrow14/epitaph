@@ -47,7 +47,6 @@ public class AbilityInventoryManager : MonoBehaviour
         slotHolder = GameObject.FindWithTag("Slots");
         hotbarSlotHolder = GameObject.FindWithTag("HotBar");
         managerActive = false;
-        Debug.Log("Manager Inactive");
     }
 
 
@@ -114,8 +113,6 @@ public class AbilityInventoryManager : MonoBehaviour
                 BeginItemMove();
             }
         }
-        Debug.Log(managerActive);
-
     }
 
     #region Active / Passive Utils
@@ -312,8 +309,6 @@ public class AbilityInventoryManager : MonoBehaviour
     }
 
     public void SetManagerActive(bool active) {
-        Debug.Log("Setting Active: " + active);
         managerActive = active;
-        Debug.Log("Manager Active: " + active);
     }
 }
