@@ -56,6 +56,8 @@ public class LichController : Controller
     private void RemoveShield()
     {
         hasShield = false;
+        Enemy enemyComp = GetComponent<Enemy>();
+        enemyComp.enabled = true;
     }
 
     public bool HasShield()
