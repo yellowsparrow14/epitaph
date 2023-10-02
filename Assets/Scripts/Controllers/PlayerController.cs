@@ -9,7 +9,6 @@ public class PlayerController : Controller
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float chainAttackTime = 0.1f;
     [SerializeField] private List<GameObject> meleeHitboxes;
-
     private PlayerInput playerInput;
     private Camera mainCam;
     private Rigidbody2D rb;
