@@ -351,6 +351,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8879850951786525108, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_Intensity
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6615919859577196368, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
     m_RemovedGameObjects: []
@@ -771,13 +775,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Healing Terrain
       objectReference: {fileID: 0}
+    - target: {fileID: 1319632396609999685, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: pulseSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319632396609999685, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: lowestIntensity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319632396609999685, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: highestIntensity
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5299715400581207397, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
       propertyPath: m_Color.b
-      value: 0.78926164
+      value: 0.90136707
       objectReference: {fileID: 0}
     - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
       propertyPath: m_Color.g
@@ -785,15 +801,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
       propertyPath: m_Color.r
-      value: 0.34591186
+      value: 0.6949685
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_Intensity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
       propertyPath: m_BlendStyleIndex
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_ShadowIntensityEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_LightVolumeIntensityEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_ShadowVolumeIntensityEnabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
       propertyPath: m_ApplyToSortingLayers.Array.size
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855174682764459143, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_ApplyToSortingLayers.Array.data[2]
+      value: 2030073569
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766091621589694110, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_Color.b
+      value: 0.359236
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766091621589694110, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 6766091621589694110, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
+      propertyPath: m_Color.r
+      value: 0.14501005
       objectReference: {fileID: 0}
     - target: {fileID: 6766091621589694110, guid: 02b046a5d94d5e04689f345d8ae67c62, type: 3}
       propertyPath: m_SortingLayer
