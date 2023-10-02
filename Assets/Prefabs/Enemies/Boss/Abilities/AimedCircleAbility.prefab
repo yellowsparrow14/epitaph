@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1034856016205426602
+--- !u!1 &4140737464909945815
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3262934428581091250}
-  - component: {fileID: 2932194750399052776}
+  - component: {fileID: 2905020181520501346}
+  - component: {fileID: 8534387789008633039}
   m_Layer: 0
-  m_Name: LongRangeCircleAbility
+  m_Name: AimedCircleAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3262934428581091250
+--- !u!4 &2905020181520501346
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034856016205426602}
+  m_GameObject: {fileID: 4140737464909945815}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.839947, y: -8.55169, z: 1.1551542}
+  m_LocalPosition: {x: -2.6851077, y: -13.530875, z: 1.3924528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2932194750399052776
+--- !u!114 &8534387789008633039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1034856016205426602}
+  m_GameObject: {fileID: 4140737464909945815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f8c2b9024e3834592a8da6d85b7272, type: 3}
+  m_Script: {fileID: 11500000, guid: c1f8bd6a2a1b3ac4dab919a019ef7ecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aName: LR Circle
+  aName: Aimed Circle Ability
   aSprite: {fileID: 0}
   aSound: {fileID: 0}
   activeTime: 1
-  delay: 0.3
-  projectile: {fileID: 7056733492158791877, guid: e8d309f0acd74e846bc768dce959874e, type: 3}
+  delay: 0.4
+  indicator: {fileID: 1123149393347629057, guid: b07f719f2d588b9448cc787d29bb84a9, type: 3}
+  projectile: {fileID: 7056733492158791877, guid: 334d63370c9175a4fa0e95e9042a5978, type: 3}
   damage: 5
-  bulletSpeed: 6
-  maxRounds: 3
+  projectileSpeed: 0.1

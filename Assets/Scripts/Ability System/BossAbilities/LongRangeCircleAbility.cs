@@ -30,7 +30,7 @@ public class LongRangeCircleAbility : BossAbility
         for (int i = 0; i < maxRounds; i++)
         {
             CreateCircle(center, i);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(delay);
             ThrowCircle(i);
         }
 

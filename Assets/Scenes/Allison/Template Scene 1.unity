@@ -164,6 +164,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3375751404960896932, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3375751404960896932, guid: 0c830a5c172407e4a8223753fb3fd619, type: 3}
       propertyPath: m_SortingLayerID
       value: -807406213
       objectReference: {fileID: 0}
@@ -20375,12 +20379,16 @@ PrefabInstance:
       objectReference: {fileID: 1875328044025107497}
     - target: {fileID: 4362769440527656974, guid: 908da6f16c6a22743acf372f79e594be, type: 3}
       propertyPath: abilities.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4362769440527656974, guid: 908da6f16c6a22743acf372f79e594be, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
       objectReference: {fileID: 2932194750399052776, guid: 2b9fe78f30665044a8c9d30cafa3c71c, type: 3}
+    - target: {fileID: 4362769440527656974, guid: 908da6f16c6a22743acf372f79e594be, type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 8534387789008633039, guid: da5c8a12f162dd9458fefc012b05f93d, type: 3}
     - target: {fileID: 4362769440527656974, guid: 908da6f16c6a22743acf372f79e594be, type: 3}
       propertyPath: defensiveAbilities.Array.size
       value: 0
