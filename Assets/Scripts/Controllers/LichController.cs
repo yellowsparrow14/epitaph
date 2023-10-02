@@ -68,7 +68,8 @@ public class LichController : Controller
         if (activeCrystals > 0)
         {
             // Phase 1 stuff
-            BossAbility choice = Instantiate(abilities[0]);
+            int i = Random.Range(0, abilities.Count);
+            BossAbility choice = Instantiate(abilities[i]);
             choice.AbilityBehavior(this.gameObject);
         }
         else
