@@ -489,7 +489,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneHasCombat: 1
-  nextLevel: 3
+  nextLevel: 4
+  disableRunEnd: 1
 --- !u!4 &320284540
 Transform:
   m_ObjectHideFlags: 0
