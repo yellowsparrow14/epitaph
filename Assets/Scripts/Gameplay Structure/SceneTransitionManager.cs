@@ -21,6 +21,9 @@ public class SceneTransitionManager : MonoBehaviour
 
     private PlayerInput playerInput;
 
+    [SerializeField]
+    private bool disableRunEnd;
+
     private GameObject player;
 
     public void LoadNextLevel() {
@@ -85,6 +88,7 @@ public class SceneTransitionManager : MonoBehaviour
     }
 
     public void OnRunEnd() {
+        if (disableRunEnd) return;
         playerInput.DeactivateInput();
         transition.ResetTrigger("RunStart");
         transition.SetTrigger("RunEnd");
