@@ -78,26 +78,27 @@ public class AbilityHolder : MonoBehaviour
     {  
         if (dashAbility == null) {
             dashAbility = abilityManager.GetHotbarAbilities()[0].GetAbility().getActiveAbility();
-            dashAbilityImage = abilityManager.GetHotbarSlots()[0].GetComponent<Image>();
+            dashAbilityImage = abilityManager.GetHotbarSlots()[0].transform.GetChild(0).GetComponent<Image>();
+            dashAbility.fillAmount = 1;
         }
 
         if (abilityManager.GetHotbarAbilities()[1].GetAbility() != null) {
             ability1 = abilityManager.GetHotbarAbilities()[1].GetAbility().getActiveAbility();
-            ability1Img = abilityManager.GetHotbarSlots()[1].GetComponent<Image>();
-
+            ability1Img = abilityManager.GetHotbarSlots()[1].transform.GetChild(0).GetComponent<Image>();
+            ability1Img.fillAmount = 1;
         }
 
         if (abilityManager.GetHotbarAbilities()[2].GetAbility() != null) {
             ability2 = abilityManager.GetHotbarAbilities()[2].GetAbility().getActiveAbility();
-            ability2Img = abilityManager.GetHotbarSlots()[2].GetComponent<Image>();
-
+            ability2Img = abilityManager.GetHotbarSlots()[2].transform.GetChild(0).GetComponent<Image>();
+            ability2Img.fillAmount = 1;
 
         }
 
         if (abilityManager.GetHotbarAbilities()[3].GetAbility() != null) {
             ability3 = abilityManager.GetHotbarAbilities()[3].GetAbility().getActiveAbility();
-            ability3Img = abilityManager.GetHotbarSlots()[3].GetComponent<Image>();
-
+            ability3Img = abilityManager.GetHotbarSlots()[3].transform.GetChild(0).GetComponent<Image>();
+            ability3Img.fillAmount = 1;
 
         }
 
@@ -105,7 +106,6 @@ public class AbilityHolder : MonoBehaviour
             ability1.AbilityCooldownHandler(parent);
             ability1.AbilityBehavior(parent);
             ability1Img.fillAmount = ability1.fillAmount;
-
         }
 
         if (ability2 != null) {
