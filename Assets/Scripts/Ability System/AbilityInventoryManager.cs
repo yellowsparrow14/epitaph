@@ -188,6 +188,8 @@ public class AbilityInventoryManager : MonoBehaviour
             } catch {
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = null;
                 hotbarSlots[i].transform.GetChild(0).GetComponent<Image>().enabled = false;
+                hotbarSlots[i].GetComponent<TooltipFormatter>().Ability = null;
+
             }
         }        
     }
