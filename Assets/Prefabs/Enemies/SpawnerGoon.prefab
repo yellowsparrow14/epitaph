@@ -495,9 +495,9 @@ MonoBehaviour:
         v: 0
         hasValue: 0
   intialHealth: 40
-  knockbackDelay: 0.75
-  knockbackForce: 40
   _augmentManager: {fileID: 0}
+  coin: {fileID: 3681736836022034573, guid: b713356956b7f5d4a96ebdbae100f727, type: 3}
+  enemyCoinValue: 30
 --- !u!114 &3419974051499496107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,7 +510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775b2743fe1296740aa09b967eb879a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
 --- !u!114 &419889670727287571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,4 +566,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13016b50a09b748d09ff70cf8453503b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG: 0
   current: {fileID: 0}

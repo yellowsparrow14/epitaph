@@ -4,32 +4,39 @@ using UnityEngine;
 
 public class Enemy : Entity
 {   
-    // This GameObject dictates how much the enemy is "worth" in money
-    // Currently there are 3 types of coins: 10 Coin, 20 Coin, 30 Coin.
     public GameObject coin;
+    [SerializeField] CoinValueEnum enemyCoinValue;
+    private const int minNumberOfCoins = 2;
+    private const int maxNumberOfCoins = 4;
     
     public override void Die() {
         Vector2 pos = this.transform.GetChild(0).GetChild(0).transform.position;
-        DropCoins(pos);
+        DropCoins();
         Destroy(gameObject);
     }
 
-    public void DropCoins(Vector2 pos) {
-        Debug.Log("dropped a coin");
+    public void DropCoins() {
+        int numberOfCoins = (int) ((Random.value * (maxNumberOfCoins - minNumberOfCoins + 1)) + minNumberOfCoins);
         
-        GameObject copyCoin = Instantiate(coin, pos, Quaternion.identity) as GameObject;
-        copyCoin.transform.position = this.transform.position;
-        switch (coin.gameObject.name) {
-            default:
-            case "10 Coin":
-                copyCoin.GetComponent<Coin>().setCoinValue(10);
-                break;
-            case "20 Coin":
-                copyCoin.GetComponent<Coin>().setCoinValue(20);
-                break;
-            case "30 Coin":
-                copyCoin.GetComponent<Coin>().setCoinValue(30);
-                break;
+        GameObject[] copyCoins = new GameObject[numberOfCoins];
+        
+        for (int i = 0; i < numberOfCoins; i++) {
+            copyCoins[i] = Instantiate(coin) as GameObject;
+            copyCoins[i].transform.position = (Vector2) this.transform.position + Random.insideUnitCircle / 2;
+            copyCoins[i].GetComponent<Coin>().setCoinValue((int)enemyCoinValue);
+
+            switch (enemyCoinValue) {
+                default:
+                case CoinValueEnum.SmallValue:
+                    copyCoins[i].GetComponent<SpriteRenderer>().color = Coin.SMALL_VALUE_COIN_COLOR;
+                    break;
+                case CoinValueEnum.MediumValue:
+                    copyCoins[i].GetComponent<SpriteRenderer>().color = Coin.MEDIUM_VALUE_COIN_COLOR;
+                    break;
+                case CoinValueEnum.LargeValue:
+                    copyCoins[i].GetComponent<SpriteRenderer>().color = Coin.LARGE_VALUE_COIN_COLOR;
+                    break;
+            }
         }
     }
 

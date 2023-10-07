@@ -199,6 +199,8 @@ MonoBehaviour:
         hasValue: 0
   intialHealth: 150
   _augmentManager: {fileID: 0}
+  coin: {fileID: 3681736836022034573, guid: b713356956b7f5d4a96ebdbae100f727, type: 3}
+  enemyCoinValue: 10
 --- !u!114 &8494798398200300328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13016b50a09b748d09ff70cf8453503b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG: 0
   current: {fileID: 0}
 --- !u!1 &3146857510729593728
 GameObject:
