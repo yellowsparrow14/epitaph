@@ -133,5 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eef31f36a123f4459fc54e2d8bd50b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setByPlayer: 0
-  baseMoveSpeedMultiplier: 0.3
+  _statusEffects:
+  - {fileID: 11400000, guid: 821cd456ca1139b448f32d2ca9c0164f, type: 2}
+  _removeStatusEffects:
+  - {fileID: 11400000, guid: f3742663321743640827570784d7e52c, type: 2}
