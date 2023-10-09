@@ -15,7 +15,6 @@ public class ConsumableHolder : MonoBehaviour
 
     // add text for number of charges
     [SerializeField]
-    private GameObject consumableSlot;
     private TextMeshProUGUI chargeCounter;
     GameObject parent;
 
@@ -24,9 +23,6 @@ public class ConsumableHolder : MonoBehaviour
     {
         parent = this.gameObject;
         rosaryBeadsConsumable.Init();
-
-        chargeCounter = consumableSlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>();;
-        consumableSlot.GetComponent<ConsumableFormatter>().Consumable = rosaryBeadsConsumable;
     }
 
     // Update is called once per frame
