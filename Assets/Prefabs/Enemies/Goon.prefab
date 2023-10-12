@@ -68,7 +68,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityToTrack: {fileID: 1518116029080005498}
+  trackPlayer: 0
 --- !u!1 &6593112891183395661
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,8 +334,8 @@ SpriteRenderer:
   m_SortingLayerID: -807406213
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d4f2b2797c86a3247a442c000208f660, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c94a87f4703a9674095464f952c0e9d0, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -514,6 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13016b50a09b748d09ff70cf8453503b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG: 0
   current: {fileID: 0}
 --- !u!114 &8615839123305296803
 MonoBehaviour:

@@ -201,7 +201,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityToTrack: {fileID: 568938712622193041}
+  trackPlayer: 0
 --- !u!1 &8574721898858376987
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +293,6 @@ GameObject:
   - component: {fileID: 1612203156695991308}
   - component: {fileID: 2842776147992558844}
   - component: {fileID: 4576951775359060500}
-  - component: {fileID: 6061035490369938910}
   - component: {fileID: 5284833152328927644}
   - component: {fileID: 568938712622193041}
   - component: {fileID: 3419974051499496107}
@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 7357457874771326544}
   - component: {fileID: 377486549933244635}
   - component: {fileID: 90021263590254876}
+  - component: {fileID: 5887590477543874929}
   m_Layer: 7
   m_Name: SpawnerGoon
   m_TagString: Enemy
@@ -365,7 +366,7 @@ SpriteRenderer:
   m_SortingLayerID: -807406213
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe2de38331a136743a76ce8f255396b7, type: 3}
+  m_Sprite: {fileID: -3502739478633856340, guid: cfa471f294ffdce48900aa24cb39b8bf, type: 3}
   m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -403,41 +404,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &6061035490369938910
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8574721898858376987}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1
 --- !u!195 &5284833152328927644
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -495,8 +461,6 @@ MonoBehaviour:
         v: 0
         hasValue: 0
   intialHealth: 40
-  knockbackDelay: 0.75
-  knockbackForce: 40
   _augmentManager: {fileID: 0}
 --- !u!114 &3419974051499496107
 MonoBehaviour:
@@ -510,7 +474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 775b2743fe1296740aa09b967eb879a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
 --- !u!114 &419889670727287571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,4 +530,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13016b50a09b748d09ff70cf8453503b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG: 0
   current: {fileID: 0}
+--- !u!61 &5887590477543874929
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574721898858376987}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.16}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.24, y: 0.32}
+    newSize: {x: 5, y: 5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.24, y: 0.32}
+  m_EdgeRadius: 0
