@@ -54,11 +54,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7357457874771326544, guid: 1e62417cd2add474bbfaef2507bc3fcb, type: 3}
       propertyPath: spawnAmount
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7357457874771326544, guid: 1e62417cd2add474bbfaef2507bc3fcb, type: 3}
       propertyPath: spawnRadius
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7357457874771326544, guid: 1e62417cd2add474bbfaef2507bc3fcb, type: 3}
       propertyPath: spawningEnemy
@@ -66,11 +66,11 @@ PrefabInstance:
       objectReference: {fileID: 7869210425373712410, guid: e13f1331564d0ba4fb721a92bf9e874e, type: 3}
     - target: {fileID: 7357457874771326544, guid: 1e62417cd2add474bbfaef2507bc3fcb, type: 3}
       propertyPath: longestSpawnTime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7357457874771326544, guid: 1e62417cd2add474bbfaef2507bc3fcb, type: 3}
       propertyPath: shortestSpawnTime
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8574721898858376987, guid: 1e62417cd2add474bbfaef2507bc3fcb, type: 3}
       propertyPath: m_Name
