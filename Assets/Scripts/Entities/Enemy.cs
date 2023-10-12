@@ -8,10 +8,14 @@ public class Enemy : Entity
     [SerializeField] CoinValueEnum enemyCoinValue;
     private const int minNumberOfCoins = 2;
     private const int maxNumberOfCoins = 4;
+
+    private bool hasDied = false;
     
     public override void Die() {
-        Vector2 pos = this.transform.GetChild(0).GetChild(0).transform.position;
-        DropCoins();
+        if (!hasDied) {
+            DropCoins();
+        }
+        hasDied = true;
         Destroy(gameObject);
     }
 
