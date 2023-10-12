@@ -8,10 +8,25 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TemplateScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Victor/Template Scene.unity
     guid: abf69fde19a93e942a62c7ac543c6d45
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DeathScreen.unity
     guid: 547b021303e82984c8a90b0d8dcf31a0
+  - enabled: 0
+    path: Assets/Scenes/Rodrigo/Gameplay Loop Test/MainRoom.unity
+    guid: 94b3baa97316f6f46bd642eb382a3b08
+  - enabled: 0
+    path: Assets/Scenes/Rodrigo/Gameplay Loop Test/NextRoom.unity
+    guid: 6a307d14e25626c4d910babdfc73319e
+  - enabled: 1
+    path: Assets/Scenes/Gabriel/Main Menu/MainMenu.unity
+    guid: 0925a4b778685034eb8d4506862d6f05
+  - enabled: 1
+    path: Assets/Scenes/Gabriel/Main Menu/MainRoomTemplate.unity
+    guid: c7ff43a767e820b48a93b89ab3bc53f8
+  - enabled: 1
+    path: Assets/Scenes/Gabriel/Main Menu/NextRoomTemplate.unity
+    guid: 51205c3f8d93128418fff485ef36e698
   m_configObjects: {}
