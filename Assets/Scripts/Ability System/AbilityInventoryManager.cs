@@ -9,9 +9,9 @@ public class AbilityInventoryManager : MonoBehaviour
 
     [SerializeField] private bool DEBUG = false;
 
-    [SerializeField] private GameObject abilityCursor;
-    [SerializeField] private GameObject slotHolder;
-    [SerializeField] private GameObject hotbarSlotHolder;
+    private GameObject abilityCursor;
+    private GameObject slotHolder;
+    private GameObject hotbarSlotHolder;
 
     [SerializeField] private AbilityWrapper newAbility;
     [SerializeField] private AbilityWrapper abilityToDiscard;
@@ -42,9 +42,16 @@ public class AbilityInventoryManager : MonoBehaviour
     private bool managerActive;
 
     // Start is called before the first frame update
+    private void Awake() {
+        abilityCursor = GameObject.FindWithTag("Cursor");
+        slotHolder = GameObject.FindWithTag("Slots");
+        hotbarSlotHolder = GameObject.FindWithTag("HotBar");
+        managerActive = false;
+    }
+
+
     private void Start()
     {
-        managerActive = false;
         slots = new GameObject[slotHolder.transform.childCount];
         abilities = new SlotClass[slots.Length];
 
@@ -107,7 +114,6 @@ public class AbilityInventoryManager : MonoBehaviour
                 BeginItemMove();
             }
         }
-
     }
 
     #region Active / Passive Utils
