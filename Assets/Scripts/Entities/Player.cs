@@ -14,10 +14,8 @@ public class Player : Entity
     public override void Die() {
         if (killable) {
             Destroy(gameObject);
-            SceneManager.LoadScene("DeathScreen");
+            SceneManager.LoadScene("DeathScene");
         }
-
     }
-
 
 }
