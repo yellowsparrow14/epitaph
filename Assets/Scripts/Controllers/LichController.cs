@@ -71,7 +71,7 @@ public class LichController : Controller
         {
             // Phase 1 stuff
             int i = Random.Range(0, 100);
-            if ( i <= 10)
+            if ( i <= 12)
             {
                 i = 2;
             } else if (i <= 60)
