@@ -21,6 +21,9 @@ public class LichController : Controller
 
     int currentPoint = 0;
 
+    // Delete later
+    bool first = false;
+
     void Start()
     {
         hasShield = true;
@@ -33,10 +36,17 @@ public class LichController : Controller
         }
 
         lastCastTime = Time.time;
+        first = false;
     }
 
     private void Update()
     {
+        if (!first)
+        {
+            BossAbility choice = Instantiate(abilities[2]);
+            choice.AbilityBehavior(this.gameObject);
+            first = true;
+        }
         if (Time.time - lastCastTime >= castDelay)
         {
             ChooseAttack();
