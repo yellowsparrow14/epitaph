@@ -47,9 +47,9 @@ MonoBehaviour:
   aName: Spawn Enemies
   aSprite: {fileID: 0}
   aSound: {fileID: 0}
-  activeTime: 1
+  activeTime: 2
   indicator: {fileID: 0}
   enemyPrefabs:
   - {fileID: 6813440868303940308, guid: 137a9c3c3df069d42a273d0dcae61594, type: 3}
   - {fileID: 7176128113321190046, guid: cd953ccc01a94084589de07757adb752, type: 3}
-  spawningTime: 10
+  spawningTime: 3
