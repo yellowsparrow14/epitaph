@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Elizabeth/Healing Test.meta
 guid: d9019bb810c952747906eec9a14b3d47
+========
+guid: 7d13f1fb8cf60bb468b2335115e668e9
+>>>>>>>> sprint-5:Assets/Art/Sprites.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
