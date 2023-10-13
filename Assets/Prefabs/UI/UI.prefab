@@ -87,7 +87,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 197767993938479058}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b90ac09c8b78947ad5d8e81ac88cf2, type: 3}
+  m_Script: {fileID: 11500000, guid: 231402349a4b02747aacf99001af19ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &639298325633012349
@@ -608,6 +608,7 @@ GameObject:
   - component: {fileID: 1793347854178240797}
   - component: {fileID: 2692212263429143865}
   - component: {fileID: 8629421607201439484}
+  - component: {fileID: 8519750733073361632}
   m_Layer: 5
   m_Name: SlotPanel (8)
   m_TagString: Untagged
@@ -673,6 +674,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8519750733073361632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583388634126383880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1832763445450945292
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,6 +697,7 @@ GameObject:
   - component: {fileID: 2356797379926207205}
   - component: {fileID: 8273859893229847076}
   - component: {fileID: 8446168475482970993}
+  - component: {fileID: 1498664796648974916}
   m_Layer: 5
   m_Name: SlotPanel
   m_TagString: Untagged
@@ -749,6 +763,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1498664796648974916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832763445450945292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911856959349599935
 GameObject:
   m_ObjectHideFlags: 0
@@ -910,6 +936,7 @@ GameObject:
   - component: {fileID: 3387788596086567630}
   - component: {fileID: 1853799483387839476}
   - component: {fileID: 7962586887959295488}
+  - component: {fileID: 4604212860554474683}
   m_Layer: 5
   m_Name: SlotPanel (7)
   m_TagString: Untagged
@@ -975,6 +1002,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4604212860554474683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977113029277968730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2879929808000303156
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,7 +1101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2879929808000303156}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb074515a4b095c4f864f5376544f565, type: 3}
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3026924198639308465
@@ -1210,6 +1249,7 @@ GameObject:
   - component: {fileID: 2142962174055422344}
   - component: {fileID: 8057426803534150741}
   - component: {fileID: 1921290942911925998}
+  - component: {fileID: 3215148495033154258}
   m_Layer: 5
   m_Name: SlotPanel (4)
   m_TagString: Untagged
@@ -1275,6 +1315,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3215148495033154258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220311327593252993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3692565304779974926
 GameObject:
   m_ObjectHideFlags: 0
@@ -1286,6 +1338,7 @@ GameObject:
   - component: {fileID: 1931438627456659685}
   - component: {fileID: 8778672040682022437}
   - component: {fileID: 4981056346191096232}
+  - component: {fileID: 7736149465622094550}
   m_Layer: 5
   m_Name: SlotPanel (2)
   m_TagString: Untagged
@@ -1351,6 +1404,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7736149465622094550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3692565304779974926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3853439389133279285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,7 +1728,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4746043377891170646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb074515a4b095c4f864f5376544f565, type: 3}
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4906730953068055242
@@ -2089,6 +2154,7 @@ GameObject:
   - component: {fileID: 9190164067968266299}
   - component: {fileID: 425901474472317836}
   - component: {fileID: 7660423200017387028}
+  - component: {fileID: 1970128042516260630}
   m_Layer: 5
   m_Name: SlotPanel (6)
   m_TagString: Untagged
@@ -2154,6 +2220,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1970128042516260630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5803421759574626700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5865175680247439766
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2453,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6010554190787946755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb074515a4b095c4f864f5376544f565, type: 3}
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6296624724660189103
@@ -2598,6 +2676,7 @@ GameObject:
   - component: {fileID: 9075648963017803009}
   - component: {fileID: 1402269649193168304}
   - component: {fileID: 8125979789115373831}
+  - component: {fileID: 8119346753288522534}
   m_Layer: 5
   m_Name: SlotPanel (1)
   m_TagString: Untagged
@@ -2663,6 +2742,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8119346753288522534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708635753279756485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6792661367761670467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2801,7 @@ GameObject:
   - component: {fileID: 171631234742081396}
   - component: {fileID: 7414016711544635472}
   - component: {fileID: 8320214030107726730}
+  - component: {fileID: 153314414296393547}
   m_Layer: 5
   m_Name: SlotPanel (5)
   m_TagString: Untagged
@@ -2775,6 +2867,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &153314414296393547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919097715319762785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7295785883472186082
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,6 +3175,7 @@ GameObject:
   - component: {fileID: 4440074854446919615}
   - component: {fileID: 3023262799458689467}
   - component: {fileID: 6040409010070914397}
+  - component: {fileID: 7367273391203325191}
   m_Layer: 5
   m_Name: SlotPanel (3)
   m_TagString: Untagged
@@ -3136,6 +3241,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7367273391203325191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7982268018138875225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5ee715d8f47df4daa367724d700b90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8400914709652711299
 GameObject:
   m_ObjectHideFlags: 0
