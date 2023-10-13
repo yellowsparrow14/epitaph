@@ -497,6 +497,8 @@ MonoBehaviour:
         hasValue: 0
   intialHealth: 40
   _augmentManager: {fileID: 0}
+  coin: {fileID: 3681736836022034573, guid: b713356956b7f5d4a96ebdbae100f727, type: 3}
+  enemyCoinValue: 20
 --- !u!114 &3419974051499496107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,7 +536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c55701937e17794196565fafe575849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawningEnemy: {fileID: 7869210425373712410, guid: fd90c421dcca4f646acc217f17b13fa9, type: 3}
+  spawningEnemy: {fileID: 7869210425373712410, guid: e13f1331564d0ba4fb721a92bf9e874e, type: 3}
   spawnPos: {fileID: 6142660500821680078}
   shortestSpawnTime: 8
   longestSpawnTime: 10
