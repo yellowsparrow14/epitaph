@@ -3,59 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class ProjectileAbility : Ability
+public class CircleDamageAbility : ProjectileAbility
 {
-    protected Camera mainCamera;
-    protected Vector2 mousePos;
-    protected bool firing;
-    public Projectile projectile;
+    [SerializeField]
+    private float aoeRadius = 1;
 
-    //public GameObject bulletSpawner;
-    //public Transform bulletTransform;
-    
-    protected bool canFire;
-    protected float timer;
-    public float fireRate;
-
-    public override void Activate(GameObject parent)
-    {
-        firing = true;
-    }
-
-    public override void Deactivate(GameObject parent) 
-    {
-        firing = false;
-    }
+    [SerializeField]
+    private float damage = 5;
 
     public override void Init() {
         //bulletTransform = bulletSpawner.transform;
-        canFire = true;
+        firing = false;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
     }
 
     public override void AbilityBehavior(GameObject parent) {
         mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        //Projectile proj = Instantiate(circle, mousePos, Quaternion.identity);
+        //proj.parent = parent;
+        if (firing) {
+            Debug.Log("circlefired");
+            Projectile proj = Instantiate(projectile, mousePos, Quaternion.identity);
+            //proj.parent = parent;
+            firing = false;
+            
+            LayerMask mask = LayerMask.GetMask("Enemy");
 
-        // Vector3 rotation = mousePos - parent.transform.GetChild(0).transform.position;
-        // float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
-        // parent.transform.GetChild(0).transform.rotation = Quaternion.Euler(0, 0, rotZ);
-         
-        if (!canFire) {
-            timer += Time.deltaTime;
-            if (timer > fireRate) {
-                canFire = true;
-                timer = 0;
+            ContactFilter2D filter = new ContactFilter2D();
+            filter.SetLayerMask(mask);
+            List<Collider2D> enemiesHit = new List<Collider2D>();
+            int i = Physics2D.OverlapCircle(proj.transform.position, aoeRadius, filter, enemiesHit); 
+
+            Entity player = parent.GetComponent<Entity>();
+
+            foreach(Collider2D collider in enemiesHit) {
+                Enemy enemy = collider.GetComponent<Enemy>();
+                player.DealDamage(enemy, damage);
             }
-        }
-
-        if (firing && canFire) {
-            canFire = false;
-            Projectile projectileCopy = Instantiate(projectile, parent.transform.GetChild(0).GetChild(0).transform.position, Quaternion.identity);
-            projectileCopy.parent = parent;
-        }
+        } 
     }
+        
 
-    public override void AbilityCooldownHandler(GameObject parent) {
+     public override void AbilityCooldownHandler(GameObject parent) {
         switch (state) 
         {
             case AbilityState.ready:
@@ -88,6 +77,6 @@ public class ProjectileAbility : Ability
         }
     }
 
-
+    
 
 }
