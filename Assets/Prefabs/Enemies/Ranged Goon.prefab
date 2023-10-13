@@ -196,8 +196,8 @@ MonoBehaviour:
   _entityStats:
     _stats:
     - statName: 1
-      intialValue: 5
-      currentBaseValue: 5
+      intialValue: 3
+      currentBaseValue: 3
       beneficial: 1
       maxValue:
         v: 0

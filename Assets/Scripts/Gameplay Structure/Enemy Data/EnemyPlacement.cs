@@ -13,12 +13,14 @@ public class EnemyPlacement : MonoBehaviour
     [SerializeField] private float rampFactor;
     [SerializeField] private Tilemap baseMap;
     private Vector3Int origin;
-    public void PlaceEnemies(int[,] occupiedMap) {
+    private int bufferSize;
+    public void PlaceEnemies(int[,] occupiedMap, int buffer) {
+        bufferSize = buffer;
         map = occupiedMap.Clone() as int[,];
-        mapWidth = occupiedMap.GetLength(1);
-        mapHeight = occupiedMap.GetLength(0);
+        mapWidth = occupiedMap.GetLength(0);
+        mapHeight = occupiedMap.GetLength(1);
         origin = baseMap.origin;
-
+        Debug.Log(occupiedMap.GetLength(0) + " " + occupiedMap.GetLength(1));
         foreach (EnemyPlacementType enemy in registeredEnemyTypes) {
             PlaceEnemy(enemy);
         }
@@ -26,10 +28,12 @@ public class EnemyPlacement : MonoBehaviour
 
     void PlaceEnemy(EnemyPlacementType enemy) {
         rampingPercent = enemy.spawnRate;
-        for (int i = 0; i < mapWidth; i++) {
-            for (int j = 0; j < mapHeight; j++) {
+        for (int i = bufferSize; i < mapWidth-bufferSize; i++) {
+            for (int j = bufferSize; j < mapHeight-bufferSize; j++) {
                 if (CheckNeighborsClear(i, j, enemy.width, enemy.height)) { 
-                    if (Random.Range(1, 101) < rampingPercent) {
+                    float rand = Random.Range(0.0f, 100.0f);
+                    Debug.Log(rand);
+                    if (rand < rampingPercent) {
                         Vector3Int tileLoc = new Vector3Int(origin.x + i, origin.y + j, 0);
                         Vector3 spawnTilePos = baseMap.CellToWorld(tileLoc);
                         Instantiate(enemy.enemy, new Vector3(spawnTilePos.x+0.5f*enemy.width, spawnTilePos.y+0.5f*enemy.height, 0), Quaternion.identity);
@@ -53,7 +57,7 @@ public class EnemyPlacement : MonoBehaviour
     private bool CheckNeighborsClear(int x, int y, int width, int height) {
         BoundsInt bounds = new BoundsInt(x, y, 0, width, height, 1);
         foreach (var b in bounds.allPositionsWithin) {
-            if (b.x >= 0 && b.x < mapWidth && b.y >= 0 & b.y < mapHeight) {
+            if (b.x >= 0 && b.x < mapWidth && b.y >= 0 && b.y < mapHeight) {
                 if (map[b.x, b.y] == 1) {
                     return false;
                 }

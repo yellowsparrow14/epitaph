@@ -1924,6 +1924,7 @@ GameObject:
   - component: {fileID: 1654230420482463273}
   - component: {fileID: 8011381119148524031}
   - component: {fileID: 455109746534498408}
+  - component: {fileID: 3193081217934252868}
   m_Layer: 5
   m_Name: UI
   m_TagString: UI
@@ -2064,6 +2065,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b855cf1d531dbc04eaeb7c7c89efb79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3193081217934252868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678220216417695404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b561f100ac2844418d31ca548139d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelGeneration: {fileID: 0}
 --- !u!1 &5803421759574626700
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,6 +3059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityToTrack: {fileID: 0}
+  trackPlayer: 0
 --- !u!1 &7982268018138875225
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,17 @@ using UnityEngine;
 public class EnemyPlacementType
 {
     public  GameObject enemy;
-    [Range(0, 100)] [SerializeField] public int spawnRate;
+    [Range(0f, 100f)] [SerializeField] public float spawnRate;
 
     public int width;
     public int height;
+
+    private List<Vector3> spawnLocations = new List<Vector3>();
+
+    public int SpawnLocations {
+        get
+        {
+            return SpawnLocations;
+        }
+    }
 }

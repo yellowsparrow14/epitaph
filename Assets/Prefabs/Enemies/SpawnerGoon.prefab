@@ -300,7 +300,7 @@ GameObject:
   - component: {fileID: 7357457874771326544}
   - component: {fileID: 377486549933244635}
   - component: {fileID: 90021263590254876}
-  - component: {fileID: 5887590477543874929}
+  - component: {fileID: 2181987865370712387}
   m_Layer: 7
   m_Name: SpawnerGoon
   m_TagString: Enemy
@@ -367,7 +367,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -3502739478633856340, guid: cfa471f294ffdce48900aa24cb39b8bf, type: 3}
-  m_Color: {r: 0.5660378, g: 0.5660378, b: 0.5660378, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -499,7 +499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c55701937e17794196565fafe575849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawningEnemy: {fileID: 7869210425373712410, guid: fd90c421dcca4f646acc217f17b13fa9, type: 3}
+  spawningEnemy: {fileID: 7869210425373712410, guid: e13f1331564d0ba4fb721a92bf9e874e, type: 3}
   spawnPos: {fileID: 6142660500821680078}
   shortestSpawnTime: 8
   longestSpawnTime: 10
@@ -532,7 +532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DEBUG: 0
   current: {fileID: 0}
---- !u!61 &5887590477543874929
+--- !u!61 &2181987865370712387
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -564,16 +564,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.16}
+  m_Offset: {x: 0, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.24, y: 0.32}
+    oldSize: {x: 1.5, y: 2}
     newSize: {x: 5, y: 5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24, y: 0.32}
+  m_Size: {x: 1.5, y: 2}
   m_EdgeRadius: 0
