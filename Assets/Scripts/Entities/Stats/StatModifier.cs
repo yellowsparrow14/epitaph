@@ -65,14 +65,27 @@ public class Heal: StatModifier
 }
 
 [System.Serializable]
-public class Dash: StatModifier
+public class SpeedIncrease: StatModifier
 {
-    public Dash(float multiplier)
+    public SpeedIncrease(float multiplier)
     {
         applicationType = ApplicationType.MULTIPLY;
         stat = StatEnum.WALKSPEED;
         this.amount = multiplier;
         beneficial = true;
+        changeBaseValue = false;
+    }
+}
+
+[System.Serializable]
+public class SpeedDecrease: StatModifier
+{
+    public SpeedDecrease(float multiplier)
+    {
+        applicationType = ApplicationType.MULTIPLY;
+        stat = StatEnum.WALKSPEED;
+        this.amount = multiplier;
+        beneficial = false;
         changeBaseValue = false;
     }
 }
