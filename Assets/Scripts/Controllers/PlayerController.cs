@@ -19,6 +19,11 @@ public class PlayerController : Controller
     private bool canChainAttack;
     private bool isAttacking;
     private Vector2 lastMovementInput;
+    public Vector2 LastMovementInput {
+        get {
+            return lastMovementInput;
+        }
+    }
     void Start()
     {
         canMove = true;
