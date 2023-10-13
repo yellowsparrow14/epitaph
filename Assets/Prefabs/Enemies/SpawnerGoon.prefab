@@ -497,6 +497,8 @@ MonoBehaviour:
         hasValue: 0
   intialHealth: 40
   _augmentManager: {fileID: 0}
+  coin: {fileID: 3681736836022034573, guid: b713356956b7f5d4a96ebdbae100f727, type: 3}
+  enemyCoinValue: 20
 --- !u!114 &3419974051499496107
 MonoBehaviour:
   m_ObjectHideFlags: 0
