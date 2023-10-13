@@ -8,7 +8,6 @@ public class Ability : ScriptableObject
 {
     public HashSet<AbilityTag> tags;
     public string aName = "New Ability";
-    public string aDescription = "New Description";
     public Sprite aSprite;
     public AudioClip aSound;
     public float cooldownTime = 1f;

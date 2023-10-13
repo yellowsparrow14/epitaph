@@ -15,7 +15,6 @@ public class SceneTransitionManager : MonoBehaviour
     [SerializeField]
     private int nextLevel;
 
-    [SerializeField] private GameObject levelGenerator;
     private AbilityHolder abilityHolder;
 
     private AbilityInventoryManager abilityInventoryManager;
@@ -93,5 +92,6 @@ public class SceneTransitionManager : MonoBehaviour
         playerInput.DeactivateInput();
         transition.ResetTrigger("RunStart");
         transition.SetTrigger("RunEnd");
+
     }
 }

@@ -45,7 +45,7 @@ public class Entity : MonoBehaviour
     }
 
     // relaying data to augment manager
-    public virtual void TakeDamage(float amount)
+    public void TakeDamage(float amount)
     {
         Health.TakeDamage(amount);
         _augmentManager.updateDamageTaken(amount);

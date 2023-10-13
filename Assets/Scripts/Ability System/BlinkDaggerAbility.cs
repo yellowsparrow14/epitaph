@@ -20,12 +20,8 @@ public class BlinkDaggerAbility : ProjectileAbility
     private float damage = 5;
     public bool teleported;
 
-    public bool destroyed;
 
-    [SerializeField]
-    //private float projectileMaxTime = 5;
 
-    private float projectileTimer;
     // public override void Activate(GameObject parent)
     // {
     //     firing = true;
@@ -41,7 +37,6 @@ public class BlinkDaggerAbility : ProjectileAbility
         firing = false;
         teleported = false;
         daggerThrown = false;
-        //projectileTimer = projectileMaxTime;
     }
 
     public override void AbilityBehavior(GameObject parent) {
@@ -61,12 +56,7 @@ public class BlinkDaggerAbility : ProjectileAbility
             Vector2 pos = parent.transform.GetChild(0).GetChild(0).transform.position;
             ThrowDagger(pos, parent);
         } else if (firing && daggerThrown && canFire) {
-            Vector2 pos = parent.transform.GetChild(0).GetChild(0).transform.position;
-            if (thrownDagger != null && !thrownDagger.IsInsideTerrain()) {
-                GoToDagger(parent);
-            } else if (destroyed) {
-                ThrowDagger(pos, parent);
-            }
+            GoToDagger(parent);
         }
     }
 
@@ -82,24 +72,13 @@ public class BlinkDaggerAbility : ProjectileAbility
                 }
             break;
             case AbilityState.reactive:
-
-                if (thrownDagger == null) {
-                    destroyed = true;
-                    firing = false;
-                }
-                if (destroyed) {
-                    state = AbilityState.active;
-                } else if (abilityPressed) {
+                if (abilityPressed) {
                     Activate(parent);
                     state = AbilityState.active;
                 }
             break;
             case AbilityState.active:
-                if (thrownDagger == null) {
-                    destroyed = true;
-                    firing = false;
-                }
-                if (teleported || destroyed) {
+                if (teleported == true) {
                     currentCooldownTime = cooldownTime;
                     state = AbilityState.cooldown;
                 }
@@ -124,27 +103,13 @@ public class BlinkDaggerAbility : ProjectileAbility
         thrownDagger = Instantiate(projectile, pos, Quaternion.identity);
         thrownDagger.parent = parent;
         firing = false;
-        destroyed = false;
-        //projectileTimer = projectileMaxTime;
     }
 
     private void GoToDagger(GameObject parent) {
-        // if (thrownDagger != null && thrownDagger.IsInsideTerrain()) {
-        //     return;   
-        // }
         daggerThrown = false;
         canFire = false;
         teleported = true;
-
-        if (thrownDagger == null) {
-            destroyed = true;
-            firing = false;
-            return;
-        }
-
-
         parent.transform.position = thrownDagger.transform.position;
-
         Destroy(thrownDagger.gameObject);
         firing = false;
 
