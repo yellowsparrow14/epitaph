@@ -540,6 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneHasCombat: 0
   nextLevel: 3
+  levelGenerator: {fileID: 0}
   disableRunEnd: 0
 --- !u!4 &276756998
 Transform:
@@ -1005,11 +1006,11 @@ PrefabInstance:
     - target: {fileID: 5055238078748358243, guid: e13f1331564d0ba4fb721a92bf9e874e, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+      objectReference: {fileID: 11400000, guid: 6d92b52c9b35be9478555810404d2243, type: 2}
     - target: {fileID: 5055238078748358243, guid: e13f1331564d0ba4fb721a92bf9e874e, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+      objectReference: {fileID: 8858891141546823786, guid: 6d92b52c9b35be9478555810404d2243, type: 2}
     - target: {fileID: 5055238078748358243, guid: e13f1331564d0ba4fb721a92bf9e874e, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
